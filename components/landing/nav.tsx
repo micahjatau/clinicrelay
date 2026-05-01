@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { List, X } from "@phosphor-icons/react";
 import { useDemoModal } from "@/context/demo-modal-context";
 import { navLinks } from "@/lib/content/clinicrelay-landing";
+import { Button } from "@/components/ui/button";
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 
 export function Nav() {
   const { open } = useDemoModal();
@@ -28,31 +30,19 @@ export function Nav() {
           <span className="hidden sm:inline text-[11px] text-[--cr-muted] ml-2 tracking-wide uppercase">Front-Desk Orchestration</span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-7">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-[13px] tracking-wide text-[--cr-muted] hover:text-[--cr-text] transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
+        <NavigationMenu className="hidden md:block">
+          <NavigationMenuList>
+            {navLinks.map((link) => (
+              <NavigationMenuItem key={link.href}>
+                <NavigationMenuLink href={link.href}>{link.label}</NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
 
         <div className="hidden md:flex items-center gap-3">
-          <button
-            onClick={open}
-            className="cr-btn cr-btn-primary px-5 py-2.5 text-sm"
-          >
-            Book a Demo
-          </button>
-          <button
-            onClick={open}
-            className="text-[--cr-teal] text-sm underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded"
-          >
-            Request Workflow Audit
-          </button>
+          <Button onClick={open} size="sm">Book a Demo</Button>
+          <Button onClick={open} variant="ghost" size="sm">Request Workflow Audit</Button>
         </div>
 
         <button
@@ -76,12 +66,7 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <button
-            onClick={() => { open(); setMenuOpen(false); }}
-            className="cr-btn cr-btn-primary px-5 py-2.5 text-sm text-left"
-          >
-            Book a Demo
-          </button>
+          <Button onClick={() => { open(); setMenuOpen(false); }} size="sm" className="text-left justify-start">Book a Demo</Button>
         </div>
       )}
     </header>

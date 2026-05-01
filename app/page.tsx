@@ -25,10 +25,10 @@ export default function Home() {
       <ProblemSection />
       <WaitlistSection />
       <ProductWorkflow />
+      <DashboardMockup />
       <FeatureGrid />
       <GrowthSection />
       <WebServices />
-      <DashboardMockup />
       <UseCases />
       <TrustSection />
       <MetricsSection />

@@ -7,7 +7,7 @@ export function FinalCta() {
         <h2 className="text-4xl md:text-6xl tracking-tighter font-semibold text-white mb-6 max-w-[18ch] mx-auto leading-none">
           Stop letting front-desk chaos leak revenue.
         </h2>
-        <p className="text-base text-white/75 mb-10 max-w-[56ch] mx-auto leading-relaxed">
+        <p className="text-base text-white/85 mb-10 max-w-[56ch] mx-auto leading-relaxed">
           ClinicRelay pays for itself the first week a cancelled slot gets filled automatically.
         </p>
         <FinalCtaButtons />

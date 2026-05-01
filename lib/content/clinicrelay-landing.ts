@@ -57,11 +57,11 @@ export const heroData: HeroData = {
   trustLine: "Trusted by growing clinics across Canada",
   badges: ["Waitlist Recovery", "Patient Reminders", "Booking Coordination"],
   bentoCards: [
-    { step: "1", label: "Open Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
-    { step: "2", label: "Waitlist Matched", detail: "3 candidates identified" },
-    { step: "3", label: "SMS Dispatched", detail: "Personalized message sent" },
-    { step: "4", label: "Reply Captured", detail: '"Yes, I can make it!"' },
-    { step: "5", label: "Slot Refilled", detail: "Confirmed in 4 minutes" },
+    { step: "1", label: "Cancelled Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
+    { step: "2", label: "Eligible Patient Matched", detail: "3 candidates identified" },
+    { step: "3", label: "Recovery SMS Sent", detail: "Personalized message sent" },
+    { step: "4", label: "Patient Reply Captured", detail: '"Yes, I can make it!"' },
+    { step: "5", label: "Staff Confirms Refill", detail: "Confirmed in 4 minutes" },
   ],
 };
 
@@ -108,7 +108,7 @@ export const featureCards: FeatureCard[] = [
   { icon: "ChatCircleText", title: "Two-way SMS", copy: "Patients reply in plain text. ClinicRelay parses intent and routes accordingly.", tag: "Engagement" },
   { icon: "CalendarCheck", title: "Waitlist automation", copy: "Cancelled slots trigger outreach automatically — no manual list-calling.", tag: "Recovery" },
   { icon: "BellRinging", title: "Recall campaigns", copy: "Hygiene and follow-up recalls sent on schedule, not when someone remembers.", tag: "Retention" },
-  { icon: "Robot", title: "Intake coordination", copy: "New patient forms, insurance collection, and routing handled before they arrive.", tag: "Efficiency" },
+  { icon: "ClipboardText", title: "Intake coordination", copy: "New patient forms, insurance collection, and routing handled before they arrive.", tag: "Efficiency" },
   { icon: "Envelope", title: "Confirmation sequences", copy: "Multi-step reminder flows reduce no-shows and surface cancellations early.", tag: "Reliability" },
   { icon: "Gauge", title: "Front-desk dashboard", copy: "Slot utilization, recovery rate, and response times visible at a glance.", tag: "Visibility" },
   { icon: "Phone", title: "Missed call capture", copy: "Unanswered calls trigger an automatic SMS follow-up within minutes.", tag: "Recovery" },
@@ -171,7 +171,7 @@ export const serviceCards: ServiceCard[] = [
 ];
 
 export const dashboardMockData: DashboardData = {
-  navItems: ["Today", "Appointments", "Waitlist Recovery", "Inbox", "Insurance", "Recall", "Patients", "Analytics", "Settings"],
+  navItems: ["Overview", "Cancelled Slots", "Waitlist", "Recovery", "Front Desk", "Calendar", "Patients", "Communication", "Analytics", "Settings"],
   metrics: [
     { label: "Slot Utilization", value: "84%", sub: "+13% vs last week" },
     { label: "Slots Recovered Today", value: "3", sub: "of 4 cancellations" },
@@ -232,8 +232,8 @@ export const trustPillars: TrustPillar[] = [
     copy: "Every message sent, every slot filled, every staff action is logged with timestamp and source.",
   },
   {
-    title: "Canadian infrastructure",
-    copy: "Data is stored and processed in Canadian data centres. We do not transfer patient contact data internationally.",
+    title: "Canadian data residency available",
+    copy: "Canadian data residency is available for eligible deployments based on your clinic requirements.",
   },
 ];
 

@@ -6,9 +6,9 @@ export function WebServices() {
     <section className="py-24 md:py-32 bg-[--cr-bg]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <AnimatedSection className="mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Web Services</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Clinic Growth Infrastructure</p>
           <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text]">
-            Your digital presence, managed.
+            Once recovery is stable, grow demand with confidence.
           </h2>
         </AnimatedSection>
 

@@ -1,9 +1,9 @@
-import { ChatCircleText, CalendarCheck, BellRinging, Robot, Envelope, Gauge, Phone, UsersFour, Lock, PuzzlePiece, ArrowsClockwise, ChartBar } from "@phosphor-icons/react/dist/ssr";
+import { ChatCircleText, CalendarCheck, BellRinging, ClipboardText, Envelope, Gauge, Phone, UsersFour, Lock, PuzzlePiece, ArrowsClockwise, ChartBar } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { featureCards } from "@/lib/content/clinicrelay-landing";
 
 const iconMap: Record<string, React.ElementType> = {
-  ChatCircleText, CalendarCheck, BellRinging, Robot, Envelope, Gauge,
+  ChatCircleText, CalendarCheck, BellRinging, ClipboardText, Envelope, Gauge,
   Phone, UsersFour, Lock, PuzzlePiece, ArrowsClockwise, ChartBar,
 };
 

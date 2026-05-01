@@ -5,16 +5,28 @@
 }
 
 :root {
-  --cr-bg:         #f8fafa;
-  --cr-surface:    #ffffff;
-  --cr-surface-2:  #f0fdfa;
-  --cr-teal:       #0d9488;
-  --cr-teal-dark:  #0f766e;
+  color-scheme: light;
+  --cr-bg: #f8fafa;
+  --cr-surface: #ffffff;
+  --cr-surface-2: #f0fdfa;
+  --cr-teal: #0d9488;
+  --cr-teal-dark: #0f766e;
   --cr-teal-light: #ccfbf1;
-  --cr-text:       #0f1a18;
-  --cr-muted:      #4b7a72;
-  --cr-border:     #d1e8e4;
-  --cr-shadow:     0 20px 40px -15px rgba(13, 148, 136, 0.08);
+  --cr-text: #0f1a18;
+  --cr-muted: #355f58;
+  --cr-muted-soft: #4b7a72;
+  --cr-border: #d1e8e4;
+  --cr-shadow: 0 20px 40px -15px rgba(13, 148, 136, 0.08);
+  --cr-success: #16a34a;
+  --cr-success-light: #dcfce7;
+  --cr-warning: #d97706;
+  --cr-warning-light: #fef3c7;
+  --cr-danger: #dc2626;
+  --cr-danger-light: #fee2e2;
+  --cr-info: #2563eb;
+  --cr-info-light: #dbeafe;
+  --cr-slate: #334155;
+  --cr-slate-light: #f1f5f9;
 }
 
 body {
@@ -22,6 +34,7 @@ body {
   color: var(--cr-text);
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 * {
@@ -63,6 +76,16 @@ body {
   border-color: var(--cr-teal);
 }
 
+.cr-btn-ghost {
+  background: transparent;
+  color: var(--cr-muted);
+}
+
+.cr-btn-ghost:hover {
+  color: var(--cr-text);
+  background: rgba(13, 148, 136, 0.06);
+}
+
 .cr-input {
   border: 1px solid var(--cr-border);
   border-radius: 0.75rem;
@@ -75,4 +98,44 @@ body {
   outline: none;
   border-color: var(--cr-teal);
   box-shadow: 0 0 0 2px var(--cr-teal-light);
+}
+
+.cr-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.cr-badge-success {
+  background: var(--cr-success-light);
+  color: var(--cr-success);
+}
+
+.cr-badge-warning {
+  background: var(--cr-warning-light);
+  color: var(--cr-warning);
+}
+
+.cr-badge-danger {
+  background: var(--cr-danger-light);
+  color: var(--cr-danger);
+}
+
+.cr-badge-teal {
+  background: var(--cr-teal-light);
+  color: var(--cr-teal);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
