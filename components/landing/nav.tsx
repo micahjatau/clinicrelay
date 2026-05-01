@@ -5,7 +5,6 @@ import { List, X } from "@phosphor-icons/react";
 import { useDemoModal } from "@/context/demo-modal-context";
 import { navLinks } from "@/lib/content/clinicrelay-landing";
 import { Button } from "@/components/ui/button";
-import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList } from "@/components/ui/navigation-menu";
 
 export function Nav() {
   const { open } = useDemoModal();
@@ -30,15 +29,17 @@ export function Nav() {
           <span className="hidden sm:inline text-[11px] text-[--cr-muted] ml-2 tracking-wide uppercase">Front-Desk Orchestration</span>
         </div>
 
-        <NavigationMenu className="hidden md:block">
-          <NavigationMenuList>
-            {navLinks.map((link) => (
-              <NavigationMenuItem key={link.href}>
-                <NavigationMenuLink href={link.href}>{link.label}</NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-          </NavigationMenuList>
-        </NavigationMenu>
+        <nav className="hidden md:flex items-center gap-7">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[13px] tracking-wide text-[--cr-muted] hover:text-[--cr-text] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
 
         <div className="hidden md:flex items-center gap-3">
           <Button onClick={open} size="sm">Book a Demo</Button>
