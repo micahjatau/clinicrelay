@@ -21,7 +21,7 @@ export function HeroHookRotator() {
   }, []);
 
   return (
-    <div aria-live="polite" className="relative h-[7.25rem] md:h-[9.5rem] mb-8">
+    <div aria-live="polite" className="relative h-[7.25rem] md:h-[12rem] mb-8 md:mb-10">
       <AnimatePresence mode="wait">
         <motion.h1
           key={hooks[index]}
@@ -29,7 +29,7 @@ export function HeroHookRotator() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0 text-4xl md:text-6xl tracking-tighter font-semibold text-[--cr-text] leading-none"
+          className="absolute inset-0 text-4xl md:text-6xl tracking-tighter font-semibold text-[--cr-text] leading-[0.95]"
         >
           {hooks[index]}
         </motion.h1>
