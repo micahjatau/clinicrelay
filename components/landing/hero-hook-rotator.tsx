@@ -21,7 +21,7 @@ export function HeroHookRotator() {
   }, []);
 
   return (
-    <div aria-live="polite" className="relative h-[5.8rem] md:h-[8rem] mb-6">
+    <div aria-live="polite" className="relative h-[7.25rem] md:h-[9.5rem] mb-8">
       <AnimatePresence mode="wait">
         <motion.h1
           key={hooks[index]}
