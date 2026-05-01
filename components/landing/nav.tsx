@@ -22,18 +22,18 @@ export function Nav() {
         scrolled ? "bg-white/95 backdrop-blur-sm border-b border-[--cr-border] shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-16 flex items-center justify-between">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[4.25rem] flex items-center justify-between">
         <div>
-          <span className="font-semibold text-[--cr-text] tracking-tight">ClinicRelay</span>
-          <span className="hidden sm:inline text-xs text-[--cr-muted] ml-2">Front-Desk Orchestration</span>
+          <span className="font-semibold text-[15px] text-[--cr-text] tracking-tight">ClinicRelay</span>
+          <span className="hidden sm:inline text-[11px] text-[--cr-muted] ml-2 tracking-wide uppercase">Front-Desk Orchestration</span>
         </div>
 
-        <nav className="hidden md:flex items-center gap-6">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[--cr-muted] hover:text-[--cr-text] transition-colors"
+              className="text-[13px] tracking-wide text-[--cr-muted] hover:text-[--cr-text] transition-colors"
             >
               {link.label}
             </a>
@@ -43,13 +43,13 @@ export function Nav() {
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={open}
-            className="bg-[--cr-teal] text-white px-5 py-2.5 rounded-xl text-sm font-semibold shadow-[0_12px_26px_rgba(13,148,136,0.22)] hover:bg-[--cr-teal-dark] active:-translate-y-px active:scale-[0.98] transition-all duration-150"
+            className="cr-btn cr-btn-primary px-5 py-2.5 text-sm"
           >
             Book a Demo
           </button>
           <button
             onClick={open}
-            className="text-[--cr-teal] text-sm underline-offset-4 hover:underline"
+            className="text-[--cr-teal] text-sm underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded"
           >
             Request Workflow Audit
           </button>
@@ -78,7 +78,7 @@ export function Nav() {
           ))}
           <button
             onClick={() => { open(); setMenuOpen(false); }}
-            className="bg-[--cr-teal] text-white px-5 py-2.5 rounded-xl text-sm font-semibold text-left"
+            className="cr-btn cr-btn-primary px-5 py-2.5 text-sm text-left"
           >
             Book a Demo
           </button>

@@ -15,6 +15,7 @@ import { ProcessSection } from "@/components/landing/process-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { FinalCta } from "@/components/landing/final-cta";
 import { Footer } from "@/components/landing/footer";
+import { MobileStickyCta } from "@/components/landing/mobile-sticky-cta";
 
 export default function Home() {
   return (
@@ -36,6 +37,8 @@ export default function Home() {
       <FaqSection />
       <FinalCta />
       <Footer />
+      <MobileStickyCta />
+      <div className="md:hidden h-20" />
     </>
   );
 }

@@ -11,20 +11,27 @@ export function WebServices() {
             Your digital presence, managed.
           </h2>
         </AnimatedSection>
-        <div className="flex gap-4 overflow-x-auto pb-4 md:grid md:overflow-visible" style={{ gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr" }}>
-          {serviceCards.map((card, i) => (
-            <AnimatedSection key={card.title} delay={i * 0.08} className="min-w-[260px] md:min-w-0">
-              <div className="rounded-[2rem] border border-[--cr-border] bg-white h-full p-8" style={{ boxShadow: "var(--cr-shadow)" }}>
-                <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-3">{card.title}</h3>
-                <p className="text-sm text-[--cr-muted] leading-relaxed mb-6">{card.copy}</p>
-                <div className="flex flex-col">
-                  {card.deliverables.map((d) => (
-                    <p key={d} className="text-xs text-[--cr-muted] py-2.5 border-t border-[--cr-border]">{d}</p>
-                  ))}
-                </div>
-              </div>
-            </AnimatedSection>
-          ))}
+
+        <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12">
+          <AnimatedSection className="border-t border-[--cr-border] pt-6">
+            <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-3">{serviceCards[0].title}</h3>
+            <p className="text-sm text-[--cr-muted] leading-relaxed mb-6 max-w-[60ch]">{serviceCards[0].copy}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {serviceCards[0].deliverables.map((d) => (
+                <p key={d} className="text-sm text-[--cr-muted] py-2 border-t border-[--cr-border]">{d}</p>
+              ))}
+            </div>
+          </AnimatedSection>
+
+          <div className="divide-y divide-[--cr-border] border-y border-[--cr-border]">
+            {serviceCards.slice(1).map((card, i) => (
+              <AnimatedSection key={card.title} delay={i * 0.08} className="py-5">
+                <h4 className="text-base font-semibold text-[--cr-text] tracking-tight mb-1">{card.title}</h4>
+                <p className="text-sm text-[--cr-muted] leading-relaxed mb-3">{card.copy}</p>
+                <p className="text-xs text-[--cr-muted]">{card.deliverables.join(" • ")}</p>
+              </AnimatedSection>
+            ))}
+          </div>
         </div>
       </div>
     </section>

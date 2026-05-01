@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { DemoModalProvider } from "@/context/demo-modal-context";
-import { DemoModal } from "@/components/landing/demo-modal";
+import { DemoModalLazy } from "@/components/landing/demo-modal-lazy";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <DemoModalProvider>
           {children}
-          <DemoModal />
+          <DemoModalLazy />
         </DemoModalProvider>
       </body>
     </html>

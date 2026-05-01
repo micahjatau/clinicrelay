@@ -27,3 +27,52 @@ body {
 * {
   box-sizing: border-box;
 }
+
+.cr-btn {
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 150ms;
+}
+
+.cr-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--cr-teal-light), 0 0 0 4px var(--cr-teal);
+}
+
+.cr-btn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.cr-btn-primary {
+  background: var(--cr-teal);
+  color: #fff;
+  box-shadow: 0 12px 26px rgba(13, 148, 136, 0.22);
+}
+
+.cr-btn-primary:hover {
+  background: var(--cr-teal-dark);
+}
+
+.cr-btn-secondary {
+  border: 1px solid var(--cr-border);
+  background: #fff;
+  color: var(--cr-text);
+}
+
+.cr-btn-secondary:hover {
+  border-color: var(--cr-teal);
+}
+
+.cr-input {
+  border: 1px solid var(--cr-border);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--cr-text);
+}
+
+.cr-input:focus-visible {
+  outline: none;
+  border-color: var(--cr-teal);
+  box-shadow: 0 0 0 2px var(--cr-teal-light);
+}
