@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 import { useDemoModal } from "@/context/demo-modal-context";
 import { navLinks } from "@/lib/content/clinicrelay-landing";
@@ -23,13 +24,14 @@ export function Nav() {
         scrolled ? "bg-white/95 backdrop-blur-sm border-b border-[--cr-border] shadow-sm" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[4.25rem] flex items-center justify-between">
-        <div>
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[4.25rem] flex items-center justify-between md:grid md:grid-cols-[auto_1fr_auto] md:gap-6">
+        <a href="#" className="flex items-center gap-2.5">
+          <Image src="/logo-mark.svg" alt="ClinicRelay" width={24} height={24} priority />
           <span className="font-semibold text-[15px] text-[--cr-text] tracking-tight">ClinicRelay</span>
-          <span className="hidden sm:inline text-[11px] text-[--cr-muted] ml-2 tracking-wide uppercase">Front-Desk Orchestration</span>
-        </div>
+          <span className="hidden sm:inline text-[11px] text-[--cr-muted] tracking-wide uppercase">Front-Desk Orchestration</span>
+        </a>
 
-        <nav className="hidden md:flex items-center gap-7">
+        <nav className="hidden md:flex items-center justify-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -41,9 +43,14 @@ export function Nav() {
           ))}
         </nav>
 
-        <div className="hidden md:flex items-center gap-3">
-          <Button onClick={open} size="sm">Book a Demo</Button>
-          <Button onClick={open} variant="ghost" size="sm">Request Workflow Audit</Button>
+        <div className="hidden md:flex items-center gap-4">
+          <Button onClick={open} size="sm" className="h-9 px-4">Book a Demo</Button>
+          <button
+            onClick={open}
+            className="text-[13px] font-semibold text-[--cr-teal] hover:text-[--cr-teal-dark] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded"
+          >
+            Request Workflow Audit
+          </button>
         </div>
 
         <button
