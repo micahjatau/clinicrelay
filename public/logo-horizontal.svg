@@ -1,0 +1,19 @@
+<svg width="320" height="64" viewBox="0 0 320 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ClinicRelay logo">
+  <defs>
+    <mask id="vmask" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect x="0" y="0" width="64" height="64" fill="white"/>
+      <rect x="17.05" y="17.05" width="9.9" height="9.9" fill="black"/>
+      <rect x="37.05" y="37.05" width="9.9" height="9.9" fill="black"/>
+    </mask>
+    <mask id="hmask" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64">
+      <rect x="0" y="0" width="64" height="64" fill="white"/>
+      <rect x="37.05" y="17.05" width="9.9" height="9.9" fill="black"/>
+      <rect x="17.05" y="37.05" width="9.9" height="9.9" fill="black"/>
+    </mask>
+  </defs>
+  <g transform="translate(0,0)">
+    <rect x="2" y="22" width="60" height="20" rx="10" stroke="#0d9488" stroke-width="5.5" fill="none" mask="url(#hmask)"/>
+    <rect x="22" y="2" width="20" height="60" rx="10" stroke="#0d9488" stroke-width="5.5" fill="none" mask="url(#vmask)"/>
+  </g>
+  <text x="82" y="40" fill="#0f1a18" font-family="Geist, Inter, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="-1.4">ClinicRelay</text>
+</svg>

@@ -1,0 +1,8 @@
+<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <mask id="vm" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="white"/><rect x="17.5" y="17.5" width="9" height="9" fill="black"/><rect x="37.5" y="37.5" width="9" height="9" fill="black"/></mask>
+    <mask id="hm" maskUnits="userSpaceOnUse" x="0" y="0" width="64" height="64"><rect width="64" height="64" fill="white"/><rect x="37.5" y="17.5" width="9" height="9" fill="black"/><rect x="17.5" y="37.5" width="9" height="9" fill="black"/></mask>
+  </defs>
+  <rect x="2" y="22" width="60" height="20" rx="10" stroke="#0d9488" stroke-width="6" fill="none" mask="url(#hm)"/>
+  <rect x="22" y="2" width="20" height="60" rx="10" stroke="#0d9488" stroke-width="6" fill="none" mask="url(#vm)"/>
+</svg>
