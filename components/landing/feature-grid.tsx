@@ -17,8 +17,28 @@ export function FeatureGrid() {
             Built for every part of the front desk.
           </h2>
         </AnimatedSection>
+        <div className="md:hidden -mx-6 px-6 overflow-x-auto pb-2">
+          <div className="flex gap-3 snap-x snap-mandatory">
+            {featureCards.map((card, i) => {
+              const Icon = iconMap[card.icon];
+              return (
+                <AnimatedSection
+                  key={card.title}
+                  delay={i * 0.04}
+                  className="snap-start shrink-0 w-[85vw] rounded-[1.5rem] border border-[--cr-border] bg-white p-5"
+                >
+                  {Icon && <Icon size={24} weight="duotone" className="text-[--cr-teal] mb-3" />}
+                  <h3 className="text-lg font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
+                  <p className="text-sm text-[--cr-muted] leading-relaxed mb-3 line-clamp-4">{card.copy}</p>
+                  <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-[--cr-teal-light] text-[--cr-teal]">{card.tag}</span>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+        </div>
+
         <div
-          className="grid gap-4"
+          className="hidden md:grid gap-4"
           style={{
             gridTemplateColumns: "repeat(4, 1fr)",
             gridTemplateRows: "auto",
@@ -31,7 +51,7 @@ export function FeatureGrid() {
               <AnimatedSection
                 key={card.title}
                 delay={i * 0.05}
-                className={`rounded-[2rem] border border-[--cr-border] bg-white p-8 hover:scale-[1.01] hover:shadow-lg transition-all duration-200 ${isWide ? "col-span-2" : "col-span-1"} max-md:col-span-2`}
+                className={`rounded-[2rem] border border-[--cr-border] bg-white p-8 hover:scale-[1.01] hover:shadow-lg transition-all duration-200 ${isWide ? "col-span-2" : "col-span-1"}`}
               >
                 {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
                 <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>

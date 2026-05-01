@@ -1,7 +1,10 @@
+"use client";
+
 import { Tooth, FirstAid, Eye, Bandaids } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { useCases } from "@/lib/content/clinicrelay-landing";
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const iconMap: Record<string, React.ElementType> = { Tooth, FirstAid, Eye, Bandaids };
 
@@ -23,7 +26,7 @@ export function UseCases() {
                 style={{ boxShadow: "var(--cr-shadow)" }}
               >
                 <div className={i % 2 !== 0 ? "md:order-2" : ""}>
-                  {iconMap[uc.icon] && React.createElement(iconMap[uc.icon], { size: 32, weight: "duotone", className: "text-[--cr-teal] mb-4" })}
+                  {iconMap[uc.icon] && <UseCaseIcon icon={iconMap[uc.icon]} />}
                   <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{uc.title}</h3>
                   <p className="text-base text-[--cr-muted] leading-relaxed mb-4">{uc.copy}</p>
                   <div className="flex flex-wrap gap-2">
@@ -39,5 +42,23 @@ export function UseCases() {
         </div>
       </div>
     </section>
+  );
+}
+
+function UseCaseIcon({ icon: Icon }: { icon: React.ElementType }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-20% 0px" });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="mb-4 inline-block"
+      style={{ transformPerspective: 900 }}
+      initial={{ rotateY: 0, rotateX: 0 }}
+      animate={inView ? { rotateY: 720, rotateX: 12 } : { rotateY: 0, rotateX: 0 }}
+      transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <Icon size={32} weight="duotone" className="text-[--cr-teal]" />
+    </motion.div>
   );
 }
