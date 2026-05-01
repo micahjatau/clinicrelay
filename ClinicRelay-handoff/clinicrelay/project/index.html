@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ClinicRelay — Brand Asset Index</title>
+<link rel="stylesheet" href="brand/shared.css" />
+<script src="brand/mark.js"></script>
+<style>
+  body { background: var(--cr-bg); padding: 56px 40px 80px; }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header.h {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--cr-border);
+    margin-bottom: 32px;
+  }
+  header.h .wm { font-size: 32px; font-weight: 600; letter-spacing: -0.025em; }
+  header.h .sub { color: var(--cr-muted); font-size: 14px; margin-left: auto; }
+  h2 { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--cr-muted); margin: 24px 0 14px; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  a.card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px;
+    border: 1px solid var(--cr-border);
+    border-radius: 14px;
+    background: var(--cr-surface);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  a.card:hover { transform: translateY(-2px); box-shadow: var(--cr-shadow); }
+  a.card .num { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; color: var(--cr-teal); text-transform: uppercase; }
+  a.card .title { font-size: 16px; font-weight: 600; color: var(--cr-text); letter-spacing: -0.01em; }
+  a.card .sub { font-size: 12px; color: var(--cr-muted); line-height: 1.4; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="h">
+    <div data-cr-mark data-size="44"></div>
+    <span class="wm">ClinicRelay</span>
+    <span class="sub">Brand Asset Index · v1.1</span>
+  </header>
+
+  <h2>Documents</h2>
+  <div class="grid">
+    <a class="card" href="brand/00 Logo Variants Overview.html">
+      <span class="num">00</span>
+      <span class="title">Logo Variants Overview</span>
+      <span class="sub">Master spec sheet — all variants on one page</span>
+    </a>
+    <a class="card" href="brand/01 Primary Logo - Horizontal.html">
+      <span class="num">01</span>
+      <span class="title">Primary Logo — Horizontal</span>
+      <span class="sub">Default brand lockup</span>
+    </a>
+    <a class="card" href="brand/02 Mark - Icon Only.html">
+      <span class="num">02</span>
+      <span class="title">Mark — Icon Only</span>
+      <span class="sub">Standalone mark on soft tile</span>
+    </a>
+    <a class="card" href="brand/03 Alternate Logo - Stacked.html">
+      <span class="num">03</span>
+      <span class="title">Alternate Logo — Stacked</span>
+      <span class="sub">Vertical lockup with tagline</span>
+    </a>
+    <a class="card" href="brand/04 Alternate Logo - Compact.html">
+      <span class="num">04</span>
+      <span class="title">Alternate Logo — Compact</span>
+      <span class="sub">Tighter horizontal lockup for nav</span>
+    </a>
+    <a class="card" href="brand/05 Wordmark Only.html">
+      <span class="num">05</span>
+      <span class="title">Wordmark Only</span>
+      <span class="sub">Type-only lockup</span>
+    </a>
+    <a class="card" href="brand/06 Color Variations.html">
+      <span class="num">06</span>
+      <span class="title">Color Variations</span>
+      <span class="sub">Full color, dark teal, mono, reverse</span>
+    </a>
+    <a class="card" href="brand/07 Favicon and App Icons.html">
+      <span class="num">07</span>
+      <span class="title">Favicon &amp; App Icons</span>
+      <span class="sub">512 / 192 / 96 / 32 / Apple Touch</span>
+    </a>
+    <a class="card" href="brand/08 Clear Space and Minimum Size.html">
+      <span class="num">08</span>
+      <span class="title">Clear Space &amp; Minimum Size</span>
+      <span class="sub">Buffer rules and minimum widths</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>

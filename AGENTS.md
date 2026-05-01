@@ -1,9 +1,12 @@
 <!-- gitnexus:start -->
 # GitNexus — Code Intelligence
 
-This project is indexed by GitNexus as **clinicrelay** (181 symbols, 258 relationships, 0 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
+This project is indexed by GitNexus as **clinicrelay** (228 symbols, 301 relationships, 0 execution flows). Use the GitNexus MCP tools to understand code, assess impact, and navigate safely.
 
-> If any GitNexus tool warns the index is stale, run `npx gitnexus analyze` in terminal first.
+> If any GitNexus tool warns the index is stale, run `NODE_OPTIONS="--require /root/bright-smile/.gitnexus/lbug-patch.cjs" gitnexus analyze` in terminal first.
+>
+> For all GitNexus CLI commands in this repo, always prefix with:
+> `NODE_OPTIONS="--require /root/bright-smile/.gitnexus/lbug-patch.cjs"`
 
 ## Always Do
 
