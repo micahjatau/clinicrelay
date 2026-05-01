@@ -8,9 +8,9 @@ export function FaqSection() {
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">FAQ</p>
           <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text]">Common questions.</h2>
         </div>
-        <div className="max-w-3xl divide-y divide-[--cr-border]">
+        <div className="max-w-3xl mx-auto rounded-2xl border border-[--cr-border] bg-[--cr-surface-2] px-6 md:px-8 py-3 divide-y divide-[--cr-border]">
           {faqItems.map((item, i) => (
-            <details key={i} className="group py-1">
+            <details key={i} className="group py-2">
               <summary className="w-full list-none cursor-pointer flex items-center justify-between py-4 text-left gap-4">
                 <span className="text-base font-semibold text-[--cr-text] tracking-tight">{item.question}</span>
                 <span className="text-[--cr-muted] group-open:text-[--cr-teal]">+</span>

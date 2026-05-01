@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export function Footer() {
   const year = new Date().getFullYear();
   return (
@@ -5,7 +7,10 @@ export function Footer() {
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-14">
           <div>
-            <p className="font-semibold text-[15px] text-[--cr-text] tracking-tight mb-3">ClinicRelay</p>
+            <div className="flex items-center gap-2.5 mb-3">
+              <Image src="/logo-mark.svg" alt="ClinicRelay" width={18} height={18} />
+              <p className="font-semibold text-[15px] text-[--cr-text] tracking-tight">ClinicRelay</p>
+            </div>
             <p className="text-xs text-[--cr-muted] mb-4">Front-desk orchestration for appointment-based clinics.</p>
             <p className="text-xs text-[--cr-muted] max-w-[28ch] leading-relaxed">
               Waitlist recovery, patient reminders, booking coordination, and front-desk visibility — in one platform.
