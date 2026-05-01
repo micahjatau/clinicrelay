@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ClinicRelay Landing
 
-## Getting Started
+Marketing and lead-capture landing page for ClinicRelay, built with Next.js App Router.
 
-First, run the development server:
+## Stack
+
+- Next.js 16
+- React 19
+- Tailwind CSS v4
+- Framer Motion
+- Phosphor Icons
+- Supabase (lead submission API)
+
+## Local development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Environment variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create `.env.local`:
 
-## Learn More
+```bash
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+SUPABASE_SERVICE_ROLE_KEY=...
+```
 
-To learn more about Next.js, take a look at the following resources:
+Notes:
+- `/api/leads` uses `SUPABASE_SERVICE_ROLE_KEY` server-side.
+- If Supabase env vars are missing, lead submissions return a safe error response.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # local dev
+npm run lint     # eslint
+npm run test     # vitest
+npm run build    # production build
+npm run start    # run built app
+```
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `app/` — routes, layout, global styles, API route
+- `components/landing/` — landing page sections and UI
+- `components/ui/` — reusable UI primitives (shadcn-style)
+- `context/` — modal context
+- `lib/content/clinicrelay-landing.ts` — structured page content
+- `lib/supabase/` — Supabase clients
+- `__tests__/` — API tests
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+Deployed on Vercel.
+
+- Production: https://clinicrelay-landing.vercel.app
+- Repo: https://github.com/micahjatau/clinicrelay
