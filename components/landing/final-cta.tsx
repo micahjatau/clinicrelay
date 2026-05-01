@@ -8,7 +8,7 @@ export function FinalCta() {
           Stop letting front-desk chaos leak revenue.
         </h2>
         <p className="text-base text-white/75 mb-10 max-w-[56ch] mx-auto leading-relaxed">
-          ClinicRelay pays for itself the first week a cancelled slot gets filled automatically.
+          Start with a workflow audit. We’ll identify where cancellations, missed follow-up, and manual coordination are costing your clinic time and capacity.
         </p>
         <FinalCtaButtons />
       </div>

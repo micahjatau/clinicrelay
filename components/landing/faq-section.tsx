@@ -13,7 +13,8 @@ export function FaqSection() {
             <details key={i} className="group py-2">
               <summary className="w-full list-none cursor-pointer flex items-center justify-between py-4 text-left gap-4">
                 <span className="text-base font-semibold text-[--cr-text] tracking-tight">{item.question}</span>
-                <span className="text-[--cr-muted] group-open:text-[--cr-teal]">+</span>
+                <span className="text-[--cr-muted] group-open:hidden">+</span>
+                <span className="hidden group-open:inline text-[--cr-teal]">−</span>
               </summary>
               <p className="text-base text-[--cr-muted] leading-relaxed pb-5">{item.answer}</p>
             </details>

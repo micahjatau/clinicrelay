@@ -54,7 +54,7 @@ export const heroData: HeroData = {
     "ClinicRelay connects your waitlist, your front desk, and your schedule — so cancelled time has a second chance to become productive time.",
   primaryCta: "Book a Demo",
   secondaryCta: "Request Workflow Audit",
-  trustLine: "Trusted by growing clinics across Canada",
+  trustLine: "Built for clinics that need better appointment recovery and front-desk coordination",
   badges: ["Waitlist Recovery", "Patient Reminders", "Booking Coordination"],
   bentoCards: [
     { step: "1", label: "Cancelled Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
@@ -91,7 +91,7 @@ export const painCards: PainCard[] = [
 export const recoverySteps: Step[] = [
   { number: "01", icon: "CalendarBlank", title: "Cancellation received", copy: "A confirmed appointment is cancelled — ClinicRelay detects it immediately." },
   { number: "02", icon: "ListChecks", title: "Waitlist scanned", copy: "Eligible patients are ranked by proximity, service match, and last contact." },
-  { number: "03", icon: "ChatCircle", title: "SMS dispatched", copy: "A personalized message goes out within seconds. No staff action required." },
+  { number: "03", icon: "ChatCircle", title: "SMS dispatched", copy: "A personalized message is prepared or sent based on your clinic workflow rules." },
   { number: "04", icon: "ArrowBendUpLeft", title: "Reply captured", copy: "Patient responses are parsed and routed to your front desk for a one-click confirm." },
   { number: "05", icon: "CheckCircle", title: "Slot refilled", copy: "The appointment is confirmed and the schedule is updated. The cycle closes." },
 ];
@@ -220,8 +220,8 @@ export const trustPillars: TrustPillar[] = [
     copy: "ClinicRelay surfaces information and drafts outreach. Your team confirms before anything is booked or sent.",
   },
   {
-    title: "No PHI stored beyond workflow context",
-    copy: "Patient names and contact info are used for outreach coordination only. We do not build patient health records.",
+    title: "Limited workflow data collection",
+    copy: "ClinicRelay is designed to collect only the operational data needed for booking, reminders, and follow-up workflows.",
   },
   {
     title: "Clinic-controlled opt-out",
