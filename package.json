@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest run"
+    "test": "vitest run",
+    "gnx": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus",
+    "gnx:analyze": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus analyze"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",

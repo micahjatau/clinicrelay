@@ -1,6 +1,7 @@
 import { heroData } from "@/lib/content/clinicrelay-landing";
 import { HeroBento } from "./hero-bento";
 import { HeroCtaButtons } from "./hero-cta-buttons";
+import { HeroHookRotator } from "./hero-hook-rotator";
 
 export function Hero() {
   return (
@@ -11,9 +12,7 @@ export function Hero() {
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4">
               {heroData.eyebrow}
             </p>
-            <h1 className="text-4xl md:text-6xl tracking-tighter font-semibold text-[--cr-text] leading-none mb-6">
-              {heroData.h1}
-            </h1>
+            <HeroHookRotator />
             <p className="text-base leading-relaxed text-[--cr-muted] max-w-[62ch] mb-8">
               {heroData.subheadline}
             </p>
