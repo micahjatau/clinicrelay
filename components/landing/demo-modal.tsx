@@ -19,6 +19,13 @@ export function DemoModal() {
     return () => document.removeEventListener("keydown", onKey);
   }, [isOpen, close]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setState("idle");
+      setErrorMsg("");
+    }
+  }, [isOpen]);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setState("loading");
