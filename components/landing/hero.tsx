@@ -16,8 +16,9 @@ export function Hero() {
             <p className="text-base leading-relaxed text-[--cr-muted] max-w-[62ch] mb-8">
               {heroData.subheadline}
             </p>
+            <p className="text-xs text-[--cr-muted] mb-3 md:hidden">{heroData.trustLine}</p>
             <HeroCtaButtons />
-            <p className="text-xs text-[--cr-muted] mt-4 mb-6">{heroData.trustLine}</p>
+            <p className="hidden md:block text-xs text-[--cr-muted] mt-4 mb-6">{heroData.trustLine}</p>
             <div className="flex flex-wrap gap-2">
               {heroData.badges.map((badge) => (
                 <span
