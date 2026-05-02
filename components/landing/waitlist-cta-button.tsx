@@ -6,10 +6,10 @@ export function WaitlistCtaButton() {
   const { open } = useDemoModal();
   return (
     <button
-      onClick={open}
+      onClick={() => open("recovery")}
       className="mt-6 w-full text-center text-sm font-semibold text-[--cr-teal] underline-offset-4 hover:underline"
     >
-      See how waitlist recovery works
+See cancelled-slot recovery demo
     </button>
   );
 }

@@ -44,9 +44,9 @@ export function Nav() {
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
-          <Button onClick={open} size="sm" className="h-9 px-4 min-w-[118px] bg-[#0F766E] text-white hover:bg-[#115e59]">Book a Demo</Button>
+          <Button onClick={() => open("demo")} size="sm" className="h-9 px-4 min-w-[118px] bg-[#0F766E] text-white hover:bg-[#115e59]">Book a Demo</Button>
           <button
-            onClick={open}
+            onClick={() => open("audit")}
             className="text-[13px] font-semibold text-[--cr-teal] hover:text-[--cr-teal-dark] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded"
           >
             Request Workflow Audit
@@ -74,7 +74,7 @@ export function Nav() {
               {link.label}
             </a>
           ))}
-          <Button onClick={() => { open(); setMenuOpen(false); }} size="sm" className="text-left justify-start">Book a Demo</Button>
+          <Button onClick={() => { open("demo"); setMenuOpen(false); }} size="sm" className="text-left justify-start">Book a Demo</Button>
         </div>
       )}
     </header>

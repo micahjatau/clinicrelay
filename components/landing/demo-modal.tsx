@@ -8,8 +8,26 @@ import { useDemoModal } from "@/context/demo-modal-context";
 type State = "idle" | "loading" | "success" | "error";
 type FormErrors = { name?: string; clinic_name?: string; email?: string };
 
+const modalCopy = {
+  demo: {
+    title: "Book a Demo",
+    description: "See how ClinicRelay helps recover cancelled slots and coordinate front-desk workflows.",
+    submit: "Book my demo",
+  },
+  audit: {
+    title: "Request Workflow Audit",
+    description: "Tell us where cancellations, response delays, and manual follow-up are hurting operations.",
+    submit: "Request my audit",
+  },
+  recovery: {
+    title: "See Waitlist Recovery",
+    description: "We’ll walk you through the cancelled-slot recovery loop and staff confirmation workflow.",
+    submit: "Show me recovery workflow",
+  },
+} as const;
+
 export function DemoModal() {
-  const { isOpen, close } = useDemoModal();
+  const { isOpen, close, intent } = useDemoModal();
   const [state, setState] = useState<State>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [formErrors, setFormErrors] = useState<FormErrors>({});
@@ -54,6 +72,8 @@ export function DemoModal() {
     setState("loading");
     const pain_points = fd.getAll("pain_points") as string[];
     const interest = fd.getAll("interest") as string[];
+    const intentInterestMap = { demo: "demo", audit: "audit", recovery: "growth-system" } as const;
+    const normalizedInterest = interest.length > 0 ? interest : [intentInterestMap[intent]];
     const payload = {
       name: fd.get("name"),
       clinic_name: fd.get("clinic_name"),
@@ -66,7 +86,7 @@ export function DemoModal() {
       message: fd.get("message"),
       company: fd.get("company"),
       pain_points,
-      interest,
+      interest: normalizedInterest,
     };
 
     try {
@@ -116,8 +136,8 @@ export function DemoModal() {
               </div>
             ) : (
               <>
-                <h2 id="demo-modal-title" className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-1">Book a Demo</h2>
-                <p className="text-[--cr-muted] mb-8 text-sm">Tell us about your clinic and we’ll get back to you within one business day.</p>
+                <h2 id="demo-modal-title" className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-1">{modalCopy[intent].title}</h2>
+                <p className="text-[--cr-muted] mb-8 text-sm">{modalCopy[intent].description}</p>
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -168,7 +188,7 @@ export function DemoModal() {
                   {state === "error" && <p className="text-red-600 text-sm">{errorMsg}</p>}
 
                   <button type="submit" disabled={state === "loading"} className="cr-btn cr-btn-primary disabled:opacity-60">
-                    {state === "loading" ? "Submitting…" : "Submit"}
+                    {state === "loading" ? "Submitting…" : modalCopy[intent].submit}
                   </button>
                   <p className="text-xs text-[--cr-muted]">No commitment required. 20-minute walkthrough.</p>
                 </form>

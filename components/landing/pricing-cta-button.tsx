@@ -6,10 +6,10 @@ export function PricingCtaButton() {
   const { open } = useDemoModal();
   return (
     <button
-      onClick={open}
+      onClick={() => open("demo")}
       className="w-full cr-btn cr-btn-primary px-5 py-3"
     >
-      Book a Demo
+Start Recovery Pilot
     </button>
   );
 }

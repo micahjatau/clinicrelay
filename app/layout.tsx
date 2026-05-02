@@ -5,6 +5,7 @@ import { DemoModalLazy } from "@/components/landing/demo-modal-lazy";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://clinicrelay.vercel.app"),
   title: "ClinicRelay — Front-Desk Orchestration for Growing Clinics",
   description: "ClinicRelay helps clinics recover cancelled appointment slots, coordinate patient communication, manage waitlists, and reduce front-desk chaos.",
   icons: {
@@ -18,6 +19,20 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Fill cancelled slots faster with ClinicRelay",
     description: "Waitlist recovery, patient reminders, booking workflows, and front-desk coordination for growing clinics.",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "ClinicRelay waitlist recovery workflow",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Fill cancelled slots faster with ClinicRelay",
+    description: "Waitlist recovery and front-desk coordination for growing clinics.",
+    images: ["/twitter-image"],
   },
 };
 
