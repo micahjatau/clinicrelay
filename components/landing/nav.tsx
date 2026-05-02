@@ -63,18 +63,24 @@ export function Nav() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-[--cr-border] px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-[--cr-border] px-6 py-4 flex flex-col gap-3">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-[--cr-muted] hover:text-[--cr-text]"
+              className="text-base font-medium text-[--cr-text] hover:text-[--cr-teal] py-2 px-1 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal]"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <Button onClick={() => { open("demo"); setMenuOpen(false); }} size="sm" className="text-left justify-start">Book a Demo</Button>
+          <Button
+            onClick={() => { open("demo"); setMenuOpen(false); }}
+            size="sm"
+            className="mt-2 w-full justify-center bg-[#0F766E] text-white hover:bg-[#115e59]"
+          >
+            Book a Demo
+          </Button>
         </div>
       )}
     </header>

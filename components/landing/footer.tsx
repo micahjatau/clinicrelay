@@ -18,20 +18,44 @@ export function Footer() {
           </div>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[--cr-text] mb-4">Product</p>
-            {["Waitlist Recovery", "Recall Automation", "Confirmation Flows", "Missed Call Capture", "Dashboard"].map((item) => (
-              <p key={item} className="text-sm text-[--cr-muted] mb-2.5">{item}</p>
+            {[
+              { label: "Waitlist Recovery", href: "/#waitlist" },
+              { label: "Pricing", href: "/pricing" },
+              { label: "Workflow Audit", href: "/workflow-audit" },
+              { label: "Book a Demo", href: "/demo" },
+              { label: "Family Medicine Use Case", href: "/use-cases/family-medicine" },
+            ].map((item) => (
+              <a key={item.label} href={item.href} className="block text-sm text-[--cr-muted] hover:text-[--cr-text] mb-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
+                {item.label}
+              </a>
             ))}
           </div>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[--cr-text] mb-4">Services</p>
-            {["Clinic Website", "Google Ads", "Local SEO", "Reputation System", "Growth Audit"].map((item) => (
-              <p key={item} className="text-sm text-[--cr-muted] mb-2.5">{item}</p>
+            {[
+              { label: "Recovery Audit", href: "/workflow-audit" },
+              { label: "Front-Desk Recovery Pilot", href: "/pricing" },
+              { label: "Cancelled-slot Demo", href: "/demo" },
+              { label: "Dental Use Case", href: "/use-cases/dental" },
+              { label: "Family Medicine Use Case", href: "/use-cases/family-medicine" },
+            ].map((item) => (
+              <a key={item.label} href={item.href} className="block text-sm text-[--cr-muted] hover:text-[--cr-text] mb-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
+                {item.label}
+              </a>
             ))}
           </div>
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[--cr-text] mb-4">Company</p>
-            {["About", "Contact", "Privacy Policy", "Terms of Service", "Security"].map((item) => (
-              <p key={item} className="text-sm text-[--cr-muted] mb-2.5">{item}</p>
+            {[
+              { label: "Demo", href: "/demo" },
+              { label: "Workflow Audit", href: "/workflow-audit" },
+              { label: "Privacy Policy", href: "/privacy" },
+              { label: "Terms of Service", href: "/terms" },
+              { label: "Pricing", href: "/pricing" },
+            ].map((item) => (
+              <a key={item.label} href={item.href} className="block text-sm text-[--cr-muted] hover:text-[--cr-text] mb-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
@@ -39,9 +63,9 @@ export function Footer() {
           <p className="text-xs text-[--cr-muted]">© {year} ClinicRelay. All rights reserved.</p>
           <div className="flex gap-6">
             {[
-              { label: "Privacy", href: "#" },
-              { label: "Terms", href: "#" },
-              { label: "Security", href: "#" },
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms", href: "/terms" },
+              { label: "Demo", href: "/demo" },
             ].map((item) => (
               <a key={item.label} href={item.href} className="text-xs text-[--cr-muted] hover:text-[--cr-text] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
                 {item.label}
