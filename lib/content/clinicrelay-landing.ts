@@ -11,7 +11,8 @@ export type HeroData = {
 };
 export type PainCard = { icon: string; title: string; copy: string };
 export type Step = { number: string; icon: string; title: string; copy: string };
-export type FeatureCard = { icon: string; title: string; copy: string; tag: string };
+export type FeatureStatus = "available" | "pilot" | "roadmap";
+export type FeatureCard = { icon: string; title: string; copy: string; tag: string; status: FeatureStatus };
 export type GrowthPillar = { title: string; copy: string; pills: string[] };
 export type ServiceCard = {
   title: string;
@@ -105,15 +106,15 @@ export const workflowSteps: Step[] = [
 ];
 
 export const featureCards: FeatureCard[] = [
-  { icon: "CalendarCheck", title: "Cancelled-slot recovery", copy: "When time opens up, ClinicRelay starts a recovery workflow with waitlist matching and staff-visible next actions.", tag: "Core" },
-  { icon: "ChatCircleText", title: "Waitlist reply loop", copy: "Patients can confirm by SMS, and replies are routed to staff so replacement bookings are coordinated in one place.", tag: "Core" },
-  { icon: "ClipboardText", title: "Staff operations queue", copy: "Front-desk teams get a prioritized queue for confirmations, follow-up, and unresolved workflow tasks.", tag: "Core" },
-  { icon: "ArrowsClockwise", title: "Policy-safe scheduling", copy: "Scheduling checks keep recovery actions aligned with provider, service, and clinic-specific rules.", tag: "Core" },
-  { icon: "BellRinging", title: "Reminder lead-time", copy: "Reminder workflows surface risk early so clinics have time to run recovery before a slot is lost.", tag: "Support" },
-  { icon: "Gauge", title: "Recovery visibility", copy: "Track open cancellations, offers sent, replies received, and staff-confirmed refills from one dashboard.", tag: "Core" },
-  { icon: "Phone", title: "Request routing", copy: "Patient change requests and follow-up needs flow into staff-visible operational work instead of scattered channels.", tag: "Support" },
-  { icon: "Lock", title: "Workflow guardrails", copy: "Role-aware workflows and audit visibility support safer operational coordination.", tag: "Support" },
-  { icon: "ChartBar", title: "Pilot performance review", copy: "Use pilot metrics to measure recovery throughput and front-desk response performance over each cycle.", tag: "Pilot" },
+  { icon: "CalendarCheck", title: "Cancelled-slot recovery", copy: "When time opens up, ClinicRelay starts a recovery workflow with waitlist matching and staff-visible next actions.", tag: "Core", status: "available" },
+  { icon: "ChatCircleText", title: "Waitlist reply loop", copy: "Patients can confirm by SMS, and replies are routed to staff so replacement bookings are coordinated in one place.", tag: "Core", status: "available" },
+  { icon: "ClipboardText", title: "Staff operations queue", copy: "Front-desk teams get a prioritized queue for confirmations, follow-up, and unresolved workflow tasks.", tag: "Core", status: "available" },
+  { icon: "ArrowsClockwise", title: "Policy-safe scheduling", copy: "Scheduling checks keep recovery actions aligned with provider, service, and clinic-specific rules.", tag: "Core", status: "available" },
+  { icon: "BellRinging", title: "Reminder lead-time", copy: "Reminder workflows surface risk early so clinics have time to run recovery before a slot is lost.", tag: "Support", status: "available" },
+  { icon: "Gauge", title: "Recovery visibility", copy: "Track open cancellations, offers sent, replies received, and staff-confirmed refills from one dashboard.", tag: "Core", status: "available" },
+  { icon: "Phone", title: "Request routing", copy: "Patient change requests and follow-up needs flow into staff-visible operational work instead of scattered channels.", tag: "Support", status: "available" },
+  { icon: "Lock", title: "Workflow guardrails", copy: "Role-aware workflows and audit visibility support safer operational coordination.", tag: "Support", status: "pilot" },
+  { icon: "ChartBar", title: "Pilot performance review", copy: "Use pilot metrics to measure recovery throughput and front-desk response performance over each cycle.", tag: "Pilot", status: "pilot" },
 ];
 
 export const growthPillars: GrowthPillar[] = [

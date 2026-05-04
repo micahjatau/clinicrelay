@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { HeroData } from "@/lib/content/clinicrelay-landing";
 
 type Props = { cards: HeroData["bentoCards"] };
 
 export function HeroBento({ cards }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (shouldReduceMotion || cards.length <= 1) return;
     const id = setInterval(() => setActiveIndex((i) => (i + 1) % cards.length), 2000);
     return () => clearInterval(id);
-  }, [cards.length]);
+  }, [cards.length, shouldReduceMotion]);
 
   return (
     <div className="flex flex-col gap-3 pt-8 md:pt-0">

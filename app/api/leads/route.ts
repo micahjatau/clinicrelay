@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { notifyNewLead } from "@/lib/email/notify";
 
 const optionalText = z.string().trim().min(1).optional().or(z.literal(""));
 
@@ -30,7 +31,9 @@ export async function POST(request: Request) {
   const parsed = LeadSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Invalid fields.", issues: parsed.error.issues },
+      process.env.NODE_ENV === "development"
+        ? { error: "Invalid fields.", issues: parsed.error.issues }
+        : { error: "Invalid fields." },
       { status: 422 }
     );
   }
@@ -58,6 +61,9 @@ export async function POST(request: Request) {
   if (error) {
     return NextResponse.json({ error: "Unable to submit. Please try again." }, { status: 500 });
   }
+
+  // fire-and-forget — a notification failure must never block the lead response
+  notifyNewLead(parsed.data as Parameters<typeof notifyNewLead>[0]).catch(() => {});
 
   return NextResponse.json({ ok: true });
 }
