@@ -1,6 +1,6 @@
 import { Resend } from "resend";
 
-const NOTIFY_TO = "micahjatau@gmail.com";
+const NOTIFY_TO = "micman009@gmail.com"; // temp: onboarding@resend.dev only delivers to account email until clinicrelay.co domain is verified
 
 let resend: Resend | null = null;
 
@@ -67,7 +67,7 @@ export async function notifyNewLead(lead: LeadFields): Promise<void> {
 </div>`;
 
   await client.emails.send({
-    from: "ClinicRelay Leads <leads@clinicrelay.co>",
+    from: "ClinicRelay Leads <onboarding@resend.dev>",
     to: NOTIFY_TO,
     subject: `New lead: ${lead.name} — ${lead.clinic_name}`,
     html,
