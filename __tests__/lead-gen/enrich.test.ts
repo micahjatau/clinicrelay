@@ -48,4 +48,16 @@ describe("enrich", () => {
     expect(result).toHaveLength(1);
     expect(result[0].ownerName).toBeNull();
   });
+
+  it("processes more than CONCURRENCY clinics correctly", async () => {
+    vi.mocked(enrichClinic).mockResolvedValue({ ownerName: "Dr. X", email: "x@clinic.com" });
+
+    const clinics = Array.from({ length: 7 }, (_, i) =>
+      makeRaw({ placeId: `place-${i}`, website: `https://clinic${i}.com` })
+    );
+
+    const result = await enrich(clinics);
+    expect(result).toHaveLength(7);
+    expect(enrichClinic).toHaveBeenCalledTimes(7);
+  });
 });
