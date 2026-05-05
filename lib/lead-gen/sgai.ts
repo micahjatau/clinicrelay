@@ -1,7 +1,4 @@
-export interface EnrichmentResult {
-  ownerName: string | null;
-  email: string | null;
-}
+import type { EnrichmentResult } from "./types";
 
 export async function enrichClinic(websiteUrl: string): Promise<EnrichmentResult> {
   const apiKey = process.env.SGAI_API_KEY;
@@ -26,8 +23,8 @@ export async function enrichClinic(websiteUrl: string): Promise<EnrichmentResult
     const data = await res.json() as { result?: Record<string, unknown> };
     const result = data.result ?? {};
     return {
-      ownerName: (result.owner_name as string) ?? null,
-      email: (result.email as string) ?? null,
+      ownerName: (result.owner_name as string) || null,
+      email: (result.email as string) || null,
     };
   } catch {
     return { ownerName: null, email: null };

@@ -69,7 +69,7 @@ describe("getAllClinics", () => {
         json: async () => makePlacesResponse(1),
       });
 
-    const clinics = await getAllClinics("dental clinic in Austin TX");
+    const clinics = await getAllClinics("dental clinic in Austin TX", 0);
     expect(clinics).toHaveLength(3);
   });
 });

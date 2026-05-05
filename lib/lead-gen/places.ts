@@ -41,8 +41,8 @@ export async function searchClinics(
     placeId: p.id as string,
     clinicName: (p.displayName as { text: string })?.text ?? "",
     address: (p.formattedAddress as string) ?? "",
-    phone: (p.internationalPhoneNumber as string) ?? null,
-    website: (p.websiteUri as string) ?? null,
+    phone: (p.internationalPhoneNumber as string) || null,
+    website: (p.websiteUri as string) || null,
     googleRating: (p.rating as number) ?? null,
     reviewCount: (p.userRatingCount as number) ?? null,
     sourceQuery: query,
@@ -51,7 +51,7 @@ export async function searchClinics(
   return { clinics, nextPageToken: data.nextPageToken };
 }
 
-export async function getAllClinics(query: string): Promise<RawClinic[]> {
+export async function getAllClinics(query: string, pageDelayMs = 2000): Promise<RawClinic[]> {
   const all: RawClinic[] = [];
   let pageToken: string | undefined;
 
@@ -60,7 +60,7 @@ export async function getAllClinics(query: string): Promise<RawClinic[]> {
     all.push(...clinics);
     pageToken = nextPageToken;
     // Places API requires a short delay between paginated requests
-    if (pageToken) await new Promise((r) => setTimeout(r, 2000));
+    if (pageToken) await new Promise((r) => setTimeout(r, pageDelayMs));
   } while (pageToken);
 
   return all;

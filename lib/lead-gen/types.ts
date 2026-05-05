@@ -1,3 +1,8 @@
+export interface EnrichmentResult {
+  ownerName: string | null;
+  email: string | null;
+}
+
 export interface RawClinic {
   placeId: string;
   clinicName: string;
