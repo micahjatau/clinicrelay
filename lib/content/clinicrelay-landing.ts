@@ -41,6 +41,8 @@ export type PricingPackage = {
 };
 export type FaqItem = { question: string; answer: string };
 export type ReadinessFeature = { icon: string; title: string; copy: string };
+export type CommandCenterStatus = "action" | "pending" | "done";
+export type CommandCenterItem = { label: string; count: string; status: CommandCenterStatus };
 
 export const navLinks: NavLink[] = [
   { label: "Product", href: "#product" },
@@ -456,4 +458,13 @@ export const readinessFeatures: ReadinessFeature[] = [
     title: "Readiness blockers surfaced early",
     copy: "Upcoming appointments with unresolved insurance or intake gaps are flagged before appointment day.",
   },
+];
+
+export const commandCenterItems: CommandCenterItem[] = [
+  { label: "Insurance follow-up needed", count: "2", status: "action" },
+  { label: "Appointment change requests", count: "4", status: "action" },
+  { label: "Recall tasks due this week", count: "11", status: "action" },
+  { label: "Waitlist recovery offers sent", count: "3", status: "pending" },
+  { label: "Confirmations pending reply", count: "6", status: "pending" },
+  { label: "Resolved today", count: "8", status: "done" },
 ];

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { featureCards, readinessFeatures } from "@/lib/content/clinicrelay-landing";
+import { featureCards, readinessFeatures, commandCenterItems } from "@/lib/content/clinicrelay-landing";
 
 describe("feature grid pillars", () => {
   it("every feature card has a pillar field", () => {
@@ -36,6 +36,27 @@ describe("pre-visit readiness content", () => {
       expect(f).toHaveProperty("icon");
       expect(f).toHaveProperty("title");
       expect(f).toHaveProperty("copy");
+    });
+  });
+});
+
+describe("front desk command center content", () => {
+  it("exports commandCenterItems with at least 5 items", () => {
+    expect(commandCenterItems.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it("every command center item has label, count, and status", () => {
+    commandCenterItems.forEach((item) => {
+      expect(item).toHaveProperty("label");
+      expect(item).toHaveProperty("count");
+      expect(item).toHaveProperty("status");
+    });
+  });
+
+  it("status values are restricted to action, pending, done", () => {
+    const valid = new Set(["action", "pending", "done"]);
+    commandCenterItems.forEach((item) => {
+      expect(valid.has(item.status)).toBe(true);
     });
   });
 });
