@@ -13,9 +13,9 @@ export function PreVisitReadiness() {
   return (
     <section id="readiness" className="py-28 md:py-36 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
-        <AnimatedSection className="mb-14 max-w-[52ch]">
+        <AnimatedSection className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Pre-Visit Readiness</p>
-          <h2 className="text-3xl md:text-5xl tracking-tighter font-semibold text-[--cr-text]">
+          <h2 className="text-3xl md:text-5xl tracking-tighter font-semibold text-[--cr-text] max-w-[26ch]">
             The day-of scramble is a before-visit failure.
           </h2>
           <p className="text-base leading-relaxed text-[--cr-muted] mt-6">
