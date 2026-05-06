@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle } from "@phosphor-icons/react";
 import { useDemoModal } from "@/context/demo-modal-context";
+import { usePostHog } from "posthog-js/react";
 
 type State = "idle" | "loading" | "success" | "error";
 type FormErrors = { name?: string; clinic_name?: string; email?: string };
@@ -21,7 +22,7 @@ const modalCopy = {
   },
   recovery: {
     title: "See Waitlist Recovery",
-    description: "We’ll walk you through the cancelled-slot recovery loop and staff confirmation workflow.",
+    description: "We'll walk you through the cancelled-slot recovery loop and staff confirmation workflow.",
     submit: "Show me recovery workflow",
   },
 } as const;
@@ -31,6 +32,8 @@ export function DemoModal() {
   const [state, setState] = useState<State>("idle");
   const [errorMsg, setErrorMsg] = useState("");
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const posthog = usePostHog();
+  const openFiredRef = useRef(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -46,8 +49,14 @@ export function DemoModal() {
       setState("idle");
       setErrorMsg("");
       setFormErrors({});
+      if (!openFiredRef.current) {
+        openFiredRef.current = true;
+        posthog?.capture("demo_modal_opened", { intent });
+      }
+    } else {
+      openFiredRef.current = false;
     }
-  }, [isOpen]);
+  }, [isOpen, intent, posthog]);
 
   function validate(fd: FormData) {
     const next: FormErrors = {};
@@ -70,6 +79,8 @@ export function DemoModal() {
     if (!validate(fd)) return;
 
     setState("loading");
+    posthog?.capture("lead_form_submitted", { intent });
+
     const pain_points = fd.getAll("pain_points") as string[];
     const interest = fd.getAll("interest") as string[];
     const intentInterestMap = { demo: "demo", audit: "audit", recovery: "growth-system" } as const;
@@ -97,14 +108,17 @@ export function DemoModal() {
       });
       if (res.ok) {
         setState("success");
+        posthog?.capture("lead_form_succeeded", { intent });
       } else {
         const json = await res.json();
         setErrorMsg(json.error ?? "Unable to submit. Please try again.");
         setState("error");
+        posthog?.capture("lead_form_failed", { intent });
       }
     } catch {
       setErrorMsg("Unable to submit. Please try again.");
       setState("error");
+      posthog?.capture("lead_form_failed", { intent });
     }
   }
 
@@ -130,7 +144,7 @@ export function DemoModal() {
             {state === "success" ? (
               <div className="text-center py-12">
                 <CheckCircle size={48} weight="duotone" className="text-[--cr-teal] mx-auto mb-4" />
-                <h2 className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">We’ll be in touch.</h2>
+                <h2 className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">We'll be in touch.</h2>
                 <p className="text-[--cr-muted] mb-6">Expect to hear from us within one business day.</p>
                 <button onClick={close} className="cr-btn cr-btn-primary">Done</button>
               </div>
@@ -144,7 +158,7 @@ export function DemoModal() {
                     <Field label="Name *" name="name" required helperText="Used for your personalized demo briefing." error={formErrors.name} />
                     <Field label="Clinic Name *" name="clinic_name" required helperText="Helps us tailor workflow recommendations." error={formErrors.clinic_name} />
                     <Field label="Your Role" name="role" />
-                    <Field label="Email *" name="email" type="email" required helperText="We’ll send next steps here." error={formErrors.email} />
+                    <Field label="Email *" name="email" type="email" required helperText="We'll send next steps here." error={formErrors.email} />
                     <Field label="Phone" name="phone" type="tel" />
                     <Field label="Current Website" name="website_url" type="url" />
                   </div>
@@ -170,7 +184,7 @@ export function DemoModal() {
                   />
 
                   <CheckboxGroup
-                    label="I’m interested in"
+                    label="I'm interested in"
                     name="interest"
                     options={[
                       { value: "demo", label: "Product demo" },
