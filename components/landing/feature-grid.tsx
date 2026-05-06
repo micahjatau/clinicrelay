@@ -39,6 +39,32 @@ const pillarMeta: Record<FeaturePillar, { label: string; copy: string }> = {
   },
 };
 
+function PillarCard({ card, size }: { card: (typeof featureCards)[number]; size: "sm" | "lg" }) {
+  const Icon = iconMap[card.icon];
+  if (size === "sm") {
+    return (
+      <>
+        {Icon && <Icon size={24} weight="duotone" className="text-[--cr-teal] mb-3" />}
+        <h3 className="text-lg font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
+        <p className="text-sm text-[--cr-muted] leading-relaxed mb-3 line-clamp-4">{card.copy}</p>
+        <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${statusClass[card.status]}`}>
+          {statusLabel[card.status]}
+        </span>
+      </>
+    );
+  }
+  return (
+    <>
+      {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
+      <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
+      <p className="text-sm text-[--cr-muted] leading-relaxed mb-4">{card.copy}</p>
+      <span className={`text-xs font-semibold px-3 py-1 rounded-full ${statusClass[card.status]}`}>
+        {statusLabel[card.status]}
+      </span>
+    </>
+  );
+}
+
 export function FeatureGrid() {
   return (
     <section className="py-24 md:py-32 bg-[--cr-bg]">
@@ -64,45 +90,29 @@ export function FeatureGrid() {
                 {/* Mobile: horizontal scroll */}
                 <div className="md:hidden -mx-6 px-6 overflow-x-auto pb-2">
                   <div className="flex gap-3 snap-x snap-mandatory">
-                    {cards.map((card, i) => {
-                      const Icon = iconMap[card.icon];
-                      return (
+                    {cards.map((card, i) => (
                         <AnimatedSection
                           key={card.title}
                           delay={i * 0.04}
                           className="snap-start shrink-0 w-[85vw] rounded-[1.5rem] border border-[--cr-border] bg-white p-5"
                         >
-                          {Icon && <Icon size={24} weight="duotone" className="text-[--cr-teal] mb-3" />}
-                          <h3 className="text-lg font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
-                          <p className="text-sm text-[--cr-muted] leading-relaxed mb-3 line-clamp-4">{card.copy}</p>
-                          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${statusClass[card.status]}`}>
-                            {statusLabel[card.status]}
-                          </span>
+                          <PillarCard card={card} size="sm" />
                         </AnimatedSection>
-                      );
-                    })}
+                    ))}
                   </div>
                 </div>
 
                 {/* Desktop: responsive grid */}
-                <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {cards.map((card, i) => {
-                    const Icon = iconMap[card.icon];
-                    return (
+                <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {cards.map((card, i) => (
                       <AnimatedSection
                         key={card.title}
                         delay={i * 0.05}
                         className="rounded-[2rem] border border-[--cr-border] bg-white p-8 hover:scale-[1.01] hover:shadow-lg transition-all duration-200"
                       >
-                        {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
-                        <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
-                        <p className="text-sm text-[--cr-muted] leading-relaxed mb-4">{card.copy}</p>
-                        <span className={`text-xs font-semibold px-3 py-1 rounded-full ${statusClass[card.status]}`}>
-                          {statusLabel[card.status]}
-                        </span>
+                        <PillarCard card={card} size="lg" />
                       </AnimatedSection>
-                    );
-                  })}
+                  ))}
                 </div>
               </div>
             );
