@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { featureCards } from "@/lib/content/clinicrelay-landing";
+import { featureCards, readinessFeatures } from "@/lib/content/clinicrelay-landing";
 
 describe("feature grid pillars", () => {
   it("every feature card has a pillar field", () => {
@@ -23,5 +23,19 @@ describe("feature grid pillars", () => {
     const hasPortal = titles.some((t) => t.toLowerCase().includes("portal"));
     expect(hasInsurance).toBe(true);
     expect(hasPortal).toBe(true);
+  });
+});
+
+describe("pre-visit readiness content", () => {
+  it("exports readinessFeatures with at least 4 items", () => {
+    expect(readinessFeatures.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it("every readiness feature has icon, title, and copy", () => {
+    readinessFeatures.forEach((f) => {
+      expect(f).toHaveProperty("icon");
+      expect(f).toHaveProperty("title");
+      expect(f).toHaveProperty("copy");
+    });
   });
 });
