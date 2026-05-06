@@ -22,6 +22,12 @@ beforeEach(() => {
 });
 
 describe("POST /api/cron/lead-gen", () => {
+  it("returns 401 when CRON_SECRET env var is not set", async () => {
+    delete process.env.CRON_SECRET;
+    const res = await POST(makeRequest("Bearer secret-xyz"));
+    expect(res.status).toBe(401);
+  });
+
   it("returns 401 when authorization header is missing", async () => {
     const res = await POST(makeRequest());
     expect(res.status).toBe(401);
