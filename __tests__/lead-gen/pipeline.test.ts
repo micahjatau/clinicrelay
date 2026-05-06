@@ -43,4 +43,39 @@ describe("runPipeline", () => {
     expect(results).toHaveLength(1);
     expect(results[0].discovered).toBe(1);
   });
+
+  it("returns results for all city × type pairs", async () => {
+    vi.mocked(discover).mockResolvedValue([rawClinic]);
+    vi.mocked(enrich).mockResolvedValue([enrichedClinic]);
+    vi.mocked(persistClinics).mockImplementation(async (_, city, clinicType) => ({
+      city,
+      clinicType,
+      discovered: 1,
+      enriched: 0,
+    }));
+
+    const results = await runPipeline({
+      cities: ["Austin TX", "Dallas TX"],
+      types: ["dental", "medical"],
+    });
+
+    expect(results).toHaveLength(4);
+    expect(persistClinics).toHaveBeenCalledTimes(4);
+  });
+
+  it("skips failed pairs and continues with remaining", async () => {
+    vi.mocked(discover).mockResolvedValue([rawClinic]);
+    vi.mocked(enrich).mockResolvedValue([enrichedClinic]);
+    vi.mocked(persistClinics)
+      .mockRejectedValueOnce(new Error("DB error"))
+      .mockResolvedValue({ city: "Dallas TX", clinicType: "dental", discovered: 1, enriched: 0 });
+
+    const results = await runPipeline({
+      cities: ["Austin TX", "Dallas TX"],
+      types: ["dental"],
+    });
+
+    expect(results).toHaveLength(1);
+    expect(results[0].city).toBe("Dallas TX");
+  });
 });
