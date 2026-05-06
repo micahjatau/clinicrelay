@@ -10,25 +10,61 @@ beforeEach(() => {
   process.env.SGAI_API_KEY = "test-sgai-key";
 });
 
+function mockV2Response(markdown: string) {
+  mockFetch.mockResolvedValueOnce({
+    ok: true,
+    json: async () => ({ content: markdown }),
+  });
+}
+
 describe("enrichClinic", () => {
-  it("returns owner name and email on success", async () => {
+  it("sends request to v2 endpoint with correct format", async () => {
+    mockV2Response("");
+    await enrichClinic("https://clinic.com");
+    const [url, init] = mockFetch.mock.calls[0] as [string, RequestInit];
+    expect(url).toBe("https://v2-api.scrapegraphai.com/api/scrape");
+    const body = JSON.parse(init.body as string);
+    expect(body.url).toBe("https://clinic.com");
+    expect(body.formats).toEqual([{ type: "markdown", mode: "normal" }]);
+    expect(body.fetchConfig.mode).toBe("auto");
+  });
+
+  it("extracts email and owner name from markdown content", async () => {
+    mockV2Response(
+      "## About Us\nDr. Jane Smith founded this practice.\nContact: owner@westclinic.com"
+    );
+    const result = await enrichClinic("https://clinic.com");
+    expect(result).toEqual({ ownerName: "Jane Smith", email: "owner@westclinic.com" });
+  });
+
+  it("extracts email when owner name is absent", async () => {
+    mockV2Response("For appointments call us or email info@healthcenter.ca");
+    const result = await enrichClinic("https://clinic.com");
+    expect(result).toEqual({ ownerName: null, email: "info@healthcenter.ca" });
+  });
+
+  it("returns nulls when markdown has no identifiable fields", async () => {
+    mockV2Response("Welcome to our clinic. We provide quality care.");
+    const result = await enrichClinic("https://clinic.com");
+    expect(result).toEqual({ ownerName: null, email: null });
+  });
+
+  it("handles result array response shape", async () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
       json: async () => ({
-        result: { owner_name: "Dr. Jane Smith", email: "jane@clinic.com" },
+        result: [{ type: "markdown", content: "Contact owner@example.com for info." }],
       }),
     });
-
     const result = await enrichClinic("https://clinic.com");
-    expect(result).toEqual({ ownerName: "Dr. Jane Smith", email: "jane@clinic.com" });
+    expect(result.email).toBe("owner@example.com");
   });
 
-  it("returns nulls when result fields are absent", async () => {
+  it("returns nulls when markdown field is missing from response", async () => {
     mockFetch.mockResolvedValueOnce({
       ok: true,
-      json: async () => ({ result: {} }),
+      json: async () => ({}),
     });
-
     const result = await enrichClinic("https://clinic.com");
     expect(result).toEqual({ ownerName: null, email: null });
   });
