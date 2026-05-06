@@ -72,4 +72,11 @@ describe("persistClinics", () => {
       "upsert error"
     );
   });
+
+  it("throws when run log insert fails", async () => {
+    mockSupabase(null, { message: "insert error" });
+    await expect(persistClinics([makeEnriched(0)], "Austin TX", "dental")).rejects.toThrow(
+      "insert error"
+    );
+  });
 });
