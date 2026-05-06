@@ -3,6 +3,8 @@ import {
   workflowSteps,
   faqItems,
   growthPillars,
+  heroData,
+  painCards,
 } from "@/lib/content/clinicrelay-landing";
 
 describe("content overclaim guardrails", () => {
@@ -27,5 +29,19 @@ describe("content overclaim guardrails", () => {
     expect(allPills).not.toContain("30-day pilot");
     const allPillsArr = growthPillars.flatMap((p) => p.pills);
     expect(allPillsArr).toContain("Controlled workflow pilot");
+  });
+});
+
+describe("hero repositioning", () => {
+  it("hero h1 should reflect full operations scope, not just cancelled slots", () => {
+    expect(heroData.h1).not.toBe("Fill cancelled slots faster.");
+  });
+
+  it("hero badges should include Pre-Visit Readiness pillar", () => {
+    expect(heroData.badges).toContain("Pre-Visit Readiness");
+  });
+
+  it("problem section should have at least 6 pain cards", () => {
+    expect(painCards.length).toBeGreaterThanOrEqual(6);
   });
 });

@@ -49,14 +49,14 @@ export const navLinks: NavLink[] = [
 ];
 
 export const heroData: HeroData = {
-  eyebrow: "Front-Desk Orchestration",
-  h1: "Fill cancelled slots faster.",
+  eyebrow: "Clinic Operations",
+  h1: "Coordinate care before the visit starts.",
   subheadline:
-    "ClinicRelay helps your team recover cancelled slots with waitlist matching, staff-visible confirmation tasks, and policy-safe scheduling workflows.",
+    "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare insurance and intake tasks, and give staff one place to see what needs attention.",
   primaryCta: "Book a Demo",
   secondaryCta: "Request Workflow Audit",
   trustLine: "Built for clinics that need better appointment recovery and front-desk coordination",
-  badges: ["Cancelled-Slot Recovery", "Staff Confirmation Loop", "Policy-Safe Scheduling"],
+  badges: ["Cancelled-Slot Recovery", "Pre-Visit Readiness", "Front-Desk Command Center"],
   bentoCards: [
     { step: "1", label: "Cancelled Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
     { step: "2", label: "Eligible Patient Matched", detail: "3 candidates identified" },
@@ -86,6 +86,16 @@ export const painCards: PainCard[] = [
     icon: "ChartLineDown",
     title: "Recall falls through the cracks",
     copy: "Patients due for hygiene or follow-up age out of your schedule invisibly.",
+  },
+  {
+    icon: "ShieldWarning",
+    title: "Insurance problems appear at check-in",
+    copy: "Issues that could have been caught before the visit surface on the day — costing staff time and patient trust.",
+  },
+  {
+    icon: "ArrowsSplit",
+    title: "Appointment changes scatter across channels",
+    copy: "Requests arrive by phone, email, and text. Nothing connects. Staff lose track; patients repeat themselves.",
   },
 ];
 

@@ -1,4 +1,4 @@
-import { CalendarX, Phone, ClockClockwise, ChartLineDown } from "@phosphor-icons/react/dist/ssr";
+import { CalendarX, Phone, ClockClockwise, ChartLineDown, ShieldWarning, ArrowsSplit } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { painCards } from "@/lib/content/clinicrelay-landing";
 
@@ -7,6 +7,8 @@ const iconMap: Record<string, React.ElementType> = {
   Phone,
   ClockClockwise,
   ChartLineDown,
+  ShieldWarning,
+  ArrowsSplit,
 };
 
 export function ProblemSection() {
