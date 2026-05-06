@@ -40,6 +40,7 @@ export type PricingPackage = {
   recommended?: boolean;
 };
 export type FaqItem = { question: string; answer: string };
+export type ReadinessFeature = { icon: string; title: string; copy: string };
 
 export const navLinks: NavLink[] = [
   { label: "Product", href: "#product" },
@@ -433,8 +434,6 @@ export const faqItems: FaqItem[] = [
     answer: "ClinicRelay is purpose-built for appointment-based clinics. It understands schedules, waitlists, recall cycles, and cancellation patterns. A generic CRM doesn't — and configuration to get there takes months.",
   },
 ];
-
-export type ReadinessFeature = { icon: string; title: string; copy: string };
 
 export const readinessFeatures: ReadinessFeature[] = [
   {
