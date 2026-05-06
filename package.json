@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test": "vitest run",
     "gnx": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus",
-    "gnx:analyze": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus analyze"
+    "gnx:analyze": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus analyze",
+    "lead-gen": "tsx --env-file .env.local scripts/lead-gen/run.ts"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
@@ -43,6 +44,7 @@
     "eslint-config-next": "16.2.4",
     "object.fromentries": "^2.0.5",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5",
     "vite-tsconfig-paths": "^6.1.1",
     "vitest": "^4.1.5"
