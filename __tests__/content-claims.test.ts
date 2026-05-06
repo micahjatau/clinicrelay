@@ -11,6 +11,7 @@ describe("content overclaim guardrails", () => {
     expect(allCopy).not.toContain(
       "trigger automatic waitlist outreach before the slot can go to waste"
     );
+    expect(allCopy).toContain("ClinicRelay prepares recovery outreach based on your clinic's workflow rules");
   });
 
   it("faqItems must not claim read-only schedule view", () => {
@@ -18,10 +19,13 @@ describe("content overclaim guardrails", () => {
       f.question.includes("practice management software")
     );
     expect(pmsAnswer?.answer).not.toContain("read-only schedule view");
+    expect(pmsAnswer?.answer).toContain("lightweight coordination layer");
   });
 
   it("growthPillars must not use 30-day pilot language", () => {
     const allPills = growthPillars.flatMap((p) => p.pills).join(" ");
     expect(allPills).not.toContain("30-day pilot");
+    const allPillsArr = growthPillars.flatMap((p) => p.pills);
+    expect(allPillsArr).toContain("Controlled workflow pilot");
   });
 });
