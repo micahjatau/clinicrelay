@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/next";
 import { DemoModalProvider } from "@/context/demo-modal-context";
 import { DemoModalLazy } from "@/components/landing/demo-modal-lazy";
 import { PostHogProvider } from "@/components/providers/posthog-provider";
@@ -47,6 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <DemoModalLazy />
           </DemoModalProvider>
         </PostHogProvider>
+        <Analytics />
       </body>
     </html>
   );
