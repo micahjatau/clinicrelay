@@ -186,7 +186,7 @@ export const useCases: UseCase[] = [
     type: "Dental",
     icon: "Tooth",
     title: "Dental practices",
-    copy: "Fill hygiene cancellations same-day. Automate recall for preventive appointments. Reduce no-shows for high-value procedures.",
+    copy: "Fill hygiene cancellations same-day. Surface recall opportunities for preventive appointments. Reduce no-shows for high-value procedures.",
     pills: ["Hygiene recall", "Same-day fill", "Procedure reminders"],
   },
   {
@@ -200,7 +200,7 @@ export const useCases: UseCase[] = [
     type: "Optometry",
     icon: "Eye",
     title: "Eye care clinics",
-    copy: "Annual exam recall, contact lens follow-ups, and frame adjustment reminders — all automated.",
+    copy: "Annual exam recall, contact lens follow-ups, and frame adjustment reminders — surfaced for staff action.",
     pills: ["Annual recall", "Product follow-up", "Appointment reminders"],
   },
   {
@@ -287,7 +287,7 @@ export const processSteps: Step[] = [
   { number: "01", icon: "MagnifyingGlass", title: "Workflow Audit", copy: "We review your current cancellation rate, recall gaps, and front-desk time allocation before recommending anything." },
   { number: "02", icon: "Wrench", title: "Configure Relay Layer", copy: "We configure your outreach sequences, timing rules, and escalation paths based on your clinic's schedule and preferences." },
   { number: "03", icon: "Users", title: "Pilot With Real Staff", copy: "Your front desk runs the system live for 30 days. We monitor, adjust, and fix anything that needs tuning." },
-  { number: "04", icon: "TrendUp", title: "Optimize for Growth", copy: "After the pilot, we review the numbers and expand to recall, new patient conversion, and growth services." },
+  { number: "04", icon: "TrendUp", title: "Optimize for Growth", copy: "After the pilot, we review the numbers and expand to recall, confirmation workflows, and front-desk coordination." },
 ];
 
 export const faqItems: FaqItem[] = [
@@ -321,7 +321,7 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "Can ClinicRelay work across multiple clinic locations?",
-    answer: "Yes. The Growth System tier supports multi-location groups with a unified dashboard, per-location configuration, and consolidated reporting.",
+    answer: "Yes. The Pilot Expansion tier supports multi-location groups with a unified dashboard, per-location configuration, and consolidated reporting.",
   },
   {
     question: "What does the monthly performance review include?",
