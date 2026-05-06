@@ -101,7 +101,7 @@ export const workflowSteps: Step[] = [
   { number: "01", icon: "Funnel", title: "Intake & routing", copy: "New patient requests are sorted by service type, urgency, and provider availability." },
   { number: "02", icon: "CalendarCheck", title: "Smart scheduling", copy: "Appointment windows are matched to provider schedules and operatory availability." },
   { number: "03", icon: "BellRinging", title: "Automated reminders", copy: "Confirmation sequences reduce no-shows without staff manually calling patients." },
-  { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "Cancellations trigger automatic waitlist outreach before the slot can go to waste." },
+  { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "When a slot opens, ClinicRelay prepares recovery outreach based on your clinic's workflow rules." },
   { number: "05", icon: "ChartBar", title: "Performance visibility", copy: "Front-desk metrics surface in a single dashboard — fill rate, response time, recall rate." },
 ];
 
@@ -136,7 +136,7 @@ export const growthPillars: GrowthPillar[] = [
   {
     title: "Pilot-First Rollout",
     copy: "Start with a focused pilot, measure impact, and expand only after the workflow proves itself.",
-    pills: ["30-day pilot", "Weekly review", "Scale after proof"],
+    pills: ["Controlled workflow pilot", "Weekly review", "Scale after proof"],
   },
 ];
 
@@ -293,7 +293,7 @@ export const processSteps: Step[] = [
 export const faqItems: FaqItem[] = [
   {
     question: "Does ClinicRelay connect to our practice management software?",
-    answer: "ClinicRelay uses a read-only schedule view rather than a deep integration. This keeps setup fast and avoids the compliance risk of writing directly to your PMS. Most clinics are live within a week.",
+    answer: "ClinicRelay can start as a lightweight coordination layer alongside your existing workflow before deeper integrations are considered. This keeps setup fast and keeps risk low. Most clinics are configured within a week.",
   },
   {
     question: "How does the waitlist SMS work?",
