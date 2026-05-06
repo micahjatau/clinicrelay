@@ -67,7 +67,7 @@ function PillarCard({ card, size }: { card: (typeof featureCards)[number]; size:
 
 export function FeatureGrid() {
   return (
-    <section className="py-24 md:py-32 bg-[--cr-bg]">
+    <section className="py-24 md:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <AnimatedSection className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Capabilities</p>

@@ -9,7 +9,7 @@ const statusStyle: Record<CommandCenterStatus, { dot: string; label: string; tex
 
 export function FrontDeskCommand() {
   return (
-    <section id="command-center" className="py-28 md:py-36 bg-[--cr-bg]">
+    <section id="command-center" className="py-24 md:py-32 bg-[--cr-bg]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <AnimatedSection>
@@ -32,10 +32,10 @@ export function FrontDeskCommand() {
                 </span>
               </div>
               <ul className="divide-y divide-[--cr-border]">
-                {commandCenterItems.map((item, i) => {
+                {commandCenterItems.map((item) => {
                   const s = statusStyle[item.status];
                   return (
-                    <li key={i} className="flex items-center justify-between px-6 py-4 gap-4">
+                    <li key={item.label} className="flex items-center justify-between px-6 py-4 gap-4">
                       <div className="flex items-center gap-3 min-w-0">
                         <span className={`w-2 h-2 rounded-full shrink-0 ${s.dot}`} aria-hidden="true" />
                         <span className="text-sm text-[--cr-text] truncate">{item.label}</span>
