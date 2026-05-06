@@ -2,6 +2,7 @@ import { Nav } from "@/components/landing/nav";
 import { Hero } from "@/components/landing/hero";
 import { ProblemSection } from "@/components/landing/problem-section";
 import { WaitlistSection } from "@/components/landing/waitlist-section";
+import { PreVisitReadiness } from "@/components/landing/pre-visit-readiness";
 import { ProductWorkflow } from "@/components/landing/product-workflow";
 import { FeatureGrid } from "@/components/landing/feature-grid";
 import { GrowthSection } from "@/components/landing/growth-section";
@@ -24,6 +25,7 @@ export default function Home() {
       <Hero />
       <ProblemSection />
       <WaitlistSection />
+      <PreVisitReadiness />
       <ProductWorkflow />
       <DashboardMockup />
       <FeatureGrid />

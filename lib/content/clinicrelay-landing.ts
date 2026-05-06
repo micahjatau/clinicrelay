@@ -433,3 +433,28 @@ export const faqItems: FaqItem[] = [
     answer: "ClinicRelay is purpose-built for appointment-based clinics. It understands schedules, waitlists, recall cycles, and cancellation patterns. A generic CRM doesn't — and configuration to get there takes months.",
   },
 ];
+
+export type ReadinessFeature = { icon: string; title: string; copy: string };
+
+export const readinessFeatures: ReadinessFeature[] = [
+  {
+    icon: "ShieldCheck",
+    title: "Insurance submitted before visit day",
+    copy: "Patients upload card details and staff see what needs review before check-in, not during it.",
+  },
+  {
+    icon: "CheckSquare",
+    title: "Intake status visible to staff",
+    copy: "Pre-visit intake tasks show up in the staff queue so nothing falls through on a busy morning.",
+  },
+  {
+    icon: "Receipt",
+    title: "Estimate requests routed for response",
+    copy: "Treatment cost questions become visible staff tasks instead of calls that interrupt the front desk.",
+  },
+  {
+    icon: "Warning",
+    title: "Readiness blockers surfaced early",
+    copy: "Upcoming appointments with unresolved insurance or intake gaps are flagged before appointment day.",
+  },
+];
