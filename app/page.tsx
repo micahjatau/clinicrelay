@@ -8,6 +8,7 @@ import { FeatureGrid } from "@/components/landing/feature-grid";
 import { GrowthSection } from "@/components/landing/growth-section";
 import { WebServices } from "@/components/landing/web-services";
 import { DashboardMockup } from "@/components/landing/dashboard-mockup";
+import { FrontDeskCommand } from "@/components/landing/front-desk-command";
 import { UseCases } from "@/components/landing/use-cases";
 import { TrustSection } from "@/components/landing/trust-section";
 import { MetricsSection } from "@/components/landing/metrics-section";
@@ -28,6 +29,7 @@ export default function Home() {
       <PreVisitReadiness />
       <ProductWorkflow />
       <DashboardMockup />
+      <FrontDeskCommand />
       <FeatureGrid />
       <GrowthSection />
       <WebServices />
