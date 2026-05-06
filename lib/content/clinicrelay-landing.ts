@@ -95,7 +95,7 @@ export const painCards: PainCard[] = [
   {
     icon: "ArrowsSplit",
     title: "Appointment changes scatter across channels",
-    copy: "Requests arrive by phone, email, and text. Nothing connects. Staff lose track; patients repeat themselves.",
+    copy: "Requests arrive by phone, email, and text. Nothing connects. Staff lose track. Patients repeat themselves.",
   },
 ];
 

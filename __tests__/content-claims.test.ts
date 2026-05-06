@@ -35,6 +35,7 @@ describe("content overclaim guardrails", () => {
 describe("hero repositioning", () => {
   it("hero h1 should reflect full operations scope, not just cancelled slots", () => {
     expect(heroData.h1).not.toBe("Fill cancelled slots faster.");
+    expect(heroData.h1).toContain("Coordinate care");
   });
 
   it("hero badges should include Pre-Visit Readiness pillar", () => {
