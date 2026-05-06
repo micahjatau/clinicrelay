@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { DemoModalProvider } from "@/context/demo-modal-context";
 import { DemoModalLazy } from "@/components/landing/demo-modal-lazy";
+import { PostHogProvider } from "@/components/providers/posthog-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -40,10 +41,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={GeistSans.variable}>
       <body>
-        <DemoModalProvider>
-          {children}
-          <DemoModalLazy />
-        </DemoModalProvider>
+        <PostHogProvider>
+          <DemoModalProvider>
+            {children}
+            <DemoModalLazy />
+          </DemoModalProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
