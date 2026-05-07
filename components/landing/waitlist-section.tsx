@@ -1,22 +1,72 @@
+"use client";
+
+import { useRef, useState } from "react";
+import { motion, useMotionValueEvent } from "framer-motion";
 import { CalendarBlank, ListChecks, ChatCircle, ArrowBendUpLeft, CheckCircle } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { recoverySteps } from "@/lib/content/clinicrelay-landing";
 import { WaitlistCtaButton } from "./waitlist-cta-button";
+import { useScrollProgress, WAITLIST_THRESHOLDS, getActiveNodeCount } from "./hooks/use-scroll-progress";
 
 const iconMap: Record<string, React.ElementType> = {
   CalendarBlank, ListChecks, ChatCircle, ArrowBendUpLeft, CheckCircle,
 };
 
+const RAIL_NODES = ["Cancellation", "Match", "Offer", "Reply", "Confirm", "Refill"] as const;
+
 export function WaitlistSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const progress = useScrollProgress(sectionRef);
+  const [activeCount, setActiveCount] = useState(0);
+
+  useMotionValueEvent(progress, "change", (v) => {
+    setActiveCount(getActiveNodeCount(v, WAITLIST_THRESHOLDS));
+  });
+
   return (
-    <section id="waitlist" className="py-24 md:py-32 bg-[--cr-bg]">
+    <section ref={sectionRef} id="waitlist" className="py-24 md:py-32 bg-[--cr-bg]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+
+        {/* Scroll-progress rail */}
+        <div className="mb-14 relative">
+          <div className="relative flex items-center justify-between">
+            {/* Static track */}
+            <div className="absolute inset-x-0 top-[7px] h-px bg-[--cr-border]" />
+            {/* Animated fill */}
+            <motion.div
+              className="absolute left-0 top-[7px] h-px bg-[--cr-teal] origin-left"
+              style={{ scaleX: progress }}
+            />
+            {RAIL_NODES.map((node, i) => (
+              <div key={node} className="relative flex flex-col items-center gap-2 z-10">
+                <motion.div
+                  className="w-3.5 h-3.5 rounded-full border-2"
+                  animate={{
+                    backgroundColor: activeCount > i ? "var(--cr-teal)" : "var(--cr-surface-2)",
+                    borderColor: activeCount > i ? "var(--cr-teal)" : "var(--cr-border)",
+                    scale: activeCount > i ? 1 : 0.85,
+                  }}
+                  transition={{ duration: 0.2 }}
+                />
+                <motion.p
+                  className="text-xs font-semibold text-[--cr-muted] hidden sm:block"
+                  animate={{ opacity: activeCount > i ? 1 : 0.35 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {node}
+                </motion.p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <AnimatedSection className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Waitlist Recovery</p>
           <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text] max-w-[28ch]">
             Every cancellation is a recovery opportunity.
           </h2>
         </AnimatedSection>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <div className="flex flex-col gap-0 relative">
             <div className="absolute left-[19px] top-8 bottom-8 w-px bg-[--cr-border]" />

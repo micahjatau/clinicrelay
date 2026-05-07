@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { AnimatedSection } from "./animated-section";
 import { serviceCards } from "@/lib/content/clinicrelay-landing";
 
@@ -13,7 +16,13 @@ export function WebServices() {
         </AnimatedSection>
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12">
-          <AnimatedSection className="border-t border-[--cr-border] pt-6">
+          <motion.div
+            initial={{ clipPath: "inset(0 0 100% 0)" }}
+            whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+            viewport={{ once: true, margin: "-15% 0px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="border-t border-[--cr-border] pt-6"
+          >
             <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-3">{serviceCards[0].title}</h3>
             <p className="text-sm text-[--cr-muted] leading-relaxed mb-6 max-w-[60ch]">{serviceCards[0].copy}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -21,7 +30,7 @@ export function WebServices() {
                 <p key={d} className="text-sm text-[--cr-muted] py-2 border-t border-[--cr-border]">{d}</p>
               ))}
             </div>
-          </AnimatedSection>
+          </motion.div>
 
           <div className="divide-y divide-[--cr-border] border-y border-[--cr-border]">
             {serviceCards.slice(1).map((card, i) => (

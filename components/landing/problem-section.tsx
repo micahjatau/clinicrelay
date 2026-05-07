@@ -1,6 +1,9 @@
+"use client";
+
 import { CalendarX, Phone, ClockClockwise, ChartLineDown, ShieldWarning, ArrowsSplit } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { painCards } from "@/lib/content/clinicrelay-landing";
+import { motion } from "framer-motion";
 
 const iconMap: Record<string, React.ElementType> = {
   CalendarX,
@@ -26,7 +29,18 @@ export function ProblemSection() {
             const Icon = iconMap[card.icon];
             return (
               <AnimatedSection key={card.title} delay={i * 0.08} className="py-8 grid grid-cols-1 md:grid-cols-[32px_1fr] gap-5 md:gap-6">
-                <div className="pt-1">{Icon && <Icon size={24} weight="duotone" className="text-[--cr-teal]" />}</div>
+                <div className="pt-1">
+                  {Icon && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 4 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-20% 0px" }}
+                      transition={{ duration: 0.35, delay: i * 0.08 }}
+                    >
+                      <Icon size={24} weight="duotone" className="text-[--cr-teal]" />
+                    </motion.div>
+                  )}
+                </div>
                 <div>
                   <h3 className="text-xl tracking-tight font-semibold text-[--cr-text] mb-2">{card.title}</h3>
                   <p className="text-base leading-relaxed text-[--cr-muted] max-w-[70ch]">{card.copy}</p>

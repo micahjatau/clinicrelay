@@ -1,25 +1,37 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { AnimatedSection } from "./animated-section";
 import { pricingPackages } from "@/lib/content/clinicrelay-landing";
 import { PricingCtaButton } from "./pricing-cta-button";
 import { CheckCircle } from "@phosphor-icons/react/dist/ssr";
 
 export function PricingSection() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const inView = useInView(headerRef, { once: true, margin: "-15% 0px" });
+
   return (
     <section id="pricing" className="py-24 md:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <AnimatedSection className="mb-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Pricing</p>
-          <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text]">
-            Custom quote for every clinic.
-          </h2>
-          <p className="text-base text-[--cr-muted] mt-3 max-w-[55ch]">Every clinic is different. Book a demo and we'll put together a quote based on your size, services, and goals.</p>
+          <div ref={headerRef}>
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Pricing</p>
+            <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text]">
+              Custom quote for every clinic.
+            </h2>
+            <p className="text-base text-[--cr-muted] mt-3 max-w-[55ch]">Every clinic is different. Book a demo and we&apos;ll put together a quote based on your size, services, and goals.</p>
+          </div>
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pricingPackages.map((pkg, i) => (
             <AnimatedSection key={pkg.name} delay={i * 0.1}>
-              <div
+              <motion.div
                 className={`rounded-[2rem] border-2 bg-white p-8 flex flex-col h-full ${pkg.recommended ? "border-[--cr-teal]" : "border-[--cr-border]"}`}
                 style={{ boxShadow: pkg.recommended ? "0 0 0 4px rgba(13,148,136,0.08), var(--cr-shadow)" : "var(--cr-shadow)" }}
+                animate={pkg.recommended && inView ? { scale: [1, 1.02, 1] } : {}}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                whileHover={{ y: -4, boxShadow: "0 12px 32px -6px rgba(13,148,136,0.15)" }}
               >
                 {pkg.recommended && (
                   <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal] self-start mb-4">Recommended</span>
@@ -35,7 +47,7 @@ export function PricingSection() {
                   ))}
                 </ul>
                 <PricingCtaButton />
-              </div>
+              </motion.div>
             </AnimatedSection>
           ))}
         </div>

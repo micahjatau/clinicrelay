@@ -1,4 +1,7 @@
+"use client";
+
 import { ShieldCheck, CheckSquare, Receipt, Warning } from "@phosphor-icons/react/dist/ssr";
+import { motion } from "framer-motion";
 import { AnimatedSection } from "./animated-section";
 import { readinessFeatures } from "@/lib/content/clinicrelay-landing";
 
@@ -28,14 +31,22 @@ export function PreVisitReadiness() {
           {readinessFeatures.map((feature, i) => {
             const Icon = iconMap[feature.icon];
             return (
-              <AnimatedSection
-                key={feature.title}
-                delay={i * 0.08}
-                className="rounded-[2rem] border border-[--cr-border] bg-[--cr-bg] p-8"
-              >
-                {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
-                <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{feature.title}</h3>
-                <p className="text-sm text-[--cr-muted] leading-relaxed">{feature.copy}</p>
+              <AnimatedSection key={feature.title} delay={i * 0.08}>
+                <motion.div
+                  className="rounded-[2rem] border border-[--cr-border] bg-[--cr-bg] p-8"
+                  whileHover={{
+                    y: -2,
+                    borderColor: "var(--cr-teal)",
+                    boxShadow: "0 8px 24px -4px rgba(13,148,136,0.12)",
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.2 }}>
+                    {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
+                  </motion.div>
+                  <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{feature.title}</h3>
+                  <p className="text-sm text-[--cr-muted] leading-relaxed">{feature.copy}</p>
+                </motion.div>
               </AnimatedSection>
             );
           })}

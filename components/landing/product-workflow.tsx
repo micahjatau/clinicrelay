@@ -1,12 +1,23 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Funnel, CalendarCheck, BellRinging, ArrowsClockwise, ChartBar } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { workflowSteps } from "@/lib/content/clinicrelay-landing";
 
 const iconMap: Record<string, React.ElementType> = {
-  Funnel, CalendarCheck, BellRinging, ArrowsClockwise, ChartBar,
+  Funnel,
+  CalendarCheck,
+  BellRinging,
+  ArrowsClockwise,
+  ChartBar,
 };
 
 export function ProductWorkflow() {
+  const lineRef = useRef<HTMLDivElement>(null);
+  const lineInView = useInView(lineRef, { once: true, margin: "-20% 0px" });
+
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -16,13 +27,20 @@ export function ProductWorkflow() {
             Five steps from intake to insight.
           </h2>
         </AnimatedSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div ref={lineRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 relative">
+          <div className="hidden lg:block absolute top-5 left-[10%] right-[10%] h-px bg-[--cr-border]" />
+          <motion.div
+            className="hidden lg:block absolute top-5 left-[10%] right-[10%] h-px bg-[--cr-teal] origin-left"
+            initial={{ scaleX: 0 }}
+            animate={lineInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          />
           {workflowSteps.map((step, i) => {
             const Icon = iconMap[step.icon];
             return (
               <AnimatedSection key={step.number} delay={i * 0.08}>
                 <div className="flex flex-col gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[--cr-teal-light] flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-[--cr-teal-light] flex items-center justify-center relative z-10">
                     {Icon && <Icon size={20} weight="duotone" className="text-[--cr-teal]" />}
                   </div>
                   <p className="text-2xl font-semibold text-[--cr-text] tracking-tighter">{step.number}</p>

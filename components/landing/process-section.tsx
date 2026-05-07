@@ -1,3 +1,7 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { MagnifyingGlass, Wrench, Users, TrendUp } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { processSteps } from "@/lib/content/clinicrelay-landing";
@@ -6,6 +10,9 @@ import React from "react";
 const iconMap: Record<string, React.ElementType> = { MagnifyingGlass, Wrench, Users, TrendUp };
 
 export function ProcessSection() {
+  const lineRef = useRef<HTMLDivElement>(null);
+  const lineInView = useInView(lineRef, { once: true, margin: "-20% 0px" });
+
   return (
     <section className="py-24 md:py-32 bg-[--cr-bg]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
@@ -15,8 +22,14 @@ export function ProcessSection() {
             From audit to active in four steps.
           </h2>
         </AnimatedSection>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+        <div ref={lineRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
           <div className="hidden lg:block absolute top-5 left-[12.5%] right-[12.5%] h-px bg-[--cr-border]" />
+          <motion.div
+            className="hidden lg:block absolute top-5 left-[12.5%] right-[12.5%] h-px bg-[--cr-teal] origin-left"
+            initial={{ scaleX: 0 }}
+            animate={lineInView ? { scaleX: 1 } : { scaleX: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+          />
           {processSteps.map((step, i) => {
             const Icon = iconMap[step.icon];
             return (

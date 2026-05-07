@@ -13,7 +13,7 @@ export function TrustSection() {
         </AnimatedSection>
         <div className="max-w-3xl divide-y divide-[--cr-border]">
           {trustPillars.map((pillar, i) => (
-            <AnimatedSection key={pillar.title} delay={i * 0.08} className="py-6">
+            <AnimatedSection key={pillar.title} delay={i * 0.12} className="py-6">
               <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-1">{pillar.title}</h3>
               <p className="text-base text-[--cr-muted] leading-relaxed">{pillar.copy}</p>
             </AnimatedSection>

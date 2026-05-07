@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { AnimatedSection } from "./animated-section";
 import { growthPillars } from "@/lib/content/clinicrelay-landing";
 
@@ -17,10 +20,17 @@ export function GrowthSection() {
               <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{pillar.title}</h3>
               <p className="text-base text-[--cr-muted] leading-relaxed mb-5">{pillar.copy}</p>
               <div className="flex flex-wrap gap-2">
-                {pillar.pills.map((pill) => (
-                  <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]">
+                {pillar.pills.map((pill, j) => (
+                  <motion.span
+                    key={pill}
+                    initial={{ opacity: 0, y: 6 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-20% 0px" }}
+                    transition={{ delay: i * 0.1 + j * 0.06, duration: 0.25 }}
+                    className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]"
+                  >
                     {pill}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
             </AnimatedSection>
