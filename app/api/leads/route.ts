@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { notifyNewLead } from "@/lib/email/notify";
+import { getLeadsRatelimit, getClientIp } from "@/lib/ratelimit/leads";
 
 const optionalText = z.string().trim().min(1).optional().or(z.literal(""));
 
@@ -20,6 +22,19 @@ const LeadSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  const limiter = getLeadsRatelimit();
+  if (limiter) {
+    const ip = getClientIp(request);
+    const { success, reset } = await limiter.limit(ip);
+    if (!success) {
+      const retryAfter = Math.ceil((reset - Date.now()) / 1000);
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        { status: 429, headers: { "Retry-After": String(retryAfter) } }
+      );
+    }
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -30,7 +45,9 @@ export async function POST(request: Request) {
   const parsed = LeadSchema.safeParse(body);
   if (!parsed.success) {
     return NextResponse.json(
-      { error: "Invalid fields.", issues: parsed.error.issues },
+      process.env.NODE_ENV === "development"
+        ? { error: "Invalid fields.", issues: parsed.error.issues }
+        : { error: "Invalid fields." },
       { status: 422 }
     );
   }
@@ -58,6 +75,8 @@ export async function POST(request: Request) {
   if (error) {
     return NextResponse.json({ error: "Unable to submit. Please try again." }, { status: 500 });
   }
+
+  notifyNewLead(parsed.data as Parameters<typeof notifyNewLead>[0]).catch(() => {});
 
   return NextResponse.json({ ok: true });
 }

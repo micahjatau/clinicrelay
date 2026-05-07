@@ -4,8 +4,14 @@ vi.mock("@/lib/supabase/admin", () => ({
   getSupabaseAdminClient: vi.fn(),
 }));
 
+vi.mock("@/lib/ratelimit/leads", () => ({
+  getLeadsRatelimit: vi.fn(),
+  getClientIp: vi.fn(),
+}));
+
 import { POST } from "@/app/api/leads/route";
 import { getSupabaseAdminClient } from "@/lib/supabase/admin";
+import { getLeadsRatelimit, getClientIp } from "@/lib/ratelimit/leads";
 
 function makeRequest(body: unknown) {
   return new Request("http://localhost/api/leads", {
@@ -23,7 +29,11 @@ function mockSupabase(insertError: unknown = null) {
 }
 
 describe("POST /api/leads", () => {
-  beforeEach(() => vi.clearAllMocks());
+  beforeEach(() => {
+    vi.clearAllMocks();
+    vi.mocked(getLeadsRatelimit).mockReturnValue(null as never);
+    vi.mocked(getClientIp).mockReturnValue("127.0.0.1");
+  });
 
   it("returns 422 when required fields are missing", async () => {
     mockSupabase();
@@ -53,5 +63,24 @@ describe("POST /api/leads", () => {
     mockSupabase({ message: "DB error" });
     const res = await POST(makeRequest({ name: "A", email: "a@b.com", clinic_name: "X" }));
     expect(res.status).toBe(500);
+  });
+
+  it("returns 429 with Retry-After when rate limit is exceeded", async () => {
+    const reset = Date.now() + 60_000;
+    vi.mocked(getLeadsRatelimit).mockReturnValue({
+      limit: vi.fn().mockResolvedValue({ success: false, reset }),
+    } as never);
+    const res = await POST(makeRequest({ name: "A", email: "a@b.com", clinic_name: "X" }));
+    expect(res.status).toBe(429);
+    const body = await res.json();
+    expect(body.error).toBe("Too many requests. Please try again later.");
+    expect(res.headers.get("Retry-After")).toBeTruthy();
+  });
+
+  it("skips rate limiting and succeeds when limiter is null", async () => {
+    vi.mocked(getLeadsRatelimit).mockReturnValue(null as never);
+    mockSupabase();
+    const res = await POST(makeRequest({ name: "A", email: "a@b.com", clinic_name: "X" }));
+    expect(res.status).toBe(200);
   });
 });
