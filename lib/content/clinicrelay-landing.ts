@@ -64,7 +64,7 @@ export const heroData: HeroData = {
   bentoCards: [
     { step: "1", label: "Cancelled Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
     { step: "2", label: "Eligible Patient Matched", detail: "3 candidates identified" },
-    { step: "3", label: "Recovery SMS Sent", detail: "Personalized message sent" },
+    { step: "3", label: "Recovery Offer Routed", detail: "Recovery message prepared and routed" },
     { step: "4", label: "Patient Reply Captured", detail: '"Yes, I can make it!"' },
     { step: "5", label: "Staff Confirms Refill", detail: "Confirmed in 4 minutes" },
   ],
@@ -106,7 +106,7 @@ export const painCards: PainCard[] = [
 export const recoverySteps: Step[] = [
   { number: "01", icon: "CalendarBlank", title: "Cancellation received", copy: "A confirmed appointment is cancelled — ClinicRelay detects it immediately." },
   { number: "02", icon: "ListChecks", title: "Waitlist scanned", copy: "Eligible patients are ranked by proximity, service match, and last contact." },
-  { number: "03", icon: "ChatCircle", title: "SMS dispatched", copy: "A personalized message is prepared or sent based on your clinic workflow rules." },
+  { number: "03", icon: "ChatCircle", title: "Recovery offer routed", copy: "A personalized message is prepared or sent based on your clinic workflow rules." },
   { number: "04", icon: "ArrowBendUpLeft", title: "Reply captured", copy: "Patient responses are parsed and routed to your front desk for a one-click confirm." },
   { number: "05", icon: "CheckCircle", title: "Slot refilled", copy: "The appointment is confirmed and the schedule is updated. The cycle closes." },
 ];
@@ -280,7 +280,7 @@ export const dashboardMockData: DashboardData = {
     { label: "Avg Response Time", value: "4m", sub: "patient reply" },
     { label: "Recall Due This Week", value: "47", sub: "12 reached" },
     { label: "Pending Confirmations", value: "8", sub: "tomorrow" },
-    { label: "Missed Calls Today", value: "2", sub: "SMS sent" },
+    { label: "Missed Calls Today", value: "2", sub: "Outreach routed" },
     { label: "Active Waitlist", value: "31", sub: "patients" },
   ],
 };
@@ -401,11 +401,11 @@ export const faqItems: FaqItem[] = [
   },
   {
     question: "How does the waitlist SMS work?",
-    answer: "When a cancellation is detected, ClinicRelay identifies eligible waitlist patients, generates a personalized SMS, and sends it for staff review before dispatch — or automatically, depending on your configuration. Patient replies are routed back to your inbox for a one-click confirm.",
+    answer: "When a cancellation is detected, ClinicRelay identifies eligible waitlist patients, generates a personalized recovery offer, and routes it for staff review before dispatch — or sends it automatically, depending on your configuration. Patient replies are routed back to your inbox for a one-click confirm.",
   },
   {
     question: "Do patients need to download an app?",
-    answer: "No. All patient communication happens over standard SMS. Nothing for patients to install or log into.",
+    answer: "No app download is required. SMS handles lightweight replies for waitlist recovery and confirmations. When enabled, the patient portal supports intake, insurance review, and appointment details — all accessible by link, no login required.",
   },
   {
     question: "Is ClinicRelay HIPAA or PIPEDA compliant?",

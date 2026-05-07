@@ -9,9 +9,9 @@ import { AnimatedSection } from "./animated-section";
 import { featureCards, type FeaturePillar, type FeatureStatus } from "@/lib/content/clinicrelay-landing";
 
 const statusLabel: Record<FeatureStatus, string> = {
-  available: "Available",
-  pilot: "Pilot-supported",
-  roadmap: "Roadmap",
+  available: "Core",
+  pilot: "Pilot-ready",
+  roadmap: "Expansion",
 };
 
 const statusClass: Record<FeatureStatus, string> = {

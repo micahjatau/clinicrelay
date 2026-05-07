@@ -7,9 +7,11 @@ import { PostHogProvider } from "@/components/providers/posthog-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clinicrelay.vercel.app"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://clinicrelay-landing.vercel.app"
+  ),
   title: "ClinicRelay — Front-Desk Orchestration for Growing Clinics",
-  description: "ClinicRelay helps clinics recover cancelled appointment slots, coordinate patient communication, manage waitlists, and reduce front-desk chaos.",
+  description: "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare intake and insurance tasks, and give staff one place to see what needs attention.",
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -19,21 +21,21 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.svg"],
   },
   openGraph: {
-    title: "Fill cancelled slots faster with ClinicRelay",
-    description: "Waitlist recovery, patient reminders, booking workflows, and front-desk coordination for growing clinics.",
+    title: "ClinicRelay — Front-Desk Orchestration for Growing Clinics",
+    description: "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare intake and insurance tasks, and give staff one place to see what needs attention.",
     images: [
       {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "ClinicRelay waitlist recovery workflow",
+        alt: "ClinicRelay front-desk orchestration workflow",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Fill cancelled slots faster with ClinicRelay",
-    description: "Waitlist recovery and front-desk coordination for growing clinics.",
+    title: "ClinicRelay — Front-Desk Orchestration for Growing Clinics",
+    description: "Cancelled-slot recovery, pre-visit readiness, and front-desk coordination for appointment-based clinics.",
     images: ["/twitter-image"],
   },
 };

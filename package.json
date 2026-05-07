@@ -8,8 +8,6 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "gnx": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus",
-    "gnx:analyze": "NODE_OPTIONS=\"--require /root/bright-smile/.gitnexus/lbug-patch.cjs\" gitnexus analyze",
     "lead-gen": "tsx --env-file .env.local scripts/lead-gen/run.ts"
   },
   "dependencies": {
