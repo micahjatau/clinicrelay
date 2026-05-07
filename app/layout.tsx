@@ -8,7 +8,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://clinicrelay-landing.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://clinicrelay.vercel.app"
   ),
   title: "ClinicRelay — Front-Desk Orchestration for Growing Clinics",
   description: "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare intake and insurance tasks, and give staff one place to see what needs attention.",

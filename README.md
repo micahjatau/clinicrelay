@@ -58,5 +58,5 @@ npm run start    # run built app
 
 Deployed on Vercel.
 
-- Production: https://clinicrelay-landing.vercel.app
+- Production: https://clinicrelay.vercel.app
 - Repo: https://github.com/micahjatau/clinicrelay
