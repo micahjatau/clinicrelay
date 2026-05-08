@@ -68,11 +68,13 @@ export async function POST(request: Request) {
 
   const supabase = getSupabaseAdminClient();
   if (!supabase) {
+    console.error("Lead submission failed: Supabase admin client unavailable (missing env vars)");
     return NextResponse.json({ error: "Unable to submit. Please try again." }, { status: 500 });
   }
 
   const { error } = await supabase.from("clinicrelay_leads").insert(lead);
   if (error) {
+    console.error("Lead insert failed:", error);
     return NextResponse.json({ error: "Unable to submit. Please try again." }, { status: 500 });
   }
 

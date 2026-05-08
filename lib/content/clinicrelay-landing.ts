@@ -57,8 +57,8 @@ export const heroData: HeroData = {
   h1: "Coordinate care before the visit starts.",
   subheadline:
     "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare insurance and intake tasks, and give staff one place to see what needs attention.",
-  primaryCta: "Book a Demo",
-  secondaryCta: "Request Workflow Audit",
+  primaryCta: "Request Workflow Audit",
+  secondaryCta: "See Recovery Workflow",
   trustLine: "Built for clinics that need better appointment recovery and front-desk coordination",
   badges: ["Cancelled-Slot Recovery", "Pre-Visit Readiness", "Front-Desk Command Center"],
   bentoCards: [
@@ -114,7 +114,7 @@ export const recoverySteps: Step[] = [
 export const workflowSteps: Step[] = [
   { number: "01", icon: "Funnel", title: "Intake & routing", copy: "New patient requests are sorted by service type, urgency, and provider availability." },
   { number: "02", icon: "CalendarCheck", title: "Smart scheduling", copy: "Appointment windows are matched to provider schedules and operatory availability." },
-  { number: "03", icon: "BellRinging", title: "Automated reminders", copy: "Confirmation sequences reduce no-shows without staff manually calling patients." },
+  { number: "03", icon: "BellRinging", title: "Reminder workflows", copy: "Confirmation workflows reduce manual calling and surface appointment risk earlier." },
   { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "When a slot opens, ClinicRelay prepares recovery outreach based on your clinic's workflow rules." },
   { number: "05", icon: "ChartBar", title: "Performance visibility", copy: "Front-desk metrics surface in a single dashboard — fill rate, response time, recall rate." },
 ];
