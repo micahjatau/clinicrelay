@@ -2,7 +2,7 @@ import { AnimatedSection } from "./animated-section";
 
 export function ManifestoSection() {
   return (
-    <section className="bg-[--cr-navy] py-24 px-6">
+    <section className="bg-[#0d1f1d] py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <AnimatedSection>
           <p className="text-xs font-semibold tracking-widest text-[--cr-teal] uppercase mb-6">Our Point of View</p>
