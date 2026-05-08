@@ -14,18 +14,43 @@ const modalCopy = {
     title: "Book a Demo",
     description: "See how ClinicRelay helps recover cancelled slots and coordinate front-desk workflows.",
     submit: "Book my demo",
+    footer: "No commitment required. 20-minute walkthrough.",
   },
   audit: {
     title: "Request Workflow Audit",
-    description: "Tell us where cancellations, response delays, and manual follow-up are hurting operations.",
+    description: "Help us understand your current setup — we'll identify the highest-impact recovery and readiness gaps for your clinic.",
     submit: "Request my audit",
+    footer: "No commitment required. 20-minute audit call.",
   },
   recovery: {
     title: "See Waitlist Recovery",
     description: "We'll walk you through the cancelled-slot recovery loop and staff confirmation workflow.",
     submit: "Show me recovery workflow",
+    footer: "No commitment required. 20-minute walkthrough.",
   },
 } as const;
+
+const SCHEDULING_SYSTEMS = ["Dentrix", "Eaglesoft", "Curve Dental", "Jane App", "Cliniko", "Healtheon", "Other / not sure"];
+const WAITLIST_PROCESSES = ["No formal process", "Spreadsheet or paper list", "EHR waitlist module", "Manual phone calls only", "Other"];
+
+const demoPainOptions = [
+  { value: "cancellations", label: "Cancellations" },
+  { value: "no-shows", label: "No-shows" },
+  { value: "missed-calls", label: "Missed calls" },
+  { value: "recall", label: "Recall gaps" },
+  { value: "website", label: "Website / online presence" },
+  { value: "staff-overload", label: "Staff overload" },
+];
+
+const auditPainOptions = [
+  { value: "cancellations", label: "Cancellations & no-shows" },
+  { value: "front-desk-rework", label: "Front-desk rework" },
+  { value: "intake-delays", label: "Intake delays" },
+  { value: "insurance-readiness", label: "Insurance readiness" },
+  { value: "recall", label: "Recall gaps" },
+  { value: "staff-overload", label: "Staff overload" },
+  { value: "response-delays", label: "Patient response delays" },
+];
 
 export function DemoModal() {
   const { isOpen, close, intent } = useDemoModal();
@@ -85,16 +110,27 @@ export function DemoModal() {
     const interest = fd.getAll("interest") as string[];
     const intentInterestMap = { demo: "demo", audit: "audit", recovery: "growth-system" } as const;
     const normalizedInterest = interest.length > 0 ? interest : [intentInterestMap[intent]];
+
+    const rawMessage = String(fd.get("message") ?? "").trim();
+    const schedulingSystem = intent === "audit" ? String(fd.get("scheduling_system") ?? "").trim() : "";
+    const waitlistProcess = intent === "audit" ? String(fd.get("waitlist_process") ?? "").trim() : "";
+    const messageParts = [
+      schedulingSystem ? `Scheduling system: ${schedulingSystem}` : "",
+      waitlistProcess ? `Waitlist process: ${waitlistProcess}` : "",
+      rawMessage,
+    ].filter(Boolean);
+    const message = messageParts.join("\n\n") || undefined;
+
     const payload = {
       name: fd.get("name"),
       clinic_name: fd.get("clinic_name"),
       role: fd.get("role"),
       email: fd.get("email"),
-      phone: fd.get("phone"),
+      phone: intent !== "audit" ? fd.get("phone") : undefined,
       clinic_type: fd.get("clinic_type"),
       location_count: fd.get("location_count"),
-      website_url: fd.get("website_url"),
-      message: fd.get("message"),
+      website_url: intent !== "audit" ? fd.get("website_url") : undefined,
+      message,
       company: fd.get("company"),
       pain_points,
       interest: normalizedInterest,
@@ -155,48 +191,58 @@ export function DemoModal() {
 
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <Field label="Name *" name="name" required helperText="Used for your personalized demo briefing." error={formErrors.name} />
+                    <Field label="Name *" name="name" required helperText={intent === "audit" ? "For your audit briefing." : "Used for your personalized demo briefing."} error={formErrors.name} />
                     <Field label="Clinic Name *" name="clinic_name" required helperText="Helps us tailor workflow recommendations." error={formErrors.clinic_name} />
                     <Field label="Your Role" name="role" />
-                    <Field label="Email *" name="email" type="email" required helperText="We'll send next steps here." error={formErrors.email} />
-                    <Field label="Phone" name="phone" type="tel" />
-                    <Field label="Current Website" name="website_url" type="url" />
+                    <Field label="Email *" name="email" type="email" required helperText="We'll send your audit summary here." error={formErrors.email} />
+                    {intent !== "audit" && <Field label="Phone" name="phone" type="tel" />}
+                    {intent !== "audit" && <Field label="Current Website" name="website_url" type="url" />}
                   </div>
 
                   <input name="company" type="text" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <SelectField label="Clinic Type" name="clinic_type" options={["dental", "family", "eye", "dermatology", "physio", "other"]} />
-                    <SelectField label="Number of Locations" name="location_count" options={["1", "2–5", "6+"]} />
+                    <SelectField label="Number of Providers / Locations" name="location_count" options={["1", "2–5", "6+"]} />
                   </div>
 
-                  <CheckboxGroup
-                    label="Biggest operational pain"
-                    name="pain_points"
-                    options={[
-                      { value: "cancellations", label: "Cancellations" },
-                      { value: "no-shows", label: "No-shows" },
-                      { value: "missed-calls", label: "Missed calls" },
-                      { value: "recall", label: "Recall gaps" },
-                      { value: "website", label: "Website / online presence" },
-                      { value: "staff-overload", label: "Staff overload" },
-                    ]}
-                  />
+                  {intent === "audit" && (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <SelectField label="Current Scheduling System" name="scheduling_system" options={SCHEDULING_SYSTEMS} />
+                      <SelectField label="Current Waitlist Process" name="waitlist_process" options={WAITLIST_PROCESSES} />
+                    </div>
+                  )}
 
                   <CheckboxGroup
-                    label="I'm interested in"
-                    name="interest"
-                    options={[
-                      { value: "demo", label: "Product demo" },
-                      { value: "audit", label: "Workflow audit" },
-                      { value: "website", label: "New website" },
-                      { value: "growth-system", label: "Full growth system" },
-                    ]}
+                    label={intent === "audit" ? "Where does front-desk rework pile up most?" : "Biggest operational pain"}
+                    name="pain_points"
+                    options={intent === "audit" ? auditPainOptions : demoPainOptions}
                   />
+
+                  {intent !== "audit" && (
+                    <CheckboxGroup
+                      label="I'm interested in"
+                      name="interest"
+                      options={[
+                        { value: "demo", label: "Product demo" },
+                        { value: "audit", label: "Workflow audit" },
+                        { value: "website", label: "New website" },
+                        { value: "growth-system", label: "Full growth system" },
+                      ]}
+                    />
+                  )}
 
                   <div className="flex flex-col gap-1">
-                    <label className="text-xs font-semibold text-[--cr-text]" htmlFor="message">Message</label>
-                    <textarea id="message" name="message" rows={3} className="cr-input resize-none" placeholder="Anything else we should know?" />
+                    <label className="text-xs font-semibold text-[--cr-text]" htmlFor="message">
+                      {intent === "audit" ? "Anything else we should know?" : "Message"}
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={3}
+                      className="cr-input resize-none"
+                      placeholder={intent === "audit" ? "e.g. We average 8 cancellations/week and our waitlist is a paper list." : "Anything else we should know?"}
+                    />
                   </div>
 
                   {state === "error" && <p className="text-red-600 text-sm">{errorMsg}</p>}
@@ -204,7 +250,7 @@ export function DemoModal() {
                   <button type="submit" disabled={state === "loading"} className="cr-btn cr-btn-primary disabled:opacity-60">
                     {state === "loading" ? "Submitting…" : modalCopy[intent].submit}
                   </button>
-                  <p className="text-xs text-[--cr-muted]">No commitment required. 20-minute walkthrough.</p>
+                  <p className="text-xs text-[--cr-muted]">{modalCopy[intent].footer}</p>
                 </form>
               </>
             )}

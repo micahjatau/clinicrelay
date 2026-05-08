@@ -1,6 +1,7 @@
 import { Nav } from "@/components/landing/nav";
 import { Hero } from "@/components/landing/hero";
 import { ProblemSection } from "@/components/landing/problem-section";
+import { ManifestoSection } from "@/components/landing/manifesto-section";
 import { WaitlistSection } from "@/components/landing/waitlist-section";
 import { PreVisitReadiness } from "@/components/landing/pre-visit-readiness";
 import { ProductWorkflow } from "@/components/landing/product-workflow";
@@ -25,6 +26,7 @@ export default function Home() {
       <Nav />
       <Hero />
       <ProblemSection />
+      <ManifestoSection />
       <WaitlistSection />
       <PreVisitReadiness />
       <ProductWorkflow />
