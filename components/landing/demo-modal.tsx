@@ -30,7 +30,7 @@ const modalCopy = {
   },
 } as const;
 
-const SCHEDULING_SYSTEMS = ["Dentrix", "Eaglesoft", "Curve Dental", "Jane App", "Cliniko", "Healtheon", "Other / not sure"];
+const SCHEDULING_SYSTEMS = ["Dentrix", "Eaglesoft", "Curve Dental", "ClearDent", "Tracker", "ABELDent", "Open Dental", "Jane App", "Cliniko", "Other / not sure"];
 const WAITLIST_PROCESSES = ["No formal process", "Spreadsheet or paper list", "EHR waitlist module", "Manual phone calls only", "Other"];
 
 const demoPainOptions = [
@@ -126,7 +126,7 @@ export function DemoModal() {
       clinic_name: fd.get("clinic_name"),
       role: fd.get("role"),
       email: fd.get("email"),
-      phone: intent !== "audit" ? fd.get("phone") : undefined,
+      phone: fd.get("phone"),
       clinic_type: fd.get("clinic_type"),
       location_count: fd.get("location_count"),
       website_url: intent !== "audit" ? fd.get("website_url") : undefined,
@@ -195,7 +195,7 @@ export function DemoModal() {
                     <Field label="Clinic Name *" name="clinic_name" required helperText="Helps us tailor workflow recommendations." error={formErrors.clinic_name} />
                     <Field label="Your Role" name="role" />
                     <Field label="Email *" name="email" type="email" required helperText="We'll send your audit summary here." error={formErrors.email} />
-                    {intent !== "audit" && <Field label="Phone" name="phone" type="tel" />}
+                    <Field label={intent === "audit" ? "Preferred Contact Number" : "Phone"} name="phone" type="tel" />
                     {intent !== "audit" && <Field label="Current Website" name="website_url" type="url" />}
                   </div>
 
