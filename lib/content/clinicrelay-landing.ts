@@ -319,7 +319,7 @@ export const useCases: UseCase[] = [
 export const trustPillars: TrustPillar[] = [
   {
     title: "Staff-confirmed operations",
-    copy: "ClinicRelay routes workflow actions to your team. Staff stay in control of patient-facing confirmations.",
+    copy: "ClinicRelay does not replace your front desk. It gives staff a clearer queue for the work they already manage — recovery outreach, confirmations, and follow-up — without adding new systems to learn.",
   },
   {
     title: "Limited operational data",

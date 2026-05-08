@@ -174,7 +174,7 @@ export const DashboardMockup = memo(function DashboardMockup() {
                         </td>
                         <td className="py-3 pr-3">
                           <p className="text-[--cr-text]">{row.outreach}</p>
-                          <p className="text-xs text-[--cr-muted]">Recovery offer sent</p>
+                          <p className="text-xs text-[--cr-muted]">Recovery offer routed</p>
                         </td>
                         <td className="py-3 pr-3">
                           <p className="text-[--cr-text]">{row.reply}</p>
