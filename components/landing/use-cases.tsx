@@ -54,7 +54,7 @@ export function UseCases() {
               <p className="text-base text-[--cr-muted] leading-relaxed mb-4">{active.copy}</p>
               <div className="flex flex-wrap gap-2">
                 {active.pills.map((pill) => (
-                  <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]">
+                  <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-[--cr-border] text-[--cr-muted] hover:border-[--cr-teal]">
                     {pill}
                   </span>
                 ))}
