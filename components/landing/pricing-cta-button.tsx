@@ -9,7 +9,7 @@ export function PricingCtaButton() {
       onClick={() => open("demo")}
       className="w-full cr-btn cr-btn-primary px-5 py-3"
     >
-Start Recovery Pilot
+Book a Demo
     </button>
   );
 }

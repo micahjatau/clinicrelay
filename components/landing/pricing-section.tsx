@@ -18,9 +18,9 @@ export function PricingSection() {
           <div ref={headerRef}>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Pricing</p>
             <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text]">
-              Custom quote for every clinic.
+              Turn empty slots into revenue.
             </h2>
-            <p className="text-base text-[--cr-muted] mt-3 max-w-[55ch]">Every clinic is different. Book a demo and we&apos;ll put together a quote based on your size, services, and goals.</p>
+            <p className="text-base text-[--cr-muted] mt-3 max-w-[55ch]">Start with a workflow audit, launch a focused recovery pilot, and scale only after you&apos;ve proven the ROI.</p>
           </div>
         </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -34,7 +34,7 @@ export function PricingSection() {
                 whileHover={{ y: -4, boxShadow: "0 12px 32px -6px rgba(13,148,136,0.15)" }}
               >
                 {pkg.recommended && (
-                  <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal] self-start mb-4">Recommended</span>
+                  <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal] self-start mb-4">Most popular</span>
                 )}
                 <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{pkg.name}</h3>
                 <p className="text-sm text-[--cr-muted] mb-6 leading-relaxed">{pkg.tagline}</p>
