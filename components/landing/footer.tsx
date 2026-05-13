@@ -23,7 +23,6 @@ export function Footer() {
               { label: "Book a Demo", href: "/demo" },
               { label: "Workflow Audit", href: "/workflow-audit" },
               { label: "Pricing", href: "/pricing" },
-              { label: "Dental Use Case", href: "/use-cases/dental" },
             ].map((item) => (
               <a key={item.label} href={item.href} className="block text-sm text-[--cr-muted] hover:text-[--cr-text] mb-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
                 {item.label}
