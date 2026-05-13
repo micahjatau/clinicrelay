@@ -112,35 +112,35 @@ export const recoverySteps: Step[] = [
 ];
 
 export const workflowSteps: Step[] = [
-  { number: "01", icon: "Funnel", title: "Intake & routing", copy: "New patient requests are sorted by service type, urgency, and provider availability." },
-  { number: "02", icon: "CalendarCheck", title: "Smart scheduling", copy: "Appointment windows are matched to provider schedules and operatory availability." },
-  { number: "03", icon: "BellRinging", title: "Reminder workflows", copy: "Confirmation workflows reduce manual calling and surface appointment risk earlier." },
-  { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "When a slot opens, ClinicRelay prepares recovery outreach based on your clinic's workflow rules." },
-  { number: "05", icon: "ChartBar", title: "Performance visibility", copy: "Front-desk metrics surface in a single dashboard — fill rate, response time, recall rate." },
+  { number: "01", icon: "Funnel", title: "Intake & routing", copy: "New patient requests land in one queue — sorted by service type, urgency, and who's available — not by whoever happens to pick up first." },
+  { number: "02", icon: "CalendarCheck", title: "Smart scheduling", copy: "Appointment windows match to provider schedules and chair availability so nothing gets double-booked and no one has to call back to fix it." },
+  { number: "03", icon: "BellRinging", title: "Reminder workflows", copy: "Confirmation tasks run on a schedule. Your front desk sees what still needs follow-up — not what got buried in a voicemail inbox." },
+  { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "A slot opens. ClinicRelay matches it to the right patient and surfaces the next action for staff to confirm. No manual list-diving required." },
+  { number: "05", icon: "ChartBar", title: "Performance visibility", copy: "Fill rate, response time, and recall rate — in one place, so you know what's working and where things are quietly falling through." },
 ];
 
 export const featureCards: FeatureCard[] = [
   // Access pillar
   {
     icon: "CalendarCheck",
-    title: "Guided booking",
-    copy: "Booking requests are matched to provider availability and service rules so new patients reach the right slot without back-and-forth.",
+    title: "Booking that skips the phone tag",
+    copy: "New patients get matched to the right provider and time slot without your staff playing scheduler-by-phone.",
     tag: "Access",
     status: "available",
     pillar: "Access",
   },
   {
     icon: "UserCircle",
-    title: "Patient portal",
-    copy: "Patients submit intake details, check appointment status, and send requests before the visit — without calling the front desk.",
+    title: "Patients prep before they arrive",
+    copy: "Intake details, appointment status, and requests handled before visit day — so your front desk isn't doing triage at check-in.",
     tag: "Access",
     status: "pilot",
     pillar: "Access",
   },
   {
     icon: "ArrowsClockwise",
-    title: "Change requests",
-    copy: "Appointment change requests become visible staff-owned tasks instead of scattered inbound calls that fall through.",
+    title: "Change requests in a queue, not a voicemail box",
+    copy: "When a patient needs to reschedule, it becomes a visible staff task — not a message that gets lost between desk shifts.",
     tag: "Access",
     status: "available",
     pillar: "Access",
@@ -148,24 +148,24 @@ export const featureCards: FeatureCard[] = [
   // Readiness pillar
   {
     icon: "ShieldCheck",
-    title: "Insurance workflow",
-    copy: "Patients submit insurance details early. Staff see what needs verification before the visit, not when the patient walks in.",
+    title: "Insurance problems caught before visit day",
+    copy: "Patients submit coverage details early. Your staff sees what needs review before the patient arrives — not while they're standing at the desk.",
     tag: "Readiness",
     status: "pilot",
     pillar: "Readiness",
   },
   {
     icon: "ClipboardText",
-    title: "Intake & estimates",
-    copy: "Pre-visit intake tasks and treatment estimate requests surface as actionable staff queue items with clear ownership.",
+    title: "Intake tasks surface before the morning rush",
+    copy: "Pre-visit tasks and cost questions become trackable queue items with a clear owner — not floating in someone's inbox.",
     tag: "Readiness",
     status: "pilot",
     pillar: "Readiness",
   },
   {
     icon: "BellRinging",
-    title: "Reminder lead-time",
-    copy: "Reminder workflows surface risk early so clinics have time to run recovery before a slot is lost.",
+    title: "Enough lead time to actually recover",
+    copy: "Reminders go out early enough that if someone's going to cancel, you know before you've lost the chance to fill the slot.",
     tag: "Readiness",
     status: "available",
     pillar: "Readiness",
@@ -173,48 +173,48 @@ export const featureCards: FeatureCard[] = [
   // Recovery pillar
   {
     icon: "CalendarCheck",
-    title: "Cancelled-slot recovery",
-    copy: "When time opens up, ClinicRelay starts a recovery workflow with waitlist matching and staff-visible next actions.",
+    title: "Recovery starts the moment a slot opens",
+    copy: "The instant a cancellation is detected, ClinicRelay starts the recovery workflow — waitlist matching, next staff action, confirmation loop.",
     tag: "Recovery",
     status: "available",
     pillar: "Recovery",
   },
   {
     icon: "ChatCircleText",
-    title: "Waitlist reply loop",
-    copy: "Patients can confirm by SMS, and replies are routed to staff so replacement bookings are coordinated in one place.",
+    title: "Patient texts yes. Staff confirms. Done.",
+    copy: "Patients reply to recovery offers by SMS. Those replies land in the staff queue so replacements get booked — no back-and-forth phone calls.",
     tag: "Recovery",
     status: "available",
     pillar: "Recovery",
   },
   {
     icon: "Gauge",
-    title: "Recovery visibility",
-    copy: "Track open cancellations, offers sent, replies received, and staff-confirmed refills from one dashboard.",
+    title: "See every slot, every offer, every reply",
+    copy: "Track where each cancellation is in the recovery cycle — from detection to confirmed refill — without chasing your team for status updates.",
     tag: "Recovery",
     status: "available",
     pillar: "Recovery",
   },
   {
     icon: "ArrowsClockwise",
-    title: "Policy-safe scheduling",
-    copy: "Scheduling checks keep recovery actions aligned with provider, service, and clinic-specific rules.",
+    title: "Recovery that stays inside your clinic's rules",
+    copy: "Every scheduling decision checks provider availability, service rules, and clinic policies. Your guardrails — not ours.",
     tag: "Recovery",
     status: "available",
     pillar: "Recovery",
   },
   {
     icon: "ClipboardText",
-    title: "Staff operations queue",
-    copy: "Front-desk teams get a prioritized queue for confirmations, follow-up, and unresolved workflow tasks.",
+    title: "One place for everything your front desk needs to act on",
+    copy: "Confirmations, follow-up tasks, unresolved changes — all in a prioritized queue so nothing gets buried and everyone knows what's next.",
     tag: "Recovery",
     status: "available",
     pillar: "Recovery",
   },
   {
     icon: "Lock",
-    title: "Workflow guardrails",
-    copy: "Role-aware workflows and audit visibility support safer operational coordination.",
+    title: "Appropriate access. Clear audit trail.",
+    copy: "Role-based workflow access and full action history so you can see what's happening across your team without hovering.",
     tag: "Recovery",
     status: "pilot",
     pillar: "Recovery",
@@ -223,23 +223,23 @@ export const featureCards: FeatureCard[] = [
 
 export const growthPillars: GrowthPillar[] = [
   {
-    title: "Cancelled-Slot Recovery",
-    copy: "Focus first on the operational leak that hurts most: cancelled time that never gets refilled.",
+    title: "Fix the biggest revenue leak first",
+    copy: "Cancelled time that never gets refilled is usually the highest-impact place to start. That's where we begin.",
     pills: ["Open slot detection", "Waitlist matching", "Staff confirmation"],
   },
   {
-    title: "Visible Confirmation Loop",
-    copy: "Every response and follow-up becomes trackable staff work instead of hidden phone-tag.",
+    title: "Make follow-up visible, not accidental",
+    copy: "Every response and next step becomes trackable staff work instead of phone-tag that depends on who's in that day.",
     pills: ["Reply capture", "Action queues", "Outcome logging"],
   },
   {
-    title: "Policy-Safe Coordination",
-    copy: "Recovery actions stay aligned with clinic rules for service, provider, and schedule fit.",
+    title: "Recovery that stays inside your clinic's rules",
+    copy: "Every outreach action stays within your service, provider, and scheduling limits — no surprises for your team.",
     pills: ["Scheduling guardrails", "Provider fit", "Rule checks"],
   },
   {
-    title: "Pilot-First Rollout",
-    copy: "Start with a focused pilot, measure impact, and expand only after the workflow proves itself.",
+    title: "A pilot before a commitment",
+    copy: "Start with a focused workflow pilot, measure what actually happened, and expand only after the numbers back it up.",
     pills: ["Controlled workflow pilot", "Weekly review", "Scale after proof"],
   },
 ];
@@ -247,27 +247,27 @@ export const growthPillars: GrowthPillar[] = [
 export const serviceCards: ServiceCard[] = [
   {
     title: "Workflow Audit",
-    copy: "Map where cancellations, follow-up gaps, and front-desk handoff delays are leaking capacity.",
+    copy: "We map where cancelled slots, follow-up gaps, and handoff delays are leaking time and revenue from your practice.",
     deliverables: ["Workflow map", "Leak points", "Pilot scope", "Success metrics"],
   },
   {
     title: "Recovery Pilot Setup",
-    copy: "Configure waitlist recovery, confirmation routing, and staff-visible actions for a focused pilot.",
+    copy: "We configure waitlist recovery, confirmation routing, and your front-desk task queue for a focused 30-day pilot.",
     deliverables: ["Recovery logic", "SMS templates", "Staff queue setup"],
   },
   {
     title: "Policy-Safe Scheduling Controls",
-    copy: "Align the pilot with clinic scheduling rules so recovery actions stay operationally safe.",
+    copy: "We align the pilot with your scheduling rules so every recovery action stays operationally safe for your team.",
     deliverables: ["Rule alignment", "Provider/service checks", "Escalation defaults"],
   },
   {
     title: "Operations Queue Enablement",
-    copy: "Deploy a single staff work surface for replies, confirmations, and unresolved tasks.",
+    copy: "We deploy a single staff work surface for replies, confirmations, and unresolved tasks — so the front desk has one place to look.",
     deliverables: ["Queue views", "Status states", "Action ownership"],
   },
   {
     title: "Pilot Review & Scale Plan",
-    copy: "Review pilot outcomes and decide what to expand next based on measured workflow performance.",
+    copy: "We review what happened during the pilot and help you decide what to expand — based on what actually moved the needle.",
     deliverables: ["Pilot review", "Expansion plan", "Change priorities"],
   },
 ];
@@ -318,40 +318,40 @@ export const useCases: UseCase[] = [
 
 export const trustPillars: TrustPillar[] = [
   {
-    title: "Staff-confirmed operations",
-    copy: "ClinicRelay does not replace your front desk. It gives staff a clearer queue for the work they already manage — recovery outreach, confirmations, and follow-up — without adding new systems to learn.",
+    title: "Your front desk still runs the show",
+    copy: "ClinicRelay doesn't replace your team or make decisions for them. It gives staff a cleaner queue for the work they're already doing — recovery outreach, confirmations, follow-up — without adding a new system to learn.",
   },
   {
-    title: "Limited operational data",
-    copy: "The system is designed to collect only the workflow data needed for scheduling coordination and follow-up.",
+    title: "Only the data the workflow actually needs",
+    copy: "The system collects scheduling and coordination data — nothing more. We're not building a patient profile. We're helping keep your calendar full.",
   },
   {
-    title: "Policy-aware controls",
-    copy: "Workflow rules can be configured around provider, service, and clinic-level operational boundaries.",
+    title: "Your clinic rules, applied consistently",
+    copy: "Every recovery action stays within the service, provider, and scheduling boundaries you've set. Your staff doesn't have to second-guess what's allowed.",
   },
   {
-    title: "Audit visibility",
-    copy: "Operational actions can be reviewed with clear status history and ownership.",
+    title: "A clear record of what happened and who did it",
+    copy: "Every action has a status, an owner, and a history. When something needs review, you can see exactly what happened — and who confirmed it.",
   },
   {
-    title: "Pilot-first governance",
-    copy: "Each rollout starts with a constrained pilot so clinics can validate processes before broader adoption.",
+    title: "Proven before it's permanent",
+    copy: "Every rollout starts with a focused pilot. You see what it does in your clinic before we talk about expanding anything.",
   },
 ];
 
 export const metricCards: MetricCard[] = [
-  { value: "Track", label: "Cancelled slots detected and recovery attempts started" },
-  { value: "Measure", label: "Waitlist offers sent and patient replies captured" },
-  { value: "Monitor", label: "Pending confirmations and staff-owned next actions" },
-  { value: "Review", label: "Policy-safe scheduling decisions across open slots" },
-  { value: "Compare", label: "Manual follow-up load before and after pilot rollout" },
-  { value: "Improve", label: "Recovery throughput across each pilot cycle" },
+  { value: "Track", label: "Every cancelled slot and where it sits in the recovery cycle" },
+  { value: "Measure", label: "Waitlist offers sent, replies received, and slots confirmed" },
+  { value: "Monitor", label: "Pending staff actions and what's been resolved today" },
+  { value: "Review", label: "Recovery decisions and whether they followed clinic rules" },
+  { value: "Compare", label: "Manual follow-up load before and after the pilot" },
+  { value: "Improve", label: "Fill rate and recovery speed across each pilot cycle" },
 ];
 
 export const pricingPackages: PricingPackage[] = [
   {
     name: "Workflow Audit",
-    tagline: "Identify the fastest path to recovered visits with a focused review of your biggest scheduling leaks.",
+    tagline: "Find out exactly where your clinic is losing revenue — and what to fix first.",
     features: [
       "90-minute workflow review",
       "Cancellation leak map",
@@ -362,7 +362,7 @@ export const pricingPackages: PricingPackage[] = [
   },
   {
     name: "Recovery Pilot",
-    tagline: "Launch a focused waitlist-recovery pilot with visible staff workflows and weekly optimization.",
+    tagline: "Get a real waitlist-recovery system running in your clinic, with a team that makes sure it works.",
     features: [
       "Waitlist matching workflows",
       "SMS reply routing",
@@ -375,7 +375,7 @@ export const pricingPackages: PricingPackage[] = [
   },
   {
     name: "Scale-Up",
-    tagline: "Expand the pilot into a multi-location recovery system once the numbers prove the value.",
+    tagline: "Once the pilot proves the numbers, expand to multiple locations with the infrastructure already in place.",
     features: [
       "Everything in Recovery Pilot",
       "Multi-location rollout planning",
@@ -388,75 +388,75 @@ export const pricingPackages: PricingPackage[] = [
 ];
 
 export const processSteps: Step[] = [
-  { number: "01", icon: "MagnifyingGlass", title: "Workflow Audit", copy: "We review your current cancellation rate, recall gaps, and front-desk time allocation before recommending anything." },
-  { number: "02", icon: "Wrench", title: "Configure Relay Layer", copy: "We configure your outreach sequences, timing rules, and escalation paths based on your clinic's schedule and preferences." },
-  { number: "03", icon: "Users", title: "Pilot With Real Staff", copy: "Your front desk runs the system live for 30 days. We monitor, adjust, and fix anything that needs tuning." },
-  { number: "04", icon: "TrendUp", title: "Optimize for Growth", copy: "After the pilot, we review the numbers and expand to recall, confirmation workflows, and front-desk coordination." },
+  { number: "01", icon: "MagnifyingGlass", title: "Workflow Audit", copy: "We review your cancellation rate, recall gaps, and how your team spends its time before recommending a single thing." },
+  { number: "02", icon: "Wrench", title: "Configure Recovery Layer", copy: "We set up your outreach sequences, timing rules, and escalation paths around your clinic's actual schedule and preferences." },
+  { number: "03", icon: "Users", title: "Pilot With Your Real Team", copy: "Your front desk runs the system live for 30 days. We monitor, adjust, and fix anything that needs tuning." },
+  { number: "04", icon: "TrendUp", title: "Review and Expand", copy: "After the pilot, we look at the numbers together and decide what to scale — recall, confirmation workflows, multi-location coordination." },
 ];
 
 export const faqItems: FaqItem[] = [
   {
     question: "Does ClinicRelay connect to our practice management software?",
-    answer: "ClinicRelay can start as a lightweight coordination layer alongside your existing workflow before deeper integrations are considered. This keeps setup fast and keeps risk low. Most clinics are configured within a week.",
+    answer: "ClinicRelay can start as a lightweight layer alongside your existing workflow — no deep integration required upfront. Most clinics are up and running within a week. We talk about deeper connections after the pilot proves its worth.",
   },
   {
     question: "How does the waitlist SMS work?",
-    answer: "When a cancellation is detected, ClinicRelay identifies eligible waitlist patients, generates a personalized recovery offer, and routes it for staff review before dispatch — or sends it automatically, depending on your configuration. Patient replies are routed back to your inbox for a one-click confirm.",
+    answer: "When a cancellation is detected, ClinicRelay identifies eligible waitlist patients, prepares a recovery offer, and either routes it for your team to review first or sends it automatically — depending on how you've set it up. Patient replies come back to your staff queue for a one-click confirm. No chasing required.",
   },
   {
     question: "Do patients need to download an app?",
-    answer: "No app download is required. SMS handles lightweight replies for waitlist recovery and confirmations. When enabled, the patient portal supports intake, insurance review, and appointment details — all accessible by link, no login required.",
+    answer: "No app. SMS handles recovery offers and quick confirmations. When the patient portal is enabled, patients access intake forms and appointment details through a link — no login, no download.",
   },
   {
     question: "Is ClinicRelay HIPAA or PIPEDA compliant?",
-    answer: "ClinicRelay is designed with privacy-aware workflow boundaries, limited operational data collection, and auditability in mind. Formal compliance depends on your clinic configuration, jurisdiction, vendor stack, and legal requirements.",
+    answer: "ClinicRelay is built with privacy-aware workflow limits, minimal data collection, and full audit visibility. Formal compliance depends on your clinic's configuration, jurisdiction, and vendor requirements — we walk through that during your audit.",
   },
   {
     question: "Can we control which patients receive automated messages?",
-    answer: "Yes. You can exclude individual patients, entire patient segments, or turn off any outreach channel at any time. Your team stays in control.",
+    answer: "Yes — by patient, by segment, or by outreach channel. Your team stays in control of who hears from ClinicRelay and how.",
   },
   {
     question: "How long does setup take?",
-    answer: "Most clinics complete the audit and configuration phase within one week. The 30-day pilot begins immediately after.",
+    answer: "Most clinics finish the audit and configuration phase within a week. The 30-day pilot kicks off right after.",
   },
   {
     question: "What if the waitlist SMS doesn't fill the slot?",
-    answer: "If no waitlist patient responds in time, the slot is flagged in your dashboard for manual follow-up. ClinicRelay never silently abandons a recovery attempt.",
+    answer: "If no one responds in time, the slot gets flagged in your dashboard for manual follow-up. ClinicRelay never quietly gives up on a recovery attempt.",
   },
   {
     question: "Can ClinicRelay work across multiple clinic locations?",
-    answer: "Yes. The Pilot Expansion tier supports multi-location groups with a unified dashboard, per-location configuration, and consolidated reporting.",
+    answer: "Yes. The Scale-Up tier supports multi-location groups with a unified dashboard, per-location configuration, and consolidated reporting.",
   },
   {
     question: "What does the monthly performance review include?",
-    answer: "A structured call covering slot fill rate, recall conversion, response times, and any workflow adjustments. You receive a written summary within 24 hours.",
+    answer: "A structured call covering slot fill rate, recall conversion, response times, and workflow tweaks. You get a written summary within 24 hours.",
   },
   {
     question: "How is ClinicRelay different from a generic CRM?",
-    answer: "ClinicRelay is purpose-built for appointment-based clinics. It understands schedules, waitlists, recall cycles, and cancellation patterns. A generic CRM doesn't — and configuration to get there takes months.",
+    answer: "ClinicRelay is built for appointment-based clinics — it understands schedules, waitlists, recall cycles, and cancellation patterns. A generic CRM doesn't. Getting one to do what ClinicRelay does out of the box takes months of configuration.",
   },
 ];
 
 export const readinessFeatures: ReadinessFeature[] = [
   {
     icon: "ShieldCheck",
-    title: "Insurance submitted before visit day",
-    copy: "Patients upload card details and staff see what needs review before check-in, not during it.",
+    title: "Insurance sorted before the patient walks in",
+    copy: "Patients upload coverage details early. Your staff sees what needs review before check-in — not during it.",
   },
   {
     icon: "CheckSquare",
-    title: "Intake status visible to staff",
-    copy: "Pre-visit intake tasks show up in the staff queue so nothing falls through on a busy morning.",
+    title: "Intake tasks visible to staff before the day gets busy",
+    copy: "Pre-visit intake items show up in the staff queue so nothing falls through the cracks on a packed morning.",
   },
   {
     icon: "Receipt",
-    title: "Estimate requests routed for response",
-    copy: "Treatment cost questions become visible staff tasks instead of calls that interrupt the front desk.",
+    title: "Cost questions become tasks, not interruptions",
+    copy: "Treatment estimate requests land in a visible staff queue — not as phone calls that pull someone away from the desk.",
   },
   {
     icon: "Warning",
-    title: "Readiness blockers surfaced early",
-    copy: "Upcoming appointments with unresolved insurance or intake gaps are flagged before appointment day.",
+    title: "Problems flagged before appointment day",
+    copy: "Upcoming visits with unresolved insurance or incomplete intake are surfaced early enough to actually do something about it.",
   },
 ];
 

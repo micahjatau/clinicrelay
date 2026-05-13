@@ -11,9 +11,9 @@ export function Footer() {
               <Image src="/logo-mark.svg" alt="ClinicRelay" width={18} height={18} />
               <p className="font-semibold text-[15px] text-[--cr-text] tracking-tight">ClinicRelay</p>
             </div>
-            <p className="text-xs text-[--cr-muted] mb-4">Front-desk orchestration for appointment-based clinics.</p>
+            <p className="text-xs text-[--cr-muted] mb-4">Slot recovery and front-desk coordination for busy clinics.</p>
             <p className="text-xs text-[--cr-muted] max-w-[28ch] leading-relaxed">
-              Waitlist recovery, patient reminders, booking coordination, and front-desk visibility — in one platform.
+              Fill cancelled slots, catch insurance issues early, and give your team one place to see what needs attention.
             </p>
           </div>
           <div>
