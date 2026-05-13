@@ -1,11 +1,24 @@
+import Image from "next/image";
 import { heroData } from "@/lib/content/clinicrelay-landing";
 import { HeroBento } from "./hero-bento";
 import { HeroCtaButtons } from "./hero-cta-buttons";
 
 export function Hero() {
   return (
-    <section className="min-h-[100dvh] flex items-center bg-[--cr-bg] pt-16">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
+    <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-[--cr-bg] pt-16">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <Image
+          src="/clinicrelay-hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-35"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,250,255,0.96)_0%,rgba(245,250,255,0.88)_38%,rgba(245,250,255,0.64)_100%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(13,148,136,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.12),transparent_28%)]" />
+      </div>
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4">
