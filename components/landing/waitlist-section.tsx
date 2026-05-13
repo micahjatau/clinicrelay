@@ -45,8 +45,13 @@ export function WaitlistSection() {
                     backgroundColor: activeCount > i ? "var(--cr-teal)" : "var(--cr-surface-2)",
                     borderColor: activeCount > i ? "var(--cr-teal)" : "var(--cr-border)",
                     scale: activeCount > i ? 1 : 0.85,
+                    boxShadow: activeCount > i ? "0 0 8px rgba(94, 184, 180, 0.4)" : "0 0 0px rgba(94, 184, 180, 0)",
                   }}
-                  transition={{ duration: 0.2 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut",
+                    boxShadow: { duration: 0.3 }
+                  }}
                 />
                 <motion.p
                   className="text-xs font-semibold text-[--cr-muted] hidden sm:block"
