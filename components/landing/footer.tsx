@@ -17,12 +17,14 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[--cr-text] mb-4">Product</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[--cr-text] mb-4">Explore</p>
             {[
               { label: "Waitlist Recovery", href: "/#waitlist" },
-              { label: "Book a Demo", href: "/demo" },
-              { label: "Workflow Audit", href: "/workflow-audit" },
-              { label: "Pricing", href: "/pricing" },
+              { label: "Pre-Visit Readiness", href: "/#readiness" },
+              { label: "How It Works", href: "/#how-it-works" },
+              { label: "Trust & Compliance", href: "/#trust" },
+              { label: "Pricing", href: "/#pricing" },
+              { label: "FAQ", href: "/#faq" },
             ].map((item) => (
               <a key={item.label} href={item.href} className="block text-sm text-[--cr-muted] hover:text-[--cr-text] mb-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
                 {item.label}
@@ -45,9 +47,9 @@ export function Footer() {
           <p className="text-xs text-[--cr-muted]">© {year} ClinicRelay. All rights reserved.</p>
           <div className="flex gap-6">
             {[
-              { label: "Privacy", href: "/privacy" },
-              { label: "Terms", href: "/terms" },
-              { label: "Demo", href: "/demo" },
+              { label: "Waitlist Recovery", href: "/#waitlist" },
+              { label: "How It Works", href: "/#how-it-works" },
+              { label: "Pricing", href: "/#pricing" },
             ].map((item) => (
               <a key={item.label} href={item.href} className="text-xs text-[--cr-muted] hover:text-[--cr-text] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] rounded">
                 {item.label}

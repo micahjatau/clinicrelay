@@ -53,14 +53,14 @@ export const navLinks: NavLink[] = [
 ];
 
 export const heroData: HeroData = {
-  eyebrow: "Clinic Operations",
-  h1: "Coordinate care before the visit starts.",
+  eyebrow: "Front-Desk Operations",
+  h1: "Your front desk can't recover cancelled slots while they're checking in the next patient.",
   subheadline:
-    "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare insurance and intake tasks, and give staff one place to see what needs attention.",
-  primaryCta: "Request Workflow Audit",
-  secondaryCta: "See Recovery Workflow",
-  trustLine: "Built for clinics that need better appointment recovery and front-desk coordination",
-  badges: ["Cancelled-Slot Recovery", "Pre-Visit Readiness", "Front-Desk Command Center"],
+    "ClinicRelay gives your team a system for same-day slot recovery, pre-visit prep, and daily coordination — so empty slots get filled and your staff isn't on hold with a waitlist patient while someone's standing at the desk.",
+  primaryCta: "Book a Workflow Audit",
+  secondaryCta: "See How Recovery Works",
+  trustLine: "Built for practices where the front desk is already stretched thin",
+  badges: ["Same-Day Slot Recovery", "Pre-Visit Readiness", "Front-Desk Work Queue"],
   bentoCards: [
     { step: "1", label: "Cancelled Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
     { step: "2", label: "Eligible Patient Matched", detail: "3 candidates identified" },
@@ -73,33 +73,33 @@ export const heroData: HeroData = {
 export const painCards: PainCard[] = [
   {
     icon: "CalendarX",
-    title: "Cancelled appointments go unfilled",
-    copy: "Your team calls down a list manually. By the time someone says yes, the day is gone.",
+    title: "Cancelled slots sit empty while your team works the phones",
+    copy: "By the time someone calls through the waitlist and a patient says yes, that window is gone. It's not a staffing problem — it's a process one.",
   },
   {
     icon: "Phone",
-    title: "Front desk is stuck on the phone",
-    copy: "Staff spend hours chasing confirmations instead of serving patients already in the building.",
+    title: "Your front desk is the scheduler, the follow-up team, and the insurance chaser — all at once",
+    copy: "Confirmations, change requests, coverage calls, recalls — all landing at the same desk, at the same time, with the same two people.",
   },
   {
     icon: "ClockClockwise",
-    title: "No-shows cost you twice",
-    copy: "You lose the revenue and you still pay the overhead. A waitlist without a process is just a list.",
+    title: "No-shows cost you the visit and the next slot behind it",
+    copy: "You lose the revenue. You still pay overhead. And the next patient on your waitlist never heard from anyone.",
   },
   {
     icon: "ChartLineDown",
-    title: "Recall falls through the cracks",
-    copy: "Patients due for hygiene or follow-up age out of your schedule invisibly.",
+    title: "Recall patients drift out of your schedule without anyone noticing",
+    copy: "They're due for a follow-up or a preventive visit, but the list doesn't surface them until it's been six months too long.",
   },
   {
     icon: "ShieldWarning",
-    title: "Insurance problems appear at check-in",
-    copy: "Issues that could have been caught before the visit surface on the day — costing staff time and patient trust.",
+    title: "Insurance surprises hit at check-in — not before",
+    copy: "Your staff finds out something's wrong with a patient's coverage while they're standing at the desk. At that point, everyone's day gets harder.",
   },
   {
     icon: "ArrowsSplit",
-    title: "Appointment changes scatter across channels",
-    copy: "Requests arrive by phone, email, and text. Nothing connects. Staff lose track. Patients repeat themselves.",
+    title: "Appointment changes scatter across every channel",
+    copy: "Phone calls. Texts. Emails. Voicemails. Nothing connects. Patients repeat themselves. Staff keep notes only they can find.",
   },
 ];
 

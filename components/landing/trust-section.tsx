@@ -3,7 +3,7 @@ import { trustPillars } from "@/lib/content/clinicrelay-landing";
 
 export function TrustSection() {
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section id="trust" className="py-24 md:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <AnimatedSection className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">Trust & Compliance</p>

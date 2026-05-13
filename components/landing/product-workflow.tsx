@@ -19,7 +19,7 @@ export function ProductWorkflow() {
   const lineInView = useInView(lineRef, { once: true, margin: "-20% 0px" });
 
   return (
-    <section className="py-24 md:py-32 bg-white">
+    <section id="how-it-works" className="py-24 md:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
         <AnimatedSection className="mb-14">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-3">How It Works</p>
