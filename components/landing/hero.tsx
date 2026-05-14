@@ -1,105 +1,88 @@
 "use client";
 
-import { useRef, useEffect } from "react";
-import { motion, useMotionValue, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { heroData } from "@/lib/content/clinicrelay-landing";
 import { HeroBento } from "./hero-bento";
 import { HeroCtaButtons } from "./hero-cta-buttons";
 
+function fadeUp(delay: number) {
+  return {
+    initial: { opacity: 0, y: 12 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] as const, delay },
+  };
+}
+
 export function Hero() {
-  const sectionRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
-  const progress = useMotionValue(0);
 
-  const navOpacity = useTransform(progress, [0, 0.3], [0, 1]);
-  const overlayOpacity = useTransform(progress, [0, 0.5], [0, 1]);
-  const copyOpacity = useTransform(progress, [0.45, 0.6], [0, 1]);
-  const contentY = useTransform(progress, [0.25, 0.65], ["60vh", "0vh"]);
-  const rotationX = useTransform(progress, [0.25, 0.65], [30, 0]);
-
-  useEffect(() => {
-    if (reducedMotion === true) {
-      progress.set(0.65);
-      return;
-    }
-
-    function update() {
-      const el = sectionRef.current;
-      if (!el) return;
-      const scrolled = -el.getBoundingClientRect().top;
-      const range = el.offsetHeight - window.innerHeight;
-      if (range <= 0) return;
-      progress.set(Math.min(1, Math.max(0, scrolled / range)));
-    }
-
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, [reducedMotion, progress]);
+  const motion_props = (delay: number) =>
+    reducedMotion
+      ? {}
+      : fadeUp(delay);
 
   return (
-    <div ref={sectionRef} className={reducedMotion === true ? "min-h-[100dvh]" : "min-h-[250vh]"}>
-      <section className="sticky top-0 h-[100dvh] overflow-hidden relative flex items-center bg-[--cr-bg] pt-16">
-        <div className="pointer-events-none absolute inset-0 -z-10 p-4 md:p-8 flex items-center justify-center">
-          <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "1280/625" }}>
-            <Image
-              src="/clinicrelay-hero-bg.jpg"
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover opacity-60"
-            />
-            <motion.div
-              style={{ opacity: overlayOpacity }}
-              className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,250,255,0.96)_0%,rgba(245,250,255,0.88)_38%,rgba(245,250,255,0.64)_100%)]"
-            />
-            <motion.div
-              style={{ opacity: overlayOpacity }}
-              className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(13,148,136,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.12),transparent_28%)]"
-            />
-          </div>
-        </div>
-        <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              style={{
-                opacity: copyOpacity,
-                y: contentY,
-                rotateX: rotationX,
-                perspective: "1200px"
-              }}
+    <div className="min-h-[100dvh] relative flex items-center bg-[--cr-bg] pt-10 md:pt-16">
+      {/* Background — full-bleed, static, low opacity */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <Image
+          src="/clinicrelay-hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-[0.08]"
+          style={{ filter: "blur(1px)" }}
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,250,255,0.96)_0%,rgba(245,250,255,0.88)_38%,rgba(245,250,255,0.64)_100%)]" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-12 md:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          {/* Left — copy */}
+          <div>
+            <motion.p
+              className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4"
+              {...motion_props(0)}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4">
-                {heroData.eyebrow}
-              </p>
-              <h1 className="text-4xl md:text-6xl tracking-tighter font-semibold text-[--cr-text] leading-[0.95] mb-8">
-                {heroData.h1}
-              </h1>
-              <p className="text-base leading-relaxed text-[--cr-muted] max-w-[62ch] mb-8">
-                {heroData.subheadline}
-              </p>
-              <p className="text-xs text-[--cr-muted] mb-3 md:hidden">{heroData.trustLine}</p>
+              {heroData.eyebrow}
+            </motion.p>
+            <motion.h1
+              className="text-4xl md:text-6xl tracking-tighter font-semibold text-[--cr-text] leading-[0.95] mb-8"
+              {...motion_props(0.1)}
+            >
+              {heroData.h1}
+            </motion.h1>
+            <motion.p
+              className="text-base leading-relaxed text-[--cr-muted] max-w-[62ch] mb-8"
+              {...motion_props(0.2)}
+            >
+              {heroData.subheadline}
+            </motion.p>
+            <motion.div {...motion_props(0.3)}>
               <HeroCtaButtons />
-              <p className="hidden md:block text-xs text-[--cr-muted] mt-4 mb-6">{heroData.trustLine}</p>
-              <div className="flex flex-wrap gap-2">
-                {heroData.badges.map((badge) => (
-                  <span
-                    key={badge}
-                    className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]"
-                  >
-                    {badge}
-                  </span>
-                ))}
-              </div>
+              <p className="text-xs text-[--cr-muted] mt-4 mb-6">{heroData.trustLine}</p>
             </motion.div>
-            <motion.div style={{ opacity: copyOpacity, y: contentY }}>
-              <HeroBento cards={heroData.bentoCards} />
+            <motion.div className="flex flex-wrap gap-2" {...motion_props(0.4)}>
+              {heroData.badges.map((badge) => (
+                <span
+                  key={badge}
+                  className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]"
+                >
+                  {badge}
+                </span>
+              ))}
             </motion.div>
           </div>
+
+          {/* Right — workflow cards */}
+          <motion.div {...motion_props(0.2)}>
+            <HeroBento cards={heroData.bentoCards} />
+          </motion.div>
         </div>
-      </section>
+      </div>
     </div>
   );
 }
