@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion, motionValue } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion, useMotionValue, useTransform, useReducedMotion } from "framer-motion";
 import Image from "next/image";
 import { heroData } from "@/lib/content/clinicrelay-landing";
 import { HeroBento } from "./hero-bento";
@@ -10,21 +10,33 @@ import { HeroCtaButtons } from "./hero-cta-buttons";
 export function Hero() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const reducedMotion = useReducedMotion();
+  const progress = useMotionValue(0);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
+  const overlayOpacity = useTransform(progress, [0, 0.45], [0, 1]);
+  const copyOpacity = useTransform(progress, [0.35, 0.7], [0, 1]);
 
-  const rawOverlayOpacity = useTransform(scrollYProgress, [0, 0.45], [0, 1]);
-  const rawCopyOpacity = useTransform(scrollYProgress, [0.35, 0.7], [0, 1]);
-  const staticOne = useRef(motionValue(1));
+  useEffect(() => {
+    if (reducedMotion === true) {
+      progress.set(1);
+      return;
+    }
 
-  const overlayOpacity = reducedMotion === true ? staticOne.current : rawOverlayOpacity;
-  const copyOpacity = reducedMotion === true ? staticOne.current : rawCopyOpacity;
+    function update() {
+      const el = sectionRef.current;
+      if (!el) return;
+      const scrolled = -el.getBoundingClientRect().top;
+      const range = el.offsetHeight - window.innerHeight;
+      if (range <= 0) return;
+      progress.set(Math.min(1, Math.max(0, scrolled / range)));
+    }
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    return () => window.removeEventListener("scroll", update);
+  }, [reducedMotion, progress]);
 
   return (
-    <div ref={sectionRef} className={reducedMotion ? "min-h-[100dvh]" : "min-h-[250vh]"}>
+    <div ref={sectionRef} className={reducedMotion === true ? "min-h-[100dvh]" : "min-h-[250vh]"}>
       <section className="sticky top-0 h-[100dvh] overflow-hidden relative flex items-center bg-[--cr-bg] pt-16">
         <div className="pointer-events-none absolute inset-0 -z-10">
           <Image
