@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import Image from "next/image";
+import { useState } from "react";
 import { List, X } from "@phosphor-icons/react";
 import { useDemoModal } from "@/context/demo-modal-context";
 import { navLinks } from "@/lib/content/clinicrelay-landing";
@@ -10,34 +9,10 @@ import { Button } from "@/components/ui/button";
 
 export function Nav() {
   const { open } = useDemoModal();
-  const [navOpacity, setNavOpacity] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => {
-      const scrolled = window.scrollY;
-      const heroHeight = window.innerHeight;
-      const fadeStart = heroHeight * 0.3;
-      const fadeEnd = heroHeight * 0.8;
-
-      if (scrolled < fadeStart) {
-        setNavOpacity(scrolled / fadeStart);
-      } else if (scrolled < fadeEnd) {
-        setNavOpacity(1);
-      } else {
-        setNavOpacity(1);
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <motion.header
-      style={{ opacity: navOpacity }}
-      className="fixed top-0 inset-x-0 z-40 transition-all duration-500 bg-white border-b border-[--cr-border]"
-    >
+    <header className="fixed top-0 inset-x-0 z-40 bg-white border-b border-[--cr-border]">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[4.25rem] flex items-center justify-between md:grid md:grid-cols-[auto_1fr_auto] md:gap-6">
         <a href="#" className="flex items-center gap-2.5">
           <Image src="/logo-mark.svg" alt="ClinicRelay" width={24} height={24} priority />
@@ -97,6 +72,6 @@ export function Nav() {
           </Button>
         </div>
       )}
-    </motion.header>
+    </header>
   );
 }
