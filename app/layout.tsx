@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { Analytics } from "@vercel/analytics/next";
 import { DemoModalProvider } from "@/context/demo-modal-context";
 import { DemoModalLazy } from "@/components/landing/demo-modal-lazy";
 import { PostHogProvider } from "@/components/providers/posthog-provider";
 import "./globals.css";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -42,7 +45,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body>
         <PostHogProvider>
           <DemoModalProvider>
