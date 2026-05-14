@@ -20,8 +20,8 @@ export function Hero() {
   const rawCopyOpacity = useTransform(scrollYProgress, [0.35, 0.7], [0, 1]);
   const staticOne = useRef(motionValue(1));
 
-  const overlayOpacity = reducedMotion ? staticOne.current : rawOverlayOpacity;
-  const copyOpacity = reducedMotion ? staticOne.current : rawCopyOpacity;
+  const overlayOpacity = reducedMotion === true ? staticOne.current : rawOverlayOpacity;
+  const copyOpacity = reducedMotion === true ? staticOne.current : rawCopyOpacity;
 
   return (
     <div ref={sectionRef} className={reducedMotion ? "min-h-[100dvh]" : "min-h-[250vh]"}>
