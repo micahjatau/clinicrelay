@@ -41,15 +41,15 @@ export function Hero() {
   return (
     <div ref={sectionRef} className={reducedMotion === true ? "min-h-[100dvh]" : "min-h-[250vh]"}>
       <section className="sticky top-0 h-[100dvh] overflow-hidden relative flex items-center bg-[--cr-bg] pt-16">
-        <div className="pointer-events-none absolute inset-0 -z-10 p-4 md:p-8">
-          <div className="relative w-full h-full rounded-2xl overflow-hidden">
+        <div className="pointer-events-none absolute inset-0 -z-10 p-4 md:p-8 flex items-center justify-center">
+          <div className="relative w-full rounded-2xl overflow-hidden" style={{ aspectRatio: "1280/625" }}>
             <Image
               src="/clinicrelay-hero-bg.jpg"
               alt=""
               fill
               priority
               sizes="100vw"
-              className="object-cover object-center opacity-60"
+              className="object-cover opacity-60"
             />
             <motion.div
               style={{ opacity: overlayOpacity }}
