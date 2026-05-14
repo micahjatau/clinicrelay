@@ -14,9 +14,9 @@ export function Hero() {
 
   const navOpacity = useTransform(progress, [0, 0.3], [0, 1]);
   const overlayOpacity = useTransform(progress, [0, 0.5], [0, 1]);
-  const copyOpacity = useTransform(progress, [0.25, 0.65], [0, 1]);
-  const contentY = useTransform(progress, [0.25, 0.65], [120, 0]);
-  const rotationX = useTransform(progress, [0.25, 0.65], [75, 0]);
+  const copyOpacity = useTransform(progress, [0.45, 0.6], [0, 1]);
+  const contentY = useTransform(progress, [0.25, 0.65], ["60vh", "0vh"]);
+  const rotationX = useTransform(progress, [0.25, 0.65], [30, 0]);
 
   useEffect(() => {
     if (reducedMotion === true) {
