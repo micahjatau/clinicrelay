@@ -18,7 +18,7 @@ export function Hero() {
   const reducedMotion = useReducedMotion();
 
   const motion_props = (delay: number) =>
-    reducedMotion
+    reducedMotion === true
       ? {}
       : fadeUp(delay);
 
