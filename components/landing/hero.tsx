@@ -36,6 +36,17 @@ export function Hero() {
           style={{ filter: "blur(1px)" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,250,255,0.96)_0%,rgba(245,250,255,0.88)_38%,rgba(245,250,255,0.64)_100%)]" />
+        {/* Faint dot-grid — depth without competing with headline */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle, rgba(13, 148, 136, 0.09) 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+            opacity: 0.5,
+          }}
+        />
       </div>
 
       {/* Content */}
