@@ -1,9 +1,28 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform, useReducedMotion, motionValue } from "framer-motion";
 import Image from "next/image";
 import { heroData } from "@/lib/content/clinicrelay-landing";
 import { HeroBento } from "./hero-bento";
 import { HeroCtaButtons } from "./hero-cta-buttons";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const reducedMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const rawOverlayOpacity = useTransform(scrollYProgress, [0, 0.45], [0, 1]);
+  const rawCopyOpacity = useTransform(scrollYProgress, [0.35, 0.7], [0, 1]);
+  const staticOne = useRef(motionValue(1));
+
+  const overlayOpacity = reducedMotion ? staticOne.current : rawOverlayOpacity;
+  const copyOpacity = reducedMotion ? staticOne.current : rawCopyOpacity;
+
   return (
     <section className="relative min-h-[100dvh] flex items-center overflow-hidden bg-[--cr-bg] pt-16">
       <div className="pointer-events-none absolute inset-0 -z-10">
