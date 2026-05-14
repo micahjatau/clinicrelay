@@ -13,11 +13,12 @@ export function Hero() {
   const progress = useMotionValue(0);
 
   const overlayOpacity = useTransform(progress, [0, 0.45], [0, 1]);
-  const copyOpacity = useTransform(progress, [0.35, 0.7], [0, 1]);
+  const copyOpacity = useTransform(progress, [0.35, 0.65, 0.92], [0, 1, 0]);
+  const contentY = useTransform(progress, [0.6, 1.0], [0, -90]);
 
   useEffect(() => {
     if (reducedMotion === true) {
-      progress.set(1);
+      progress.set(0.65);
       return;
     }
 
@@ -45,7 +46,7 @@ export function Hero() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center opacity-60"
+            className="object-cover object-center opacity-30"
           />
           <motion.div
             style={{ opacity: overlayOpacity }}
@@ -58,7 +59,7 @@ export function Hero() {
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div style={{ opacity: copyOpacity }}>
+            <motion.div style={{ opacity: copyOpacity, y: contentY }}>
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4">
                 {heroData.eyebrow}
               </p>
@@ -82,7 +83,7 @@ export function Hero() {
                 ))}
               </div>
             </motion.div>
-            <motion.div style={{ opacity: copyOpacity }}>
+            <motion.div style={{ opacity: copyOpacity, y: contentY }}>
               <HeroBento cards={heroData.bentoCards} />
             </motion.div>
           </div>

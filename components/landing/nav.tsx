@@ -13,14 +13,14 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.6);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-40 transition-shadow duration-200 ${
+      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
         scrolled ? "bg-white/95 backdrop-blur-sm border-b border-[--cr-border] shadow-sm" : "bg-transparent"
       }`}
     >
