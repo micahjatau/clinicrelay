@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 import { useDemoModal } from "@/context/demo-modal-context";
@@ -9,20 +10,33 @@ import { Button } from "@/components/ui/button";
 
 export function Nav() {
   const { open } = useDemoModal();
-  const [scrolled, setScrolled] = useState(false);
+  const [navOpacity, setNavOpacity] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.6);
+    const onScroll = () => {
+      const scrolled = window.scrollY;
+      const heroHeight = window.innerHeight;
+      const fadeStart = heroHeight * 0.3;
+      const fadeEnd = heroHeight * 0.8;
+
+      if (scrolled < fadeStart) {
+        setNavOpacity(scrolled / fadeStart);
+      } else if (scrolled < fadeEnd) {
+        setNavOpacity(1);
+      } else {
+        setNavOpacity(1);
+      }
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-40 transition-all duration-500 ${
-        scrolled ? "bg-white/95 backdrop-blur-sm border-b border-[--cr-border] shadow-sm" : "bg-transparent"
-      }`}
+    <motion.header
+      style={{ opacity: navOpacity }}
+      className="fixed top-0 inset-x-0 z-40 transition-all duration-500 bg-transparent"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[4.25rem] flex items-center justify-between md:grid md:grid-cols-[auto_1fr_auto] md:gap-6">
         <a href="#" className="flex items-center gap-2.5">
@@ -83,6 +97,6 @@ export function Nav() {
           </Button>
         </div>
       )}
-    </header>
+    </motion.header>
   );
 }

@@ -12,9 +12,10 @@ export function Hero() {
   const reducedMotion = useReducedMotion();
   const progress = useMotionValue(0);
 
-  const overlayOpacity = useTransform(progress, [0, 0.45], [0, 1]);
-  const copyOpacity = useTransform(progress, [0.35, 0.65, 0.92], [0, 1, 0]);
-  const contentY = useTransform(progress, [0.6, 1.0], [0, -90]);
+  const navOpacity = useTransform(progress, [0, 0.3], [0, 1]);
+  const overlayOpacity = useTransform(progress, [0, 0.5], [0, 1]);
+  const copyOpacity = useTransform(progress, [0.25, 0.65], [0, 1]);
+  const contentY = useTransform(progress, [0.25, 0.65], [80, 0]);
 
   useEffect(() => {
     if (reducedMotion === true) {
@@ -39,23 +40,25 @@ export function Hero() {
   return (
     <div ref={sectionRef} className={reducedMotion === true ? "min-h-[100dvh]" : "min-h-[250vh]"}>
       <section className="sticky top-0 h-[100dvh] overflow-hidden relative flex items-center bg-[--cr-bg] pt-16">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <Image
-            src="/clinicrelay-hero-bg.jpg"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center opacity-30"
-          />
-          <motion.div
-            style={{ opacity: overlayOpacity }}
-            className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,250,255,0.96)_0%,rgba(245,250,255,0.88)_38%,rgba(245,250,255,0.64)_100%)]"
-          />
-          <motion.div
-            style={{ opacity: overlayOpacity }}
-            className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(13,148,136,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.12),transparent_28%)]"
-          />
+        <div className="pointer-events-none absolute inset-0 -z-10 p-4 md:p-8">
+          <div className="relative w-full h-full rounded-2xl overflow-hidden">
+            <Image
+              src="/clinicrelay-hero-bg.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center opacity-60"
+            />
+            <motion.div
+              style={{ opacity: overlayOpacity }}
+              className="absolute inset-0 bg-[linear-gradient(90deg,rgba(245,250,255,0.96)_0%,rgba(245,250,255,0.88)_38%,rgba(245,250,255,0.64)_100%)]"
+            />
+            <motion.div
+              style={{ opacity: overlayOpacity }}
+              className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(13,148,136,0.14),transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(59,130,246,0.12),transparent_28%)]"
+            />
+          </div>
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
