@@ -15,7 +15,8 @@ export function Hero() {
   const navOpacity = useTransform(progress, [0, 0.3], [0, 1]);
   const overlayOpacity = useTransform(progress, [0, 0.5], [0, 1]);
   const copyOpacity = useTransform(progress, [0.25, 0.65], [0, 1]);
-  const contentY = useTransform(progress, [0.25, 0.65], [80, 0]);
+  const contentY = useTransform(progress, [0.25, 0.65], [120, 0]);
+  const rotationX = useTransform(progress, [0.25, 0.65], [75, 0]);
 
   useEffect(() => {
     if (reducedMotion === true) {
@@ -62,7 +63,14 @@ export function Hero() {
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <motion.div style={{ opacity: copyOpacity, y: contentY }}>
+            <motion.div
+              style={{
+                opacity: copyOpacity,
+                y: contentY,
+                rotateX: rotationX,
+                perspective: "1200px"
+              }}
+            >
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4">
                 {heroData.eyebrow}
               </p>

@@ -36,7 +36,7 @@ export function Nav() {
   return (
     <motion.header
       style={{ opacity: navOpacity }}
-      className="fixed top-0 inset-x-0 z-40 transition-all duration-500 bg-transparent"
+      className="fixed top-0 inset-x-0 z-40 transition-all duration-500 bg-white border-b border-[--cr-border]"
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-10 h-[4.25rem] flex items-center justify-between md:grid md:grid-cols-[auto_1fr_auto] md:gap-6">
         <a href="#" className="flex items-center gap-2.5">
