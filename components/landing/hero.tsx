@@ -46,7 +46,7 @@ export function Hero() {
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-10 w-full py-28 md:py-36">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div>
+            <motion.div style={{ opacity: copyOpacity }}>
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[--cr-teal] mb-4">
                 {heroData.eyebrow}
               </p>
@@ -69,8 +69,10 @@ export function Hero() {
                   </span>
                 ))}
               </div>
-            </div>
-            <HeroBento cards={heroData.bentoCards} />
+            </motion.div>
+            <motion.div style={{ opacity: copyOpacity }}>
+              <HeroBento cards={heroData.bentoCards} />
+            </motion.div>
           </div>
         </div>
       </section>
