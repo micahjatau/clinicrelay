@@ -1,0 +1,29 @@
+<svg width="960" height="720" viewBox="0 0 960 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pre-visit readiness checklist interface</title>
+  <desc id="desc">A clinic operations screen showing insurance, intake, cost, and readiness tasks before an appointment.</desc>
+  <rect width="960" height="720" rx="44" fill="#F5FAFF"/>
+  <rect x="72" y="72" width="816" height="576" rx="34" fill="white" stroke="#D7E4E2" stroke-width="2"/>
+  <rect x="112" y="116" width="280" height="36" rx="18" fill="#DDF3F1"/>
+  <rect x="112" y="178" width="420" height="20" rx="10" fill="#203A38" opacity="0.92"/>
+  <rect x="112" y="212" width="330" height="16" rx="8" fill="#72847F" opacity="0.58"/>
+  <rect x="112" y="284" width="736" height="84" rx="24" fill="#F8FBFB" stroke="#D7E4E2"/>
+  <circle cx="154" cy="326" r="19" fill="#0D9488"/>
+  <path d="M145 326.5L151.5 333L164 319" stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="196" y="307" width="172" height="16" rx="8" fill="#203A38"/>
+  <rect x="196" y="334" width="286" height="12" rx="6" fill="#72847F" opacity="0.5"/>
+  <rect x="690" y="310" width="110" height="32" rx="16" fill="#DDF3F1"/>
+  <rect x="112" y="392" width="736" height="84" rx="24" fill="#FFF8ED" stroke="#F0C674"/>
+  <circle cx="154" cy="434" r="19" fill="#B7791F"/>
+  <path d="M154 421V437" stroke="white" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="154" cy="445" r="2.8" fill="white"/>
+  <rect x="196" y="415" width="198" height="16" rx="8" fill="#203A38"/>
+  <rect x="196" y="442" width="338" height="12" rx="6" fill="#72847F" opacity="0.5"/>
+  <rect x="676" y="418" width="124" height="32" rx="16" fill="#FCE8C0"/>
+  <rect x="112" y="500" width="736" height="84" rx="24" fill="#F8FBFB" stroke="#D7E4E2"/>
+  <circle cx="154" cy="542" r="19" fill="#0D9488" opacity="0.22"/>
+  <circle cx="154" cy="542" r="8" fill="#0D9488"/>
+  <rect x="196" y="523" width="215" height="16" rx="8" fill="#203A38"/>
+  <rect x="196" y="550" width="306" height="12" rx="6" fill="#72847F" opacity="0.5"/>
+  <rect x="112" y="612" width="276" height="4" rx="2" fill="#0D9488"/>
+  <rect x="388" y="612" width="460" height="4" rx="2" fill="#D7E4E2"/>
+</svg>
