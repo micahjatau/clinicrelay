@@ -46,15 +46,21 @@ export function UseCases() {
           ))}
         </div>
 
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode="popLayout" initial={false}>
           <motion.div
             key={activeIndex}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            whileHover={{ y: -4 }}
-            transition={{ type: "spring", stiffness: 120, damping: 20 }}
-            className="group grid gap-8 overflow-hidden rounded-[2rem] border border-[--cr-border] bg-white p-6 md:p-8 lg:p-10 grid-cols-1 md:grid-cols-[1.05fr_0.95fr]"
+            layout
+            initial={{ opacity: 0, y: 8, scale: 0.996 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -6, scale: 0.996 }}
+            whileHover={{ y: -4, transition: { type: "spring", stiffness: 120, damping: 22 } }}
+            transition={{
+              opacity: { duration: 0.28, ease: "easeOut" },
+              y: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
+              scale: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
+              layout: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
+            }}
+            className="group grid gap-8 overflow-hidden rounded-[2rem] border border-[--cr-border] bg-white p-6 md:p-8 lg:p-10 grid-cols-1 md:grid-cols-[1.05fr_0.95fr] will-change-transform"
             style={{ boxShadow: "var(--cr-shadow)" }}
           >
             <div className="flex flex-col justify-center">
