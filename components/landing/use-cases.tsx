@@ -44,24 +44,43 @@ export function UseCases() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="grid gap-8 items-center rounded-[2rem] border border-[--cr-border] bg-white p-10 grid-cols-1 md:grid-cols-[1.4fr_1fr]"
+            whileHover={{ y: -4 }}
+            transition={{ type: "spring", stiffness: 120, damping: 20 }}
+            className="group grid gap-8 overflow-hidden rounded-[2rem] border border-[--cr-border] bg-white p-6 md:p-8 lg:p-10 grid-cols-1 md:grid-cols-[1.05fr_0.95fr]"
             style={{ boxShadow: "var(--cr-shadow)" }}
           >
-            <div>
+            <div className="flex flex-col justify-center">
               <UseCaseIcon icon={iconMap[active.icon]} />
-              <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{active.title}</h3>
-              <p className="text-base text-[--cr-muted] leading-relaxed mb-4">{active.copy}</p>
+              <h3 className="text-xl md:text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">{active.title}</h3>
+              <p className="text-base text-[--cr-muted] leading-relaxed mb-5 max-w-[58ch]">{active.copy}</p>
               <div className="flex flex-wrap gap-2">
                 {active.pills.map((pill) => (
-                  <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-[--cr-border] text-[--cr-muted] hover:border-[--cr-teal]">
+                  <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-[--cr-border] text-[--cr-muted] transition-colors duration-300 group-hover:border-[--cr-teal]/40">
                     {pill}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl bg-[--cr-surface-2] border border-[--cr-border] p-6 flex items-center justify-center min-h-[140px]">
-              <p className="text-sm font-semibold text-[--cr-teal]">{active.type} Clinic Workflow</p>
+            <div className="relative min-h-[230px] overflow-hidden rounded-[1.5rem] border border-[--cr-border] bg-[--cr-surface-2] md:min-h-[320px]">
+              <img
+                src={active.image.src}
+                alt={active.image.alt}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                style={{ objectPosition: active.image.position ?? "center" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1f1d]/70 via-[#0d1f1d]/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-65" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                <div className="rounded-full border border-white/20 bg-white/90 px-3 py-1.5 shadow-[0_12px_30px_-18px_rgba(13,31,29,0.8)] backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
+                  <p className="text-xs font-semibold text-[--cr-text]">{active.type} clinic workflow</p>
+                </div>
+                {active.image.credit ? (
+                  <p className="max-w-[15ch] text-right text-[10px] font-medium leading-tight text-white/80">
+                    {active.image.credit}
+                  </p>
+                ) : null}
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

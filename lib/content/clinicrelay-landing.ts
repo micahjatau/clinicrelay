@@ -30,6 +30,12 @@ export type UseCase = {
   title: string;
   copy: string;
   pills: string[];
+  image: {
+    src: string;
+    alt: string;
+    position?: string;
+    credit?: string;
+  };
 };
 export type TrustPillar = { title: string; copy: string };
 export type MetricCard = { value: string; label: string };
@@ -292,6 +298,11 @@ export const useCases: UseCase[] = [
     title: "Dental practices",
     copy: "Fill hygiene cancellations same-day. Surface recall opportunities for preventive appointments. Reduce no-shows for high-value procedures.",
     pills: ["Hygiene recall", "Same-day fill", "Procedure reminders"],
+    image: {
+      src: "/use-cases/dental-practice.jpg",
+      alt: "Dental practice exam room with a clinician and patient reviewing care details.",
+      position: "center",
+    },
   },
   {
     type: "Family Medicine",
@@ -299,6 +310,12 @@ export const useCases: UseCase[] = [
     title: "Family medicine clinics",
     copy: "Manage high appointment volume with automated confirmations and smart waitlist prioritization.",
     pills: ["Confirmation flows", "Waitlist matching", "Multi-provider scheduling"],
+    image: {
+      src: "/use-cases/family-medicine-clinic.jpg",
+      alt: "Outpatient clinic waiting room with chairs and patient check-in space.",
+      position: "center",
+      credit: "Photo: Harrison Keely / CC BY 4.0",
+    },
   },
   {
     type: "Optometry",
@@ -306,6 +323,11 @@ export const useCases: UseCase[] = [
     title: "Eye care clinics",
     copy: "Annual exam recall, contact lens follow-ups, and frame adjustment reminders — surfaced for staff action.",
     pills: ["Annual recall", "Product follow-up", "Appointment reminders"],
+    image: {
+      src: "/use-cases/optometry-clinic.jpg",
+      alt: "Optometry exam room with a clinician using a phoropter during an eye exam.",
+      position: "center",
+    },
   },
   {
     type: "Dermatology",
@@ -313,6 +335,11 @@ export const useCases: UseCase[] = [
     title: "Dermatology clinics",
     copy: "Long waitlists and high cancellation rates are common. ClinicRelay turns that into an advantage.",
     pills: ["Waitlist priority", "Cancellation recovery", "Follow-up sequences"],
+    image: {
+      src: "/use-cases/dermatology-clinic.jpg",
+      alt: "Dermatology consultation room with clinicians speaking with a patient.",
+      position: "center",
+    },
   },
 ];
 
