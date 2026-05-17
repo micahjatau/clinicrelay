@@ -27,13 +27,21 @@ export function UseCases() {
             <button
               key={uc.type}
               onClick={() => setActiveIndex(i)}
-              className={`text-sm font-semibold px-4 py-2 rounded-full border transition-colors ${
+              aria-pressed={activeIndex === i}
+              className={`relative rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] focus-visible:ring-offset-2 active:translate-y-px ${
                 activeIndex === i
-                  ? "bg-[--cr-teal] text-white border-[--cr-teal]"
-                  : "bg-white text-[--cr-muted] border-[--cr-border] hover:border-[--cr-teal] hover:text-[--cr-teal]"
+                  ? "border-[#0d1f1d] bg-[#0d1f1d] text-white shadow-[0_14px_28px_-18px_rgba(13,31,29,0.8)]"
+                  : "border-[--cr-border] bg-white text-[--cr-muted] hover:border-[--cr-teal] hover:bg-[--cr-teal-light] hover:text-[--cr-teal-dark]"
               }`}
             >
-              {uc.type}
+              <span className="flex items-center gap-2">
+                <span
+                  className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                    activeIndex === i ? "bg-[#8EE4DD]" : "bg-[--cr-border]"
+                  }`}
+                />
+                {uc.type}
+              </span>
             </button>
           ))}
         </div>
