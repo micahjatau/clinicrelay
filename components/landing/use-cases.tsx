@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Tooth, FirstAid, Eye, Bandaids } from "@phosphor-icons/react/dist/ssr";
 import { AnimatedSection } from "./animated-section";
 import { useCases } from "@/lib/content/clinicrelay-landing";
@@ -9,8 +9,71 @@ import { motion, AnimatePresence } from "framer-motion";
 const iconMap: Record<string, React.ElementType> = { Tooth, FirstAid, Eye, Bandaids };
 
 export function UseCases() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = useCases[activeIndex];
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [displayedIndex, setDisplayedIndex] = useState(0);
+  const [isCardVisible, setIsCardVisible] = useState(true);
+  const nextIndexRef = useRef<number | null>(null);
+  const imagePreloadRef = useRef<Map<string, Promise<void>>>(new Map());
+  const active = useCases[displayedIndex];
+
+  const preloadUseCaseImage = useCallback((index: number) => {
+    const src = useCases[index]?.image.src;
+
+    if (!src || typeof window === "undefined") {
+      return Promise.resolve();
+    }
+
+    const cached = imagePreloadRef.current.get(src);
+
+    if (cached) {
+      return cached;
+    }
+
+    const preload = new Promise<void>((resolve) => {
+      const image = new Image();
+
+      image.onload = () => {
+        image.decode?.().catch(() => undefined).finally(resolve);
+      };
+      image.onerror = () => resolve();
+      image.src = src;
+    });
+
+    imagePreloadRef.current.set(src, preload);
+    return preload;
+  }, []);
+
+  const handleUseCaseSelect = useCallback((index: number) => {
+    if (index === selectedIndex) {
+      return;
+    }
+
+    setSelectedIndex(index);
+    nextIndexRef.current = index;
+    void preloadUseCaseImage(index);
+    setIsCardVisible(false);
+  }, [preloadUseCaseImage, selectedIndex]);
+
+  const handleExitComplete = useCallback(() => {
+    const completeQueuedTransition = async () => {
+      let nextIndex = nextIndexRef.current;
+
+      while (nextIndex !== null) {
+        await preloadUseCaseImage(nextIndex);
+
+        if (nextIndexRef.current === nextIndex) {
+          setDisplayedIndex(nextIndex);
+          nextIndexRef.current = null;
+          setIsCardVisible(true);
+          return;
+        }
+
+        nextIndex = nextIndexRef.current;
+      }
+    };
+
+    void completeQueuedTransition();
+  }, [preloadUseCaseImage]);
 
   return (
     <section className="py-24 md:py-32 bg-[--cr-bg]">
@@ -26,10 +89,12 @@ export function UseCases() {
           {useCases.map((uc, i) => (
             <button
               key={uc.type}
-              onClick={() => setActiveIndex(i)}
-              aria-pressed={activeIndex === i}
+              onClick={() => handleUseCaseSelect(i)}
+              onFocus={() => void preloadUseCaseImage(i)}
+              onMouseEnter={() => void preloadUseCaseImage(i)}
+              aria-pressed={selectedIndex === i}
               className={`relative rounded-full border px-4 py-2 text-sm font-semibold shadow-sm transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--cr-teal] focus-visible:ring-offset-2 active:translate-y-px ${
-                activeIndex === i
+                selectedIndex === i
                   ? "border-[#0d1f1d] bg-[#0d1f1d] text-white shadow-[0_14px_28px_-18px_rgba(13,31,29,0.8)]"
                   : "border-[--cr-border] bg-white text-[--cr-muted] hover:border-[--cr-teal] hover:bg-[--cr-teal-light] hover:text-[--cr-teal-dark]"
               }`}
@@ -37,7 +102,7 @@ export function UseCases() {
               <span className="flex items-center gap-2">
                 <span
                   className={`h-1.5 w-1.5 rounded-full transition-colors ${
-                    activeIndex === i ? "bg-[#8EE4DD]" : "bg-[--cr-border]"
+                    selectedIndex === i ? "bg-[#8EE4DD]" : "bg-[--cr-border]"
                   }`}
                 />
                 {uc.type}
@@ -46,57 +111,68 @@ export function UseCases() {
           ))}
         </div>
 
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
-            key={activeIndex}
-            layout
-            initial={{ opacity: 0, y: 8, scale: 0.996 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -6, scale: 0.996 }}
-            whileHover={{ y: -4, transition: { type: "spring", stiffness: 120, damping: 22 } }}
-            transition={{
-              opacity: { duration: 0.28, ease: "easeOut" },
-              y: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
-              scale: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
-              layout: { duration: 0.42, ease: [0.22, 1, 0.36, 1] },
-            }}
-            className="group grid gap-8 overflow-hidden rounded-[2rem] border border-[--cr-border] bg-white p-6 md:p-8 lg:p-10 grid-cols-1 md:grid-cols-[1.05fr_0.95fr] will-change-transform"
-            style={{ boxShadow: "var(--cr-shadow)" }}
-          >
-            <div className="flex flex-col justify-center">
-              <UseCaseIcon icon={iconMap[active.icon]} />
-              <h3 className="text-xl md:text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">{active.title}</h3>
-              <p className="text-base text-[--cr-muted] leading-relaxed mb-5 max-w-[58ch]">{active.copy}</p>
-              <div className="flex flex-wrap gap-2">
-                {active.pills.map((pill) => (
-                  <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-[--cr-border] text-[--cr-muted] transition-colors duration-300 group-hover:border-[--cr-teal]/40">
-                    {pill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="relative min-h-[230px] overflow-hidden rounded-[1.5rem] border border-[--cr-border] bg-[--cr-surface-2] md:min-h-[320px]">
-              <img
-                src={active.image.src}
-                alt={active.image.alt}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
-                style={{ objectPosition: active.image.position ?? "center" }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0d1f1d]/70 via-[#0d1f1d]/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-65" />
-              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
-                <div className="rounded-full border border-white/20 bg-white/90 px-3 py-1.5 shadow-[0_12px_30px_-18px_rgba(13,31,29,0.8)] backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
-                  <p className="text-xs font-semibold text-[--cr-text]">{active.type} clinic workflow</p>
+        <AnimatePresence mode="wait" initial={false} onExitComplete={handleExitComplete}>
+          {isCardVisible ? (
+            <motion.div
+              key={displayedIndex}
+              layout
+              initial={{ opacity: 0, y: 6, scale: 0.998 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{
+                opacity: 0,
+                y: -4,
+                scale: 0.998,
+                transition: {
+                  opacity: { duration: 0.14, ease: "easeOut" },
+                  y: { duration: 0.18, ease: [0.4, 0, 1, 1] },
+                  scale: { duration: 0.18, ease: "easeOut" },
+                },
+              }}
+              whileHover={{ y: -4, transition: { type: "spring", stiffness: 120, damping: 22 } }}
+              transition={{
+                opacity: { duration: 0.34, ease: [0.16, 1, 0.3, 1] },
+                y: { duration: 0.48, ease: [0.16, 1, 0.3, 1] },
+                scale: { duration: 0.48, ease: [0.16, 1, 0.3, 1] },
+                layout: { duration: 0.48, ease: [0.16, 1, 0.3, 1] },
+              }}
+              className="group grid gap-8 overflow-hidden rounded-[2rem] border border-[--cr-border] bg-white p-6 md:p-8 lg:p-10 grid-cols-1 md:grid-cols-[1.05fr_0.95fr] will-change-transform"
+              style={{ boxShadow: "var(--cr-shadow)" }}
+            >
+              <div className="flex flex-col justify-center">
+                <UseCaseIcon icon={iconMap[active.icon]} />
+                <h3 className="text-xl md:text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">{active.title}</h3>
+                <p className="text-base text-[--cr-muted] leading-relaxed mb-5 max-w-[58ch]">{active.copy}</p>
+                <div className="flex flex-wrap gap-2">
+                  {active.pills.map((pill) => (
+                    <span key={pill} className="text-xs font-semibold px-3 py-1.5 rounded-full bg-white border border-[--cr-border] text-[--cr-muted] transition-colors duration-300 group-hover:border-[--cr-teal]/40">
+                      {pill}
+                    </span>
+                  ))}
                 </div>
-                {active.image.credit ? (
-                  <p className="max-w-[15ch] text-right text-[10px] font-medium leading-tight text-white/80">
-                    {active.image.credit}
-                  </p>
-                ) : null}
               </div>
-            </div>
-          </motion.div>
+              <div className="relative min-h-[230px] overflow-hidden rounded-[1.5rem] border border-[--cr-border] bg-[--cr-surface-2] md:min-h-[320px]">
+                <img
+                  src={active.image.src}
+                  alt={active.image.alt}
+                  loading="eager"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
+                  style={{ objectPosition: active.image.position ?? "center" }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0d1f1d]/70 via-[#0d1f1d]/10 to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-65" />
+                <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                  <div className="rounded-full border border-white/20 bg-white/90 px-3 py-1.5 shadow-[0_12px_30px_-18px_rgba(13,31,29,0.8)] backdrop-blur-sm transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
+                    <p className="text-xs font-semibold text-[--cr-text]">{active.type} clinic workflow</p>
+                  </div>
+                  {active.image.credit ? (
+                    <p className="max-w-[15ch] text-right text-[10px] font-medium leading-tight text-white/80">
+                      {active.image.credit}
+                    </p>
+                  ) : null}
+                </div>
+              </div>
+            </motion.div>
+          ) : null}
         </AnimatePresence>
       </div>
     </section>
