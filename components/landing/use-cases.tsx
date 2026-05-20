@@ -208,8 +208,8 @@ export function UseCases() {
 
 function UseCaseIcon({ icon: Icon }: { icon: ElementType }) {
   return (
-    <div className="mb-4 inline-block">
-      <Icon size={32} weight="duotone" className="text-[--cr-teal]" />
+    <div className="mb-4 inline-flex rounded-[1.1rem] border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">
+      <Icon size={32} weight="duotone" className="text-[--cr-teal-dark]" />
     </div>
   );
 }

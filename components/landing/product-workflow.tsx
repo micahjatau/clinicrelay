@@ -40,8 +40,8 @@ export function ProductWorkflow() {
             return (
               <AnimatedSection key={step.number} delay={i * 0.08}>
                 <div className="flex flex-col gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-[--cr-teal-light] flex items-center justify-center relative z-10">
-                    {Icon && <Icon size={20} weight="duotone" className="text-[--cr-teal]" />}
+                  <div className="w-10 h-10 rounded-xl border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] flex items-center justify-center relative z-10">
+                    {Icon && <Icon size={20} weight="duotone" className="text-[--cr-teal-dark]" />}
                   </div>
                   <p className="text-2xl font-semibold text-[--cr-text] tracking-tighter">{step.number}</p>
                   <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight">{step.title}</h3>

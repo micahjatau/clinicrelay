@@ -93,7 +93,11 @@ export function PreVisitReadiness() {
                   transition={{ duration: 0.2 }}
                 >
                   <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.2 }}>
-                    {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
+                    {Icon && (
+                      <span className="mb-4 inline-flex rounded-[1rem] border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">
+                        <Icon size={28} weight="duotone" className="text-[--cr-teal-dark]" />
+                      </span>
+                    )}
                   </motion.div>
                   <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{feature.title}</h3>
                   <p className="text-sm text-[--cr-muted] leading-relaxed">{feature.copy}</p>

@@ -75,7 +75,7 @@ export const DashboardMockup = memo(function DashboardMockup() {
             <h2 className="text-3xl md:text-4xl tracking-tight font-semibold text-[--cr-text]">Proof of recovery in one view.</h2>
             <p className="text-sm text-[--cr-muted] mt-2">Sample workflow dashboard. Metrics shown for demonstration only and do not represent actual clinic outcomes.</p>
           </div>
-          <span className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-[--cr-muted] border border-[--cr-border]">Demo workflow data</span>
+          <span className="rounded-full border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] px-3 py-1 text-xs font-semibold text-[--cr-teal] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">Demo workflow data</span>
         </div>
 
         <div className="rounded-[2rem] border border-[--cr-border] bg-[--cr-surface-2] overflow-hidden relative" style={{ boxShadow: "var(--cr-shadow)" }}>

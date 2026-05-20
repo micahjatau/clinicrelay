@@ -143,26 +143,32 @@ body {
   padding: 0.25rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 600;
+  border: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 
 .cr-badge-success {
   background: var(--cr-success-light);
   color: var(--cr-success);
+  border-color: rgba(22, 163, 74, 0.14);
 }
 
 .cr-badge-warning {
   background: var(--cr-warning-light);
   color: var(--cr-warning);
+  border-color: rgba(217, 119, 6, 0.14);
 }
 
 .cr-badge-danger {
   background: var(--cr-danger-light);
   color: var(--cr-danger);
+  border-color: rgba(220, 38, 38, 0.14);
 }
 
 .cr-badge-teal {
   background: var(--cr-teal-light);
   color: var(--cr-teal);
+  border-color: rgba(15, 118, 110, 0.14);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -79,8 +79,8 @@ export function WaitlistSection() {
               const Icon = iconMap[step.icon];
               return (
                 <AnimatedSection key={step.number} delay={i * 0.1} className="flex gap-6 pb-10 relative">
-                  <div className="w-10 h-10 rounded-full bg-[--cr-teal-light] border-2 border-[--cr-teal] flex items-center justify-center shrink-0 z-10">
-                    {Icon && <Icon size={18} weight="duotone" className="text-[--cr-teal]" />}
+                  <div className="w-10 h-10 rounded-full border-2 border-[--cr-teal-dark]/20 bg-[--cr-teal-light] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] flex items-center justify-center shrink-0 z-10">
+                    {Icon && <Icon size={18} weight="duotone" className="text-[--cr-teal-dark]" />}
                   </div>
                   <div className="pt-1">
                     <p className="text-xs font-semibold text-[--cr-teal] mb-1">{step.number}</p>
@@ -108,7 +108,7 @@ export function WaitlistSection() {
                     <p className="text-sm font-semibold text-[--cr-text]">{c.name}</p>
                     <p className="text-xs text-[--cr-muted]">{c.match}</p>
                   </div>
-                  <span className="text-xs font-semibold px-3 py-1 rounded-full bg-[--cr-teal-light] text-[--cr-teal]">SMS Sent</span>
+                  <span className="text-xs font-semibold px-3 py-1 rounded-full border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] text-[--cr-teal] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">SMS Sent</span>
                 </div>
               ))}
               <div className="mt-4 pt-4 border-t border-[--cr-border]">

@@ -34,14 +34,14 @@ export function PricingSection() {
                 whileHover={{ y: -4, boxShadow: "0 12px 32px -6px rgba(13,148,136,0.15)" }}
               >
                 {pkg.recommended && (
-                  <span className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal] self-start mb-4">Most popular</span>
+                  <span className="text-xs font-semibold px-3 py-1.5 rounded-full border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] text-[--cr-teal] self-start mb-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">Most popular</span>
                 )}
                 <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{pkg.name}</h3>
                 <p className="text-sm text-[--cr-muted] mb-6 leading-relaxed">{pkg.tagline}</p>
                 <ul className="flex flex-col gap-3 mb-8 flex-1">
                   {pkg.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-[--cr-muted]">
-                      <CheckCircle size={16} weight="duotone" className="text-[--cr-teal] mt-0.5 shrink-0" />
+                      <CheckCircle size={16} weight="duotone" className="text-[--cr-teal-dark] mt-0.5 shrink-0" />
                       {f}
                     </li>
                   ))}

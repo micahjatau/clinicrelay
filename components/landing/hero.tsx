@@ -80,7 +80,7 @@ export function Hero() {
               {heroData.badges.map((badge) => (
                 <span
                   key={badge}
-                  className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]"
+                  className="text-xs font-semibold px-3 py-1.5 rounded-full border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] text-[--cr-teal] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]"
                 >
                   {badge}
                 </span>

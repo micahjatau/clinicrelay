@@ -179,7 +179,7 @@ export function DemoModal() {
 
             {state === "success" ? (
               <div className="text-center py-12">
-                <CheckCircle size={48} weight="duotone" className="text-[--cr-teal] mx-auto mb-4" />
+                <CheckCircle size={48} weight="duotone" className="text-[--cr-teal-dark] mx-auto mb-4" />
                 <h2 className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">We'll be in touch.</h2>
                 <p className="text-[--cr-muted] mb-6">Expect to hear from us within one business day.</p>
                 <button onClick={close} className="cr-btn cr-btn-primary">Done</button>

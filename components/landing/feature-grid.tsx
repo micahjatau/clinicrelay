@@ -15,9 +15,12 @@ const statusLabel: Record<FeatureStatus, string> = {
 };
 
 const statusClass: Record<FeatureStatus, string> = {
-  available: "bg-[--cr-teal-light] text-[--cr-teal]",
-  pilot: "bg-[--cr-warning-light] text-[--cr-warning]",
-  roadmap: "bg-[--cr-slate-light] text-[--cr-slate]",
+  available:
+    "border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] text-[--cr-teal] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]",
+  pilot:
+    "border border-[--cr-warning]/15 bg-[--cr-warning-light] text-[--cr-warning] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]",
+  roadmap:
+    "border border-[--cr-slate]/12 bg-[--cr-slate-light] text-[--cr-slate] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]",
 };
 
 const iconMap: Record<string, React.ElementType> = {
@@ -56,7 +59,11 @@ function PillarCard({ card, size }: { card: (typeof featureCards)[number]; size:
         transition={{ duration: 0.18 }}
       >
         <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.18 }}>
-          {Icon && <Icon size={24} weight="duotone" className="text-[--cr-teal] mb-3" />}
+          {Icon && (
+            <span className="mb-3 inline-flex rounded-xl border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] p-2.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">
+              <Icon size={24} weight="duotone" className="text-[--cr-teal-dark]" />
+            </span>
+          )}
         </motion.div>
         <h3 className="text-lg font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
         <p className="text-sm text-[--cr-muted] leading-relaxed mb-3 line-clamp-4">{card.copy}</p>
@@ -77,7 +84,11 @@ function PillarCard({ card, size }: { card: (typeof featureCards)[number]; size:
       transition={{ duration: 0.18 }}
     >
       <motion.div whileHover={{ y: -3 }} transition={{ duration: 0.18 }}>
-        {Icon && <Icon size={28} weight="duotone" className="text-[--cr-teal] mb-4" />}
+        {Icon && (
+          <span className="mb-4 inline-flex rounded-[1rem] border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]">
+            <Icon size={28} weight="duotone" className="text-[--cr-teal-dark]" />
+          </span>
+        )}
       </motion.div>
       <h3 className="text-xl font-semibold text-[--cr-text] tracking-tight mb-2">{card.title}</h3>
       <p className="text-sm text-[--cr-muted] leading-relaxed mb-4">{card.copy}</p>

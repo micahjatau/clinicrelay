@@ -27,7 +27,7 @@ export function GrowthSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-20% 0px" }}
                     transition={{ delay: i * 0.1 + j * 0.06, duration: 0.25 }}
-                    className="text-xs font-semibold px-3 py-1.5 rounded-full bg-[--cr-teal-light] text-[--cr-teal]"
+                    className="text-xs font-semibold px-3 py-1.5 rounded-full border border-[--cr-teal-dark]/10 bg-[--cr-teal-light] text-[--cr-teal] shadow-[inset_0_1px_0_rgba(255,255,255,0.72)]"
                   >
                     {pill}
                   </motion.span>

@@ -47,7 +47,7 @@ export function ProblemSection() {
                           viewport={{ once: true, margin: "-20% 0px" }}
                           transition={{ duration: 0.35, delay: i * 0.08 }}
                         >
-                          <Icon size={24} weight="duotone" className="text-[--cr-teal]" />
+                          <Icon size={24} weight="duotone" className="text-[--cr-teal-dark]" />
                         </motion.div>
                       )}
                     </div>
