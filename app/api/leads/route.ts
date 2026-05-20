@@ -78,7 +78,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Unable to submit. Please try again." }, { status: 500 });
   }
 
-  notifyNewLead(parsed.data as Parameters<typeof notifyNewLead>[0]).catch(() => {});
+  notifyNewLead(parsed.data as Parameters<typeof notifyNewLead>[0]).catch((err) => {
+    console.error("notifyNewLead failed:", err);
+  });
 
   return NextResponse.json({ ok: true });
 }

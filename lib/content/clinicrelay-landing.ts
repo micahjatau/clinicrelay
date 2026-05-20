@@ -53,7 +53,6 @@ export type CommandCenterItem = { label: string; count: string; status: CommandC
 export const navLinks: NavLink[] = [
   { label: "Product", href: "#product" },
   { label: "Waitlist Recovery", href: "#waitlist" },
-  { label: "Growth Services", href: "#growth" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];

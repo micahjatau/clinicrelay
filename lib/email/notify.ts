@@ -1,6 +1,8 @@
 import { Resend } from "resend";
 
-const NOTIFY_TO = "micman009@gmail.com"; // temp: onboarding@resend.dev only delivers to account email until clinicrelay.co domain is verified
+// Resend's onboarding@resend.dev sender only delivers to the account email until
+// a verified domain is configured. Override via env once clinicrelay.co is set up.
+const DEFAULT_NOTIFY_FROM = "ClinicRelay Leads <onboarding@resend.dev>";
 
 let resend: Resend | null = null;
 
@@ -26,15 +28,36 @@ type LeadFields = {
   message?: string;
 };
 
+const HTML_ESCAPE: Record<string, string> = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+};
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (ch) => HTML_ESCAPE[ch] ?? ch);
+}
+
 function formatRow(label: string, value: string | string[] | undefined): string {
   if (!value || (Array.isArray(value) && value.length === 0)) return "";
-  const display = Array.isArray(value) ? value.join(", ") : value;
+  const display = Array.isArray(value)
+    ? value.map(escapeHtml).join(", ")
+    : escapeHtml(value);
   return `<tr><td style="padding:6px 12px 6px 0;color:#4b7a72;font-size:13px;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:6px 0;color:#0f1a18;font-size:13px">${display}</td></tr>`;
 }
 
 export async function notifyNewLead(lead: LeadFields): Promise<void> {
   const client = getResend();
   if (!client) return; // silently skip if RESEND_API_KEY not set
+
+  const to = process.env.LEAD_NOTIFY_TO;
+  if (!to) {
+    console.warn("notifyNewLead skipped: LEAD_NOTIFY_TO not set");
+    return;
+  }
+  const from = process.env.LEAD_NOTIFY_FROM ?? DEFAULT_NOTIFY_FROM;
 
   const rows = [
     formatRow("Name", lead.name),
@@ -67,8 +90,8 @@ export async function notifyNewLead(lead: LeadFields): Promise<void> {
 </div>`;
 
   await client.emails.send({
-    from: "ClinicRelay Leads <onboarding@resend.dev>",
-    to: NOTIFY_TO,
+    from,
+    to,
     subject: `New lead: ${lead.name} — ${lead.clinic_name}`,
     html,
   });
