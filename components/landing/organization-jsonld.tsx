@@ -2,7 +2,7 @@ const organization = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "ClinicRelay",
-  url: "https://clinicrelay.co",
+  url: "https://www.clinicrelay.co",
   email: "hello@clinicrelay.co",
   slogan: "Coordinate Care. Reduce Chaos.",
   description:

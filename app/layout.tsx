@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://clinicrelay.co"),
+  metadataBase: new URL("https://www.clinicrelay.co"),
   alternates: {
-    canonical: "/",
+    canonical: "https://www.clinicrelay.co",
   },
   title: "ClinicRelay | Front-Desk Orchestration for Modern Clinics",
   description:
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "ClinicRelay | Front-Desk Orchestration for Modern Clinics",
     description:
       "ClinicRelay helps clinics coordinate bookings, reduce missed appointments, recover cancelled slots, and reduce front-desk chaos.",
-    url: "/",
+    url: "https://www.clinicrelay.co",
     siteName: "ClinicRelay",
     type: "website",
     images: [

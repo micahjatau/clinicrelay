@@ -3,6 +3,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact ClinicRelay",
   description: "Contact ClinicRelay for demos, workflow audits, and clinic partnerships.",
+  alternates: {
+    canonical: "https://www.clinicrelay.co/contact",
+  },
 };
 
 export default function ContactPage() {
@@ -23,7 +26,7 @@ export default function ContactPage() {
             Email: <a href="mailto:hello@clinicrelay.co" className="text-[--cr-text] hover:text-[--cr-teal] underline underline-offset-4">hello@clinicrelay.co</a>
           </p>
           <p>
-            Website: <a href="https://clinicrelay.co" className="text-[--cr-text] hover:text-[--cr-teal] underline underline-offset-4">clinicrelay.co</a>
+            Website: <a href="https://www.clinicrelay.co" className="text-[--cr-text] hover:text-[--cr-teal] underline underline-offset-4">www.clinicrelay.co</a>
           </p>
         </div>
       </section>

@@ -4,6 +4,9 @@ export const metadata: Metadata = {
   title: "About ClinicRelay | Front-Desk Orchestration for Clinics",
   description:
     "Learn how ClinicRelay helps clinics coordinate bookings, reduce missed appointments, recover cancelled slots, and reduce front-desk chaos.",
+  alternates: {
+    canonical: "https://www.clinicrelay.co/about",
+  },
 };
 
 export default function AboutPage() {
@@ -36,8 +39,8 @@ export default function AboutPage() {
               hello@clinicrelay.co
             </a>{' '}
             or visit{' '}
-            <a href="https://clinicrelay.co" className="text-[--cr-text] hover:text-[--cr-teal] underline underline-offset-4">
-              clinicrelay.co
+            <a href="https://www.clinicrelay.co" className="text-[--cr-text] hover:text-[--cr-teal] underline underline-offset-4">
+              www.clinicrelay.co
             </a>.
           </p>
         </div>

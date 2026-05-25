@@ -49,10 +49,10 @@ export function Footer() {
           <p className="text-xs text-[--cr-muted]">
             © {year} ClinicRelay.{' '}
             <a
-              href="https://clinicrelay.co"
+              href="https://www.clinicrelay.co"
               className="text-[--cr-text] hover:text-[--cr-teal] transition-colors"
             >
-              clinicrelay.co
+              www.clinicrelay.co
             </a>
             . Questions?{' '}
             <a
