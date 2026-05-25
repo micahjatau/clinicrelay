@@ -34,6 +34,8 @@ export function Footer() {
           <div>
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[--cr-text] mb-4">Company</p>
             {[
+              { label: "About", href: "/about" },
+              { label: "Contact", href: "/contact" },
               { label: "Privacy Policy", href: "/privacy" },
               { label: "Terms of Service", href: "/terms" },
             ].map((item) => (

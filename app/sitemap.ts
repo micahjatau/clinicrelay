@@ -4,6 +4,8 @@ const baseUrl = "https://clinicrelay.co";
 
 const routes = [
   "",
+  "/about",
+  "/contact",
   "/demo",
   "/pricing",
   "/privacy",
