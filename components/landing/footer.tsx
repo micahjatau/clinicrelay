@@ -45,7 +45,14 @@ export function Footer() {
         </div>
         <div className="border-t border-[--cr-border] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-[--cr-muted]">
-            © {year} ClinicRelay. All rights reserved. Questions?{' '}
+            © {year} ClinicRelay.{' '}
+            <a
+              href="https://clinicrelay.co"
+              className="text-[--cr-text] hover:text-[--cr-teal] transition-colors"
+            >
+              clinicrelay.co
+            </a>
+            . Questions?{' '}
             <a
               href="mailto:hello@clinicrelay.co"
               className="text-[--cr-text] hover:text-[--cr-teal] transition-colors"

@@ -22,11 +22,11 @@ export default function OpenGraphImage() {
           color: "#0F172A",
           fontFamily: "sans-serif",
         }}
-      >
+        >
         <div style={{ fontSize: 26, color: "#0F766E", marginBottom: 18 }}>ClinicRelay</div>
-        <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 700, maxWidth: 980 }}>Fill cancelled slots faster.</div>
+        <div style={{ fontSize: 68, lineHeight: 1.05, fontWeight: 700, maxWidth: 980 }}>Front-Desk Orchestration for Modern Clinics.</div>
         <div style={{ fontSize: 30, color: "#334155", marginTop: 24, maxWidth: 980 }}>
-          Waitlist matching, staff confirmation loops, and policy-safe scheduling.
+          Coordinate bookings, reduce missed appointments, recover cancelled slots.
         </div>
       </div>
     ),

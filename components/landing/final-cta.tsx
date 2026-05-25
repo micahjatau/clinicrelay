@@ -42,10 +42,12 @@ export function FinalCta() {
         </div>
 
         <h2 className="text-4xl md:text-6xl tracking-tighter font-semibold text-white mb-6 max-w-[18ch] mx-auto leading-none">
-          Stop letting front-desk chaos leak revenue.
+          Reduce missed appointments.
+          <br />
+          Recover cancelled slots.
         </h2>
         <p className="text-base text-white/75 mb-10 max-w-[56ch] mx-auto leading-relaxed">
-          Start with a workflow audit. We&apos;ll identify where cancellations, missed follow-up, and manual coordination are costing your clinic time and capacity.
+          Start with a workflow audit. We&apos;ll identify where scheduling, patient communication, and front-desk handoffs are creating front-desk chaos and costing your clinic time, capacity, and calm.
         </p>
         <FinalCtaButtons />
       </div>

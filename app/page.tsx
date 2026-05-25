@@ -14,11 +14,13 @@ import { FaqSection } from "@/components/landing/faq-section";
 import { FinalCta } from "@/components/landing/final-cta";
 import { Footer } from "@/components/landing/footer";
 import { MobileStickyCta } from "@/components/landing/mobile-sticky-cta";
+import { OrganizationJsonLd } from "@/components/landing/organization-jsonld";
 
 export default function Home() {
   return (
     <>
       <Nav />
+      <OrganizationJsonLd />
       <Hero />
       <ProblemSection />
       <ManifestoSection />

@@ -58,14 +58,14 @@ export const navLinks: NavLink[] = [
 ];
 
 export const heroData: HeroData = {
-  eyebrow: "Front-Desk Operations",
-  h1: "Your front desk can't recover cancelled slots while they're checking in the next patient.",
+  eyebrow: "Front-Desk Orchestration for Modern Clinics",
+  h1: "Coordinate care at the front desk for modern clinics.",
   subheadline:
-    "ClinicRelay gives your team a system for same-day slot recovery, pre-visit prep, and daily coordination — so empty slots get filled and your staff isn't on hold with a waitlist patient while someone's standing at the desk.",
+    "ClinicRelay is a front-desk orchestration platform for modern clinics. We help clinics coordinate bookings and clinic scheduling, reduce missed appointments, recover cancelled slots, and keep patient communication moving without adding more admin burden.",
   primaryCta: "Book a Workflow Audit",
   secondaryCta: "See How Recovery Works",
-  trustLine: "Built for practices where the front desk is already stretched thin",
-  badges: ["Same-Day Slot Recovery", "Pre-Visit Readiness", "Front-Desk Work Queue"],
+  trustLine: "Built for modern clinics that need scheduling, patient communication, and front-desk coordination in one place",
+  badges: ["Front-Desk Orchestration", "Pre-Visit Readiness", "Missed Appointment Recovery", "Cancelled-Slot Recovery"],
   bentoCards: [
     { step: "1", label: "Cancelled Slot Detected", detail: "Dr. Patel — 2:30 PM Thursday" },
     { step: "2", label: "Eligible Patient Matched", detail: "3 candidates identified" },
@@ -120,7 +120,7 @@ export const workflowSteps: Step[] = [
   { number: "01", icon: "Funnel", title: "Intake & routing", copy: "New patient requests land in one queue — sorted by service type, urgency, and who's available — not by whoever happens to pick up first." },
   { number: "02", icon: "CalendarCheck", title: "Smart scheduling", copy: "Appointment windows match to provider schedules and chair availability so nothing gets double-booked and no one has to call back to fix it." },
   { number: "03", icon: "BellRinging", title: "Reminder workflows", copy: "Confirmation tasks run on a schedule. Your front desk sees what still needs follow-up — not what got buried in a voicemail inbox." },
-  { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "A slot opens. ClinicRelay matches it to the right patient and surfaces the next action for staff to confirm. No manual list-diving required." },
+  { number: "04", icon: "ArrowsClockwise", title: "Waitlist recovery", copy: "A slot opens. ClinicRelay prepares recovery outreach based on your clinic's workflow rules, matches it to the right patient, and surfaces the next action for staff to confirm. No manual list-diving required." },
   { number: "05", icon: "ChartBar", title: "Performance visibility", copy: "Fill rate, response time, and recall rate — in one place, so you know what's working and where things are quietly falling through." },
 ];
 
@@ -136,7 +136,7 @@ export const featureCards: FeatureCard[] = [
   },
   {
     icon: "UserCircle",
-    title: "Patients prep before they arrive",
+    title: "Patient portal prep before they arrive",
     copy: "Intake details, appointment status, and requests handled before visit day — so your front desk isn't doing triage at check-in.",
     tag: "Access",
     status: "pilot",
@@ -423,7 +423,7 @@ export const processSteps: Step[] = [
 export const faqItems: FaqItem[] = [
   {
     question: "Does ClinicRelay connect to our practice management software?",
-    answer: "ClinicRelay can start as a lightweight layer alongside your existing workflow — no deep integration required upfront. Most clinics are up and running within a week. We talk about deeper connections after the pilot proves its worth.",
+    answer: "ClinicRelay can start as a lightweight coordination layer alongside your existing workflow — no deep integration required upfront. Most clinics are up and running within a week. We talk about deeper connections after the pilot proves its worth.",
   },
   {
     question: "How does the waitlist SMS work?",
