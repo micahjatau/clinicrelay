@@ -44,7 +44,15 @@ export function Footer() {
           </div>
         </div>
         <div className="border-t border-[--cr-border] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-[--cr-muted]">© {year} ClinicRelay. All rights reserved.</p>
+          <p className="text-xs text-[--cr-muted]">
+            © {year} ClinicRelay. All rights reserved. Questions?{' '}
+            <a
+              href="mailto:hello@clinicrelay.co"
+              className="text-[--cr-text] hover:text-[--cr-teal] transition-colors"
+            >
+              hello@clinicrelay.co
+            </a>
+          </p>
           <div className="flex gap-6">
             {[
               { label: "Waitlist Recovery", href: "/#waitlist" },

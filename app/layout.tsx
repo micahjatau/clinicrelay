@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   ),
   title: "ClinicRelay — Front-Desk Orchestration for Growing Clinics",
   description: "ClinicRelay helps clinics recover cancelled slots, route patient requests, prepare intake and insurance tasks, and give staff one place to see what needs attention.",
+  other: {
+    contactEmail: "hello@clinicrelay.co",
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },

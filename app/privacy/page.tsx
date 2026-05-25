@@ -107,7 +107,7 @@ const privacySections: readonly LegalSection[] = [
     title: "12. Changes and contact",
     paragraphs: [
       "We may update this notice as ClinicRelay changes or as legal, vendor, or operational requirements evolve. The updated version will be posted on this page with a revised date.",
-      "For privacy questions, use the demo or workflow-audit form on this website, or contact the ClinicRelay operator at micahjatau@gmail.com until a dedicated privacy inbox is published.",
+      "For privacy questions, use the demo or workflow-audit form on this website, or contact the ClinicRelay team at hello@clinicrelay.co.",
     ],
   },
 ] as const;

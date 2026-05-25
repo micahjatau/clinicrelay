@@ -127,7 +127,7 @@ const termsSections: readonly LegalSection[] = [
     title: "16. Changes and contact",
     paragraphs: [
       "ClinicRelay may update these Terms as the website, product, pilots, or legal requirements evolve. Updated Terms will be posted on this page with a revised date. Continued use after an update means you accept the updated Terms.",
-      "For questions about these Terms, use the demo or workflow-audit form on this website, or contact the ClinicRelay operator at micahjatau@gmail.com until a dedicated legal inbox is published.",
+      "For questions about these Terms, use the demo or workflow-audit form on this website, or contact the ClinicRelay team at hello@clinicrelay.co.",
     ],
   },
 ] as const;

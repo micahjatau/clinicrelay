@@ -180,8 +180,17 @@ export function DemoModal() {
             {state === "success" ? (
               <div className="text-center py-12">
                 <CheckCircle size={48} weight="duotone" className="text-[--cr-teal-dark] mx-auto mb-4" />
-                <h2 className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">We'll be in touch.</h2>
-                <p className="text-[--cr-muted] mb-6">Expect to hear from us within one business day.</p>
+                <h2 className="text-2xl font-semibold text-[--cr-text] tracking-tight mb-2">We&apos;ll be in touch.</h2>
+                <p className="text-[--cr-muted] mb-3">Expect to hear from us within one business day.</p>
+                <p className="text-sm text-[--cr-muted] mb-6">
+                  Prefer email?{' '}
+                  <a
+                    href="mailto:hello@clinicrelay.co?subject=ClinicRelay%20Demo%20Request"
+                    className="text-[--cr-text] hover:text-[--cr-teal] transition-colors underline underline-offset-4"
+                  >
+                    hello@clinicrelay.co
+                  </a>
+                </p>
                 <button onClick={close} className="cr-btn cr-btn-primary">Done</button>
               </div>
             ) : (
