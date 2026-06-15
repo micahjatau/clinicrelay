@@ -4,63 +4,63 @@ import { useEffect, useState, memo } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { HeroData } from "@/lib/content/clinicrelay-landing";
 
-// Per-step status theme — drives badge, border, shadow, and shimmer colors
+// Per-step status theme — semantic colors only, neutral surfaces underneath.
 const STEP_THEMES = [
   {
-    // Step 1 — Cancelled Slot Detected
-    badgeBg: "#DC2626",
-    border: "rgba(220, 38, 38, 0.28)",
+    // Step 1 — Cancelled Slot Detected → issue surfaced
+    badgeBg: "#B91C1C",
+    border: "rgba(185, 28, 28, 0.24)",
     shadow:
-      "0 0 0 1px rgba(220,38,38,0.09), 0 8px 28px -4px rgba(220,38,38,0.13), inset 0 1px 0 rgba(255,255,255,0.92)",
-    shimmer: "rgba(220, 38, 38, 0.07)",
+      "0 0 0 1px rgba(185,28,28,0.07), 0 10px 28px -10px rgba(185,28,28,0.12), inset 0 1px 0 rgba(255,255,255,0.92)",
+    shimmer: "rgba(185, 28, 28, 0.08)",
     radial:
-      "radial-gradient(ellipse at 92% 12%, rgba(220,38,38,0.05) 0%, transparent 62%)",
+      "radial-gradient(ellipse at 92% 12%, rgba(185,28,28,0.05) 0%, transparent 62%)",
   },
   {
-    // Step 2 — Eligible Patient Matched
-    badgeBg: "#0D9488",
-    border: "rgba(13, 148, 136, 0.30)",
+    // Step 2 — Eligible Patient Matched → warning/triage state
+    badgeBg: "#B45309",
+    border: "rgba(180, 83, 9, 0.24)",
     shadow:
-      "0 0 0 1px rgba(13,148,136,0.09), 0 8px 28px -4px rgba(13,148,136,0.13), inset 0 1px 0 rgba(255,255,255,0.92)",
-    shimmer: "rgba(13, 148, 136, 0.08)",
+      "0 0 0 1px rgba(180,83,9,0.07), 0 10px 28px -10px rgba(180,83,9,0.12), inset 0 1px 0 rgba(255,255,255,0.92)",
+    shimmer: "rgba(180, 83, 9, 0.08)",
     radial:
-      "radial-gradient(ellipse at 92% 12%, rgba(13,148,136,0.05) 0%, transparent 62%)",
+      "radial-gradient(ellipse at 92% 12%, rgba(180,83,9,0.05) 0%, transparent 62%)",
   },
   {
-    // Step 3 — Recovery Offer Routed
-    badgeBg: "#D97706",
-    border: "rgba(217, 119, 6, 0.26)",
+    // Step 3 — Recovery Offer Routed → active process/action in flight
+    badgeBg: "#1D4ED8",
+    border: "rgba(29, 78, 216, 0.22)",
     shadow:
-      "0 0 0 1px rgba(217,119,6,0.08), 0 8px 28px -4px rgba(217,119,6,0.11), inset 0 1px 0 rgba(255,255,255,0.92)",
-    shimmer: "rgba(217, 119, 6, 0.07)",
+      "0 0 0 1px rgba(29,78,216,0.07), 0 10px 28px -10px rgba(29,78,216,0.12), inset 0 1px 0 rgba(255,255,255,0.92)",
+    shimmer: "rgba(29, 78, 216, 0.08)",
     radial:
-      "radial-gradient(ellipse at 92% 12%, rgba(217,119,6,0.04) 0%, transparent 62%)",
+      "radial-gradient(ellipse at 92% 12%, rgba(29,78,216,0.05) 0%, transparent 62%)",
   },
   {
-    // Step 4 — Patient Reply Captured
-    badgeBg: "#16A34A",
-    border: "rgba(22, 163, 74, 0.30)",
+    // Step 4 — Patient Reply Captured → positive progress, not final success yet
+    badgeBg: "#0F766E",
+    border: "rgba(15, 118, 110, 0.24)",
     shadow:
-      "0 0 0 1px rgba(22,163,74,0.09), 0 8px 28px -4px rgba(22,163,74,0.13), inset 0 1px 0 rgba(255,255,255,0.92)",
-    shimmer: "rgba(22, 163, 74, 0.08)",
+      "0 0 0 1px rgba(15,118,110,0.07), 0 10px 28px -10px rgba(15,118,110,0.12), inset 0 1px 0 rgba(255,255,255,0.92)",
+    shimmer: "rgba(15, 118, 110, 0.08)",
     radial:
-      "radial-gradient(ellipse at 92% 12%, rgba(22,163,74,0.05) 0%, transparent 62%)",
+      "radial-gradient(ellipse at 92% 12%, rgba(15,118,110,0.05) 0%, transparent 62%)",
   },
   {
-    // Step 5 — Staff Confirms Refill (success)
-    badgeBg: "#16A34A",
-    border: "rgba(22, 163, 74, 0.42)",
+    // Step 5 — Staff Confirms Refill → final success
+    badgeBg: "#15803D",
+    border: "rgba(21, 128, 61, 0.34)",
     shadow:
-      "0 0 0 1px rgba(22,163,74,0.14), 0 12px 36px -4px rgba(22,163,74,0.20), 0 0 0 4px rgba(22,163,74,0.05), inset 0 1px 0 rgba(255,255,255,0.92)",
-    shimmer: "rgba(22, 163, 74, 0.09)",
+      "0 0 0 1px rgba(21,128,61,0.1), 0 12px 32px -10px rgba(21,128,61,0.18), 0 0 0 4px rgba(21,128,61,0.05), inset 0 1px 0 rgba(255,255,255,0.92)",
+    shimmer: "rgba(21, 128, 61, 0.09)",
     radial:
-      "radial-gradient(ellipse at 50% 50%, rgba(22,163,74,0.07) 0%, transparent 75%)",
+      "radial-gradient(ellipse at 50% 50%, rgba(21,128,61,0.06) 0%, transparent 75%)",
   },
 ] as const;
 
-const IDLE_BORDER = "rgba(15, 118, 110, 0.10)";
+const IDLE_BORDER = "rgba(51, 65, 85, 0.12)";
 const IDLE_SHADOW =
-  "0 20px 40px -15px rgba(13, 148, 136, 0.07), inset 0 1px 0 rgba(255,255,255,0.92)";
+  "0 16px 32px -18px rgba(51, 65, 85, 0.14), inset 0 1px 0 rgba(255,255,255,0.92)";
 
 // ─── Isolated perpetual shimmer ───────────────────────────────────────────────
 // Memo prevents parent re-renders from resetting the animation loop
@@ -116,26 +116,26 @@ export function HeroBento({ cards }: Props) {
 
   return (
     <div className="relative">
-      {/* Radial teal glow behind the card stack */}
+      {/* Neutral field behind the card stack so semantic state colors stay legible */}
       <div
         aria-hidden="true"
         className="absolute pointer-events-none -z-10"
         style={{
           inset: "-56px -40px",
           background:
-            "radial-gradient(ellipse at 58% 50%, rgba(13, 148, 136, 0.11) 0%, transparent 68%)",
+            "radial-gradient(ellipse at 58% 50%, rgba(148, 163, 184, 0.12) 0%, transparent 68%)",
         }}
       />
-      {/* Dot-grid texture */}
+      {/* Subtle slate dot-grid texture */}
       <div
         aria-hidden="true"
         className="absolute pointer-events-none -z-10"
         style={{
           inset: "-56px -40px",
           backgroundImage:
-            "radial-gradient(circle, rgba(13, 148, 136, 0.14) 1px, transparent 1px)",
+            "radial-gradient(circle, rgba(100, 116, 139, 0.16) 1px, transparent 1px)",
           backgroundSize: "20px 20px",
-          opacity: 0.42,
+          opacity: 0.32,
         }}
       />
 
@@ -163,8 +163,8 @@ export function HeroBento({ cards }: Props) {
                 className="relative rounded-2xl border flex items-center gap-4 p-4 overflow-hidden"
                 style={{
                   background: isActive
-                    ? `${theme.radial}, linear-gradient(148deg, #ffffff 0%, #f7fbfa 100%)`
-                    : "linear-gradient(148deg, #ffffff 0%, #f7fbfa 100%)",
+                    ? `${theme.radial}, linear-gradient(148deg, #ffffff 0%, #f8fafc 100%)`
+                    : "linear-gradient(148deg, #ffffff 0%, #f8fafc 100%)",
                 }}
                 animate={{
                   borderColor: isActive ? theme.border : IDLE_BORDER,
@@ -193,8 +193,8 @@ export function HeroBento({ cards }: Props) {
                 <motion.div
                   className="relative z-10 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shrink-0"
                   animate={{
-                    backgroundColor: isActive ? theme.badgeBg : "#f0fdfa",
-                    color: isActive ? "#ffffff" : "#4b7a72",
+                    backgroundColor: isActive ? theme.badgeBg : "#F1F5F9",
+                    color: isActive ? "#ffffff" : "#334155",
                   }}
                   transition={{ duration: 0.28 }}
                 >
@@ -216,7 +216,7 @@ export function HeroBento({ cards }: Props) {
                 {isLast && (
                   <motion.div
                     className="ml-auto w-2 h-2 rounded-full shrink-0"
-                    style={{ background: "#22C55E" }}
+                    style={{ background: theme.badgeBg }}
                     initial={{ scale: 0 }}
                     animate={{ scale: [0, 1.7, 1] }}
                     transition={{
